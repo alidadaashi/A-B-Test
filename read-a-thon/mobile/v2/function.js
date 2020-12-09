@@ -1,315 +1,67 @@
 var FP_LP_DONATIONS_TRUST = {
     init: function () {
     	var _this = this;
-        if (window.location.pathname.indexOf('/reader/select_amount') === -1) {
-            var headerHolder = jQuery('body > div:nth-child(2) > div > div > div:nth-child(2)');
-            this.hideElements();
-            this.updateElementsStyles();
-            headerHolder.append(this.buildHeaderSection());
-            // this.attachEvents();
-            var headerHolder = jQuery('body > div:nth-child(2) > div > div > div:nth-child(2)');
-			var checkEle = setInterval(function () {
-				var checkExist = $('.fp__count').length > 0;
-				if (checkExist) {
-					var selector = $('body > div:nth-child(2) > div > div > div:nth-child(2)');
-					selector.after(_this.buildBenefits());
-					selector.before(_this.buildHeadline());
-					
-					// headerHolder.append(_this.buildHeaderSection());
-
-					_this.attachEvents();
-				clearInterval(checkEle);
-				}
-			}, 1000);
-        } else {
-            this.addAmountGoal();
-        }
+            this.heroImage();
+        	this.editHeadLine()
+            this.linearProgress();
+            this.addBadge();
+   
     },
-    	buildHeadline: function () {
-		var oldHeadline = $('body > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(1)').html();
-		var oldCTA = $('body > div:nth-child(2) > div > div > div a').attr('href');
-		var newCTA = '<a href="' + oldCTA + '" class="fp__cta">Donate now</a>';
-		$('body').append(newCTA);
-		var studentName = oldHeadline.substring(
-			oldHeadline.lastIndexOf("encourage ") + 10,
-			oldHeadline.lastIndexOf(" to")
-		);
-		
-		// Add scroll event listener
-		$( window ).scroll(function() {
-			if($(document).scrollTop() > $('.fp__donation-box-default-first').offset().top){
-				$( ".fp__cta" ).css( "bottom", 0 )
-			}else{
-				$( ".fp__cta" ).css( "bottom", '-4rem' )
-			}
-		  
-		});
-
-		var html = '<p class="fp__headline">A small donation can change <br>my world - ' + studentName + '</p>';
-		return html;
-	},
-
-    	buildBenefits: function () {
-		
-		// change the text and its color
-		$('div.orange').css('color', '#EFB047')
-		$('div.orange').css('font-size', '18px')
-		var sentence = $('div.orange').text().split(" ");
-		sentence[3] = "I";
-		sentence[4] = "need";
-		sentence = sentence.join(" ");
-		$('div.orange').text(sentence)
-		
-		// change the p color
-		$('div.orange').next('div').css('color','#999999')
-		$('div.orange').next('div').css('line-height',1.75)
-		$('div.orange').next('div').css('text-align','left')
-		
-		// change the blue paragraoh font-size
-		$('body > div:nth-child(2) > div > div > div:nth-child(3) > div > div:nth-child(2)').css({
-            'color': '#4094F6',
-            'fontSize': '12px',
-            'lineHeight': '15px',
-            'padding': '5px 20px'
-        });
-		
-		var benefitsDetail = [{
-				title: 'Poor readers <br> only have',
-				bgUrl: 'https://figpii-test-assets.s3.amazonaws.com/variations/readathon/Benefits+Icons/9.png',
-				subTitle: 'chance to <br> graduate <br> HS'
-			},
-			{
-				title: 'Lack of strong <br> literacy skills ',
-				bgUrl: 'https://figpii-test-assets.s3.amazonaws.com/variations/readathon/Benefits+Icons/10.png',
-				subTitle: 'actually leads <br> to obesity'
-			},
-			{
-				title: 'Less <br> reading',
-				bgUrl: 'https://figpii-test-assets.s3.amazonaws.com/variations/readathon/Benefits+Icons/14.png',
-				subTitle: 'reduces <br> success in <br> other subjects'
-			},
-			{
-				title: 'Poor <br> reading',
-				bgUrl: 'https://figpii-test-assets.s3.amazonaws.com/variations/readathon/Benefits+Icons/11.png',
-				subTitle: 'results in a <br> greater chance <br> of poverty'
-			}
-		];
-		var html = '<div class="fp__benefits">';
-		html += '<p class="fp__benefits-headline">';
-		html+= sentence
-		html += '</p>';
-		html += '<div class="fp__benefits-box">';
-		for (var i = 0; i < benefitsDetail.length; i++) {
-			html += '<div class="fp__benefits-box-content">';
-			html += '<span class="fp__benefits-box-content-title">' + benefitsDetail[i].title + '</span>';
-			html += '<div style="background: url(' + benefitsDetail[i].bgUrl + ') no-repeat; background-position: center; background-size: 120%;" class="fp__benefits-box-content-icon"></div>';
-			html += '<span class="fp__benefits-box-content-title">' + benefitsDetail[i].subTitle + '</span>';
-			html += '</div>';
-		}
-		html += '</div>';
-		html += '</div>';
-
-		return html;
-	},
-
-    buildHeaderSection: function () {
-        var donationsCount = this.getDonationsCount();
-        var donationsGoal = this.getDonationGoal();
-        var donationsAmount = this.getTotalDonationsAmount();
-        var goalPercentage = this.getGoalPercentage(donationsAmount, donationsGoal);
-        var minutes = this.getReadMinutes();
-        var reader = this.getReaderName();
-        var priceFormat = Intl.NumberFormat('en-US', {
-            style: 'currency',
-            maximumFractionDigits: 2,
-            minimumFractionDigits: 0,
-            currency: 'USD',
-            currencyDisplay: 'symbol'
-        });
-
-        var html = '';
-        html += '<div class="fp-header-container">';
-        html += '<span class="fp-header-text--small fp-header-clock-icon">' + minutes + ' min read by ' + reader + ' so far</span>';
-
-        html += '<div class="fp-header-row justify-content-between">';
-        html += '<div style="text-align: left"><span class="fp-header-text--large">' + priceFormat.format(donationsAmount) + '</span><span class="fp-header-text--small">Raised so far of ' + priceFormat.format(donationsGoal) + '</span></div>';
-        html += '<div style="text-align: right" id="supporters"><span class="fp-header-text--large fp-header-donor-icon">' + donationsCount + '</span><span class="fp-header-text--small fp-header-text--underlined">Supporters</span></div>';
-        html += '</div>';
-
-        html += '<div class="fp-progress-container">';
-        html += '<div class="fp-progress fp-progress--green" style="width: ' + goalPercentage + '%"></div>';
-        html += '</div>';
-
-        html += '</div>';
-
-        return html;
+    // Hide the unneccessaary sections of hideHeadline
+    editHeadLine: function(){
+    	var title = $('div:contains("Please encourage")[align="left"]').text()
+    	var lastChar = title.indexOf('to exceed')-1;
+    	var firstChar = 17;
+    	var fullName = title.substring(firstChar,lastChar).split(" ")
+    	
+    	$('div:contains("to reach goal"):not(:has(div))').parent().hide()
+    	$('div:contains("Please encourage")[align="left"]').hide()
+    	$('div:contains("Reading campaign ends soon!")').last().hide()
+    	$('div div > span:contains("Expires ")').hide()
+    	
+    	var html = '<div class="fp__header">'
+    		html += '<h1> Thanks for helping our child, ' + fullName[0] + '</h1>'
+    		html += '<h2>' + fullName[0] + ' has raised $'+window.totalRaised+' so far and has a $'+ (window.donationGoal - window.totalRaised)+' goal.</h2>'
+    		html += '<h3>Will you help us reach it?</h3>'
+    		html += '</div>'
+    		
+    	$('div:contains("Please encourage")[align="left"]').after(html)
     },
-    hideElements: function () {
-        jQuery('body > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(2)').hide();
+    // Create Gradient and margin-bottom
+    heroImage:function(){
+    	$('body > div > div:nth-child(2) > div > :nth-child(1)').addClass('fp__hero__image');
+    	$('.fp__hero__image').css('max-height','');
+    	$('.fp__hero__image img').css('max-width','');
+    	$('.fp__hero__image').css('height','');
+    	$('.fp__hero__image img').hide();
+    	var url = $('.fp__hero__image img').attr('src');
+    	$('.fp__hero__image').css('background-image','url('+ url +')');
     },
-    updateElementsStyles: function () {
-        var _this = this;
-        //update cta styles
-        jQuery('body > div:nth-child(2) > div > div > div:nth-child(3) > div > div:nth-child(1)').css({
-            'width': '100%',
-            'padding': '0 20px',
-            'boxSizing': 'border-box'
-        });
-        jQuery('body > div:nth-child(2) > div > div > div:nth-child(3) > div > div:nth-child(1) > a').css({
-            'background': '#DC332E',
-            'borderRadius': '4px',
-            'textShadow': 'none',
-            'width': '100%',
-            'height': '50px',
-            'fontSize': '17px',
-            'boxShadow': 'none',
-            'padding': '13px',
-            'boxSizing': 'border-box',
-            'display': 'flex',
-            'alignItems': 'center',
-            'justifyContent': 'center'
-        });
-
-        //update text under cta styles
-        jQuery('body > div:nth-child(2) > div > div > div:nth-child(3) > div > div:nth-child(2)').css({
-            'color': '#4094F6',
-            'fontSize': '12px',
-            'lineHeight': '15px',
-        });
-
-        //update donations titles
-        jQuery('.rdb-donation').parent().find('>:not(.rdb-donation, #SortByAmount)').each(function () {
-            jQuery(this).css({
-                'padding': '17px 0',
-                'fontSize': '20px',
-                'color': '#000000',
-                'borderBottom': '1px solid #E2E2E2',
-                'marginTop': '25px'
-            })
-        });
-
-
-        var topDonation = jQuery('#SortByAmount .rdb-donation:eq(0)');
-        var topDonationName = topDonation.find('table > tbody > tr:nth-child(1) > td.comment > div').text();
-
-        //update donation for reader boxes
-        jQuery('#SortByAmount').prevAll('.rdb-donation').each(function () {
-            var box = jQuery(this);
-            var name = box.find('table > tbody > tr:nth-child(1) > td.comment > div').text();
-            var isTop = name === topDonationName;
-            _this.updateDonationBox(box, isTop);
-
-        });
-
-        //update donation for school donations
-        jQuery('#SortByAmount').nextAll('.rdb-donation').each(function () {
-            var box = jQuery(this);
-            _this.updateDonationBox(box, false);
-        })
-
+    // Circle progress bar of supported friends
+    // Horizontal progressbar with book icon
+    linearProgress: function(){
+    	$('body > div > div:nth-child(2) > div > :nth-last-child(3)').css('width', '')
+    	$('body > div > div:nth-child(2) > div > :nth-last-child(3)').css('padding', '0 20px 0 20px')
+    	$('body > div > div:nth-child(2) > div > :nth-last-child(3) > div:nth-child(1)').addClass('fp__donation__cta');
+    	$('body > div > div:nth-child(2) > div > :nth-last-child(3) > div:nth-child(2)').addClass('d-none');
+    	var percentage = (( window.totalRaised / window.donationGoal) * 100).toFixed();
+    	var html = '<div class="fp__linearProgress">'
+    			html += '<div class="fp__remained"> <span> STILL NEEDED </span>$'+ (window.donationGoal - window.totalRaised) +'</div>'
+    			html += '<div class="fp__raised"> <span> RAISED SO FAR </span> $'+ window.totalRaised +'</div>'
+	    		html += '<div class="fp-progress-container"><div class="fp-progress fp-progress--green" style="width:'+ percentage +'%"></div></div>'
+	    		
+	    		html += '<div class="fp__emojies">'
+	    		
+	    		html += '<div class="book"> <svg width="16" height="12" fill="none"><path d="M14.8528 1.2507h-.7531V.6269c0-.0018-.0006-.0032-.0006-.005 0-.0101-.0018-.02-.003-.03-.0012-.008-.0015-.0161-.0032-.024-.0021-.009-.0053-.0175-.0083-.0263-.0028-.0083-.005-.0165-.0085-.0243-.0035-.0079-.008-.0152-.0121-.0224a.2404.2404 0 00-.0135-.0232c-.005-.0072-.0109-.0136-.0168-.0204-.0052-.0065-.0105-.0133-.0166-.0192-.0065-.0063-.0139-.0116-.0212-.0174-.0065-.0051-.0127-.0107-.0198-.0154-.0071-.0047-.0151-.0085-.0227-.0124-.0081-.0043-.0158-.009-.0245-.0124-.0074-.003-.0154-.0049-.023-.0071-.0096-.003-.0192-.006-.0292-.008-.0018-.0003-.0031-.0011-.0046-.0014a8.2993 8.2993 0 00-1.3579-.1118c-1.8112 0-3.518.5757-4.9515 1.6641C6.1293.822 4.4226.2463 2.6114.2463c-.4555 0-.9123.0376-1.3577.1117-.0017.0003-.0032.001-.0048.0014-.01.002-.0195.005-.0292.008-.0077.0022-.0158.004-.0232.007C1.188.378 1.1801.3827 1.172.387c-.0077.004-.0157.0077-.0228.0124-.0071.0045-.0133.0101-.02.0156-.007.0056-.0144.0109-.0209.017-.0062.0061-.0113.013-.0167.0196-.0058.0066-.0118.013-.0167.0202-.0051.0073-.009.0153-.0133.0229-.0042.0075-.009.0148-.0124.0227-.0033.0077-.0056.0158-.0083.024-.003.009-.0062.0174-.0083.0266-.0017.0077-.0021.0158-.0032.0235-.0014.0101-.003.0202-.0032.0307 0 .0016-.0004.0032-.0004.0048v.6238H.2726A.2726.2726 0 000 1.5234v9.8516c0 .1505.122.2727.2726.2727h14.5802a.2728.2728 0 00.2727-.2727V1.5234a.2727.2727 0 00-.2727-.2727zM12.5142.7913c.3484 0 .6969.0248 1.0404.0714v8.569a8.2917 8.2917 0 00-1.0404-.0659c-1.6969 0-3.302.5055-4.677 1.4642V2.3866c1.3494-1.0433 2.963-1.5953 4.677-1.5953zm-5.222 1.5983v8.4431C5.9165 9.8721 4.31 9.3658 2.6112 9.3658c-.3478 0-.6963.0221-1.0403.0658V.8627A7.7522 7.7522 0 012.6113.7913c1.7157 0 3.3308.553 4.6809 1.5983zM.5452 1.796h.4805v7.9505c0 .0076.0016.0147.0022.0221.0006.0077.0002.0153.0014.0227.0003.0018.001.0032.0013.0049.0019.01.005.0193.008.0288.0023.008.0042.016.0072.0233.0035.0087.008.0164.0124.0245.004.0078.0075.0156.0124.0227.0048.0075.0106.0138.016.0207.0056.0069.0106.014.0167.0202.0065.0066.0137.012.0208.0181.0062.005.012.0106.0188.0155.008.0055.0166.0098.0252.0146.0069.0037.0132.0079.0203.011.0086.0037.0177.0063.0268.0091.008.0028.0157.0056.024.0076.0083.002.0171.0026.0257.0035.0094.0012.0188.0027.0285.0029.0016.0001.0033.0006.0051.0006.008 0 .0154-.0019.0233-.0025.0073-.0006.0144-.0001.0216-.0013a7.723 7.723 0 011.2682-.1044c1.4773 0 2.8799.4105 4.103 1.1913H.545V1.796zm14.0352 9.3064H8.4111c1.2234-.7808 2.6258-1.1913 4.1031-1.1913.4255 0 .8522.035 1.2682.1044.0072.0012.0146.0007.0217.0013.0078.0006.0152.0025.023.0025.0018 0 .0034-.0005.005-.0006.01-.0002.0198-.0017.0297-.0031.0081-.001.0165-.0015.0243-.0033.0091-.002.0176-.0051.0263-.0082.0084-.0027.0165-.0048.0244-.0083.0082-.0035.0154-.0083.0228-.0125.0077-.0043.0158-.0082.0227-.013.0074-.0053.0141-.0115.021-.0174.0062-.0053.0129-.0102.0187-.0162.0065-.0067.0119-.0142.0178-.0216.005-.0064.0104-.0125.015-.0193.0047-.0072.0086-.0154.0127-.0231.0041-.008.0086-.0157.0121-.0242.003-.0073.0047-.0151.0071-.0227.003-.0097.0062-.0195.008-.0296.0003-.0017.0011-.0032.0012-.0047.0012-.0074.0009-.0147.0015-.022.0006-.0077.0024-.015.0024-.0228V1.796h.4806v9.3064z" fill="#4B4B4B"/></svg> <span> Increase my love of reading</span> </div>'
+	    		
+	    		html += '</div>'
+    		html += '</div>';
+    	$('.fp__donation__cta').before(html)
+    	$('.fp__linearProgress').next().addClass('fp__donation')
     },
-    updateDonationBox: function ($box, isTop) {
-        var price = $box.find('table > tbody > tr:nth-child(1) > td.donation-amt > div').text();
-        var name = $box.find('table > tbody > tr:nth-child(1) > td.comment > div').text();
-        var comment = $box.find('table > tbody > tr:nth-child(1) > td.comment > p > em').text();
-        var date = $box.find('table > tbody > tr:nth-child(2) > td.donationTime').text();
-
-        //placeholder for image until they add it on original
-        var imgSrc = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAXCAYAAADk3wSdAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKASURBVHgBlVXdcdpAEN49Cc/kDXcgV2D8lvHPIHWAK7BcAbgCQwXYFYArCFQgeYw9eaSD0EF4i4Ok23yLRAYYCeEdNOhWe9/tz7d7TBWSRjehYbkTIl/XTBRbsS9u8DGmGuEypY2vI4C1rNCzkJ0wmaaQtBymLhPPjT+7/RKovN4M4VFnJVnwLfi52PkWffcsO5FhM+H228NRoPkm91cm9uIk+JiXbUiia98wRUbcUw7iZZmN2V5k1GjhlHkVoEojmMU4fpHQqlNl4+54irxZoiXVCPK6wONVfTdfMd463NOCHQXqkDPBFk/zVrUBVEPY7CWUHAeqiVcagZ+jPyjavrEWktmCHTTYZ8YOTpkSnj6hwl18HovQFKomGzonkVBEpm7wHtIBccuUIPwYhG8jdyEzhYVSf3FCWZ9qZI+nflM4HWFzRwHg5asWL8dEcZjarG0r8uAE709U52lO/ATtyQuABTkfS6KAXYK2pTpPN+1nhacA65UZFgOmqzNBGyQVe7/2is2w0C3Q3s86cNagWXw1QpjNqkGhgAxGaNWxjPF0UMg7uLNUR7CeKL9hM0RqBm7ByfCvpGdV4egIzACIKPqFKsYkO4eH3nZkq+iq6bDpGt2g1DnEu7IOYknvjTQudnRrG/FQKG5JHlalKAMs5oKG+V9X4sQ6BSRz7SgMkWxxCBR5e9FmKOuyHVC2j6JDXBeNE/p9yNgN3sbrkQiGlLev39Ri6/tKkoGCLtOVOaMaYXFvNQ0KnEaX4Ua/ii5baJgIr/7mtmBUrOcwD2swl44/O9UXsKWPVDxqcfEPSklPh5BLbn9zE/DG/U/6PNgl2+worp0foNRScqrF27b/AKqhRPmeOIG8AAAAAElFTkSuQmCC";
-
-        var html = '';
-        html += '<div class="fp-donation-box' + (isTop ? ' fp-donation-box--top' : '') + '">';
-        html += '<div class="fp-donation-box-left">';
-        if (isTop) {
-            html += '<span class="fp-donation-box--top-badge">Top donation</span>'
-        }
-        html += '<div class="fp-donation-box-circle">';
-        html += '<span class="fp-donation-box-donated">donated</span>';
-        html += '<span>' + price + '</span>';
-        html += '<div class="fp-donation-box-profile">';
-        html += '<div class="fp-donation-box-profile-image"><img src="' + imgSrc + '" alt=""></div>';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-
-        html += '<div class="fp-donation-box-right">';
-        html += '<span class="fp-donation-name">' + name + '</span>';
-        html += '<p class="fp-donation-comment">' + comment + '</p>';
-        html += '<span class="fp-donation-date">' + date + '</span>';
-        html += '</div>';
-
-        html += '</div>';
-
-        if (isTop) {
-            //put element in top and delete original
-            jQuery('#SortByAmount').prevAll('div:not(.fp-donation-box, .rdb-donation)').after(html);
-            $box.remove();
-        } else {
-            //replace element
-            $box.replaceWith(html);
-        }
-    },
-    getDonationsCount: function () {
-        return jQuery('#ReaderSupporters').text();
-    },
-    getTotalDonationsAmount: function () {
-        var holder = jQuery('body > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > span').text().split('$')[1];
-        return parseFloat(holder);
-    },
-    getDonationGoal: function () {
-        var clonedNode = jQuery('body > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2)').clone();
-        clonedNode.find('span').remove();
-
-        var remainingText = clonedNode.text();
-        var regex = /\$[0-9]*\.?[0-9]*/;
-        var total = remainingText.match(regex)[0];
-
-        total = total.split('$')[1];
-
-        return parseFloat(total);
-    },
-    getGoalPercentage: function (current, goal) {
-        return (current / goal) * 100;
-    },
-    getReadMinutes: function () {
-        return jQuery('#ReaderMinutes').text();
-    },
-    getReaderName: function () {
-        var title = jQuery('body > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(1)').text();
-
-        return title.split(' ')[2];
-    },
-    attachEvents: function () {
-        var bodySelector = jQuery('body');
-
-        bodySelector.on('click', '#supporters', function () {
-            var scrollToElement = jQuery('body > div:nth-child(2) > div > div > div:nth-child(5) > div:nth-child(1)');
-            jQuery('html, body').animate({
-                scrollTop: scrollToElement.offset().top
-            }, 500);
-            window._fpEvent.push(["eventConversion", {
-                value: "supporters_click"
-            }]);
-        });
-
-        bodySelector.on('click', 'div:nth-child(2) > div > div > div:nth-child(3) > div > div:nth-child(1) > a', function (e) {
-            window._fpEvent.push(["eventConversion", {
-                value: "cta_click"
-            }]);
-        })
-        
-        var bodySelector = $('body');
-		bodySelector.on('click', '.fp__cta', function () {
-			window._fpEvent.push(["eventConversion", {
-				value: "cta_click"
-			}]);
-		});
-    },
-    addAmountGoal: function () {
-        jQuery('#Don-Btn > a').on('click', function (e) {
-            window._fpEvent.push(["eventConversion", {
-                value: "select_amount_click"
-            }]);
-        })
+    // Circle Badge in top right section
+    addBadge: function(){
+    	$('.fp__header').prepend('<div class="fp-donation-box-circle--mini__container"><div class="fp-donation-box-circle--mini"><span>' + $('#SortByAmount').children().length +'</span><div class="fp-donation-box-profile"><div class="fp-donation-box-profile-image"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAXCAYAAADk3wSdAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKASURBVHgBlVXdcdpAEN49Cc/kDXcgV2D8lvHPIHWAK7BcAbgCQwXYFYArCFQgeYw9eaSD0EF4i4Ok23yLRAYYCeEdNOhWe9/tz7d7TBWSRjehYbkTIl/XTBRbsS9u8DGmGuEypY2vI4C1rNCzkJ0wmaaQtBymLhPPjT+7/RKovN4M4VFnJVnwLfi52PkWffcsO5FhM+H228NRoPkm91cm9uIk+JiXbUiia98wRUbcUw7iZZmN2V5k1GjhlHkVoEojmMU4fpHQqlNl4+54irxZoiXVCPK6wONVfTdfMd463NOCHQXqkDPBFk/zVrUBVEPY7CWUHAeqiVcagZ+jPyjavrEWktmCHTTYZ8YOTpkSnj6hwl18HovQFKomGzonkVBEpm7wHtIBccuUIPwYhG8jdyEzhYVSf3FCWZ9qZI+nflM4HWFzRwHg5asWL8dEcZjarG0r8uAE709U52lO/ATtyQuABTkfS6KAXYK2pTpPN+1nhacA65UZFgOmqzNBGyQVe7/2is2w0C3Q3s86cNagWXw1QpjNqkGhgAxGaNWxjPF0UMg7uLNUR7CeKL9hM0RqBm7ByfCvpGdV4egIzACIKPqFKsYkO4eH3nZkq+iq6bDpGt2g1DnEu7IOYknvjTQudnRrG/FQKG5JHlalKAMs5oKG+V9X4sQ6BSRz7SgMkWxxCBR5e9FmKOuyHVC2j6JDXBeNE/p9yNgN3sbrkQiGlLev39Ri6/tKkoGCLtOVOaMaYXFvNQ0KnEaX4Ua/ii5baJgIr/7mtmBUrOcwD2swl44/O9UXsKWPVDxqcfEPSklPh5BLbn9zE/DG/U/6PNgl2+worp0foNRScqrF27b/AKqhRPmeOIG8AAAAAElFTkSuQmCC" alt=""></div></div></div> <a href="#"> Supporters </a> </div>')
     }
+    
 }.init();
