@@ -1,0 +1,11 @@
+p.fp__headline {
+    margin: 0;
+}
+.fp__playground{
+	width: 90%;
+	height: 80vh;
+	margin: auto;
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

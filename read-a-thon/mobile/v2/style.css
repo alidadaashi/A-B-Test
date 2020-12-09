@@ -1,6 +1,8 @@
+html{
+	scroll-behavior: smooth;
+}
 .fp__hero__image{
 	position: relative;
-	margin-bottom: -61vh;
 	z-index: -1;
 	height: 100vh;
     background-repeat: no-repeat;
@@ -206,4 +208,31 @@ div.fp__donation {
     color: #868688;
     margin-bottom: 4px;
 	
+}
+p.fp__donation-box-default-second:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 10px 10px;
+    border-color: #F1F1F1 transparent;
+    display: block;
+    z-index: 1;
+    top: -10px;
+    left: 21px;
+}
+p.fp__donation-box-default-second {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    padding: 4px 0px 5px 12px;
+    background: #F1F1F1;
+    text-align: left;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    margin: 5px auto;
+    width: 80%;
+    font-size: 12px;
+    box-sizing: border-box;
+    color: #3B3B3B;
 }

@@ -5,6 +5,8 @@ var FP_LP_DONATIONS_TRUST = {
         	this.editHeadLine()
             this.linearProgress();
             this.addBadge();
+            this.adjustOverlay();
+            this.addId();
    
     },
     // Hide the unneccessaary sections of hideHeadline
@@ -21,7 +23,7 @@ var FP_LP_DONATIONS_TRUST = {
     	
     	var html = '<div class="fp__header">'
     		html += '<h1> Thanks for helping our child, ' + fullName[0] + '</h1>'
-    		html += '<h2>' + fullName[0] + ' has raised $'+window.totalRaised+' so far and has a $'+ (window.donationGoal - window.totalRaised)+' goal.</h2>'
+    		html += '<h2>' + fullName[0] + ' has raised $'+parseInt(window.totalRaised)+' so far and has a $'+ (window.donationGoal - window.totalRaised)+' goal.</h2>'
     		html += '<h3>Will you help us reach it?</h3>'
     		html += '</div>'
     		
@@ -36,6 +38,7 @@ var FP_LP_DONATIONS_TRUST = {
     	$('.fp__hero__image img').hide();
     	var url = $('.fp__hero__image img').attr('src');
     	$('.fp__hero__image').css('background-image','url('+ url +')');
+    	
     },
     // Circle progress bar of supported friends
     // Horizontal progressbar with book icon
@@ -47,7 +50,7 @@ var FP_LP_DONATIONS_TRUST = {
     	var percentage = (( window.totalRaised / window.donationGoal) * 100).toFixed();
     	var html = '<div class="fp__linearProgress">'
     			html += '<div class="fp__remained"> <span> STILL NEEDED </span>$'+ (window.donationGoal - window.totalRaised) +'</div>'
-    			html += '<div class="fp__raised"> <span> RAISED SO FAR </span> $'+ window.totalRaised +'</div>'
+    			html += '<div class="fp__raised"> <span> RAISED SO FAR </span> $'+ parseInt(window.totalRaised) +'</div>'
 	    		html += '<div class="fp-progress-container"><div class="fp-progress fp-progress--green" style="width:'+ percentage +'%"></div></div>'
 	    		
 	    		html += '<div class="fp__emojies">'
@@ -61,7 +64,20 @@ var FP_LP_DONATIONS_TRUST = {
     },
     // Circle Badge in top right section
     addBadge: function(){
-    	$('.fp__header').prepend('<div class="fp-donation-box-circle--mini__container"><div class="fp-donation-box-circle--mini"><span>' + $('#SortByAmount').children().length +'</span><div class="fp-donation-box-profile"><div class="fp-donation-box-profile-image"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAXCAYAAADk3wSdAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKASURBVHgBlVXdcdpAEN49Cc/kDXcgV2D8lvHPIHWAK7BcAbgCQwXYFYArCFQgeYw9eaSD0EF4i4Ok23yLRAYYCeEdNOhWe9/tz7d7TBWSRjehYbkTIl/XTBRbsS9u8DGmGuEypY2vI4C1rNCzkJ0wmaaQtBymLhPPjT+7/RKovN4M4VFnJVnwLfi52PkWffcsO5FhM+H228NRoPkm91cm9uIk+JiXbUiia98wRUbcUw7iZZmN2V5k1GjhlHkVoEojmMU4fpHQqlNl4+54irxZoiXVCPK6wONVfTdfMd463NOCHQXqkDPBFk/zVrUBVEPY7CWUHAeqiVcagZ+jPyjavrEWktmCHTTYZ8YOTpkSnj6hwl18HovQFKomGzonkVBEpm7wHtIBccuUIPwYhG8jdyEzhYVSf3FCWZ9qZI+nflM4HWFzRwHg5asWL8dEcZjarG0r8uAE709U52lO/ATtyQuABTkfS6KAXYK2pTpPN+1nhacA65UZFgOmqzNBGyQVe7/2is2w0C3Q3s86cNagWXw1QpjNqkGhgAxGaNWxjPF0UMg7uLNUR7CeKL9hM0RqBm7ByfCvpGdV4egIzACIKPqFKsYkO4eH3nZkq+iq6bDpGt2g1DnEu7IOYknvjTQudnRrG/FQKG5JHlalKAMs5oKG+V9X4sQ6BSRz7SgMkWxxCBR5e9FmKOuyHVC2j6JDXBeNE/p9yNgN3sbrkQiGlLev39Ri6/tKkoGCLtOVOaMaYXFvNQ0KnEaX4Ua/ii5baJgIr/7mtmBUrOcwD2swl44/O9UXsKWPVDxqcfEPSklPh5BLbn9zE/DG/U/6PNgl2+worp0foNRScqrF27b/AKqhRPmeOIG8AAAAAElFTkSuQmCC" alt=""></div></div></div> <a href="#"> Supporters </a> </div>')
+    	$('.fp__header').prepend('<div class="fp-donation-box-circle--mini__container"><div class="fp-donation-box-circle--mini"><span>' + $('#SortByAmount').children().length +'</span><div class="fp-donation-box-profile"><div class="fp-donation-box-profile-image"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAXCAYAAADk3wSdAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKASURBVHgBlVXdcdpAEN49Cc/kDXcgV2D8lvHPIHWAK7BcAbgCQwXYFYArCFQgeYw9eaSD0EF4i4Ok23yLRAYYCeEdNOhWe9/tz7d7TBWSRjehYbkTIl/XTBRbsS9u8DGmGuEypY2vI4C1rNCzkJ0wmaaQtBymLhPPjT+7/RKovN4M4VFnJVnwLfi52PkWffcsO5FhM+H228NRoPkm91cm9uIk+JiXbUiia98wRUbcUw7iZZmN2V5k1GjhlHkVoEojmMU4fpHQqlNl4+54irxZoiXVCPK6wONVfTdfMd463NOCHQXqkDPBFk/zVrUBVEPY7CWUHAeqiVcagZ+jPyjavrEWktmCHTTYZ8YOTpkSnj6hwl18HovQFKomGzonkVBEpm7wHtIBccuUIPwYhG8jdyEzhYVSf3FCWZ9qZI+nflM4HWFzRwHg5asWL8dEcZjarG0r8uAE709U52lO/ATtyQuABTkfS6KAXYK2pTpPN+1nhacA65UZFgOmqzNBGyQVe7/2is2w0C3Q3s86cNagWXw1QpjNqkGhgAxGaNWxjPF0UMg7uLNUR7CeKL9hM0RqBm7ByfCvpGdV4egIzACIKPqFKsYkO4eH3nZkq+iq6bDpGt2g1DnEu7IOYknvjTQudnRrG/FQKG5JHlalKAMs5oKG+V9X4sQ6BSRz7SgMkWxxCBR5e9FmKOuyHVC2j6JDXBeNE/p9yNgN3sbrkQiGlLev39Ri6/tKkoGCLtOVOaMaYXFvNQ0KnEaX4Ua/ii5baJgIr/7mtmBUrOcwD2swl44/O9UXsKWPVDxqcfEPSklPh5BLbn9zE/DG/U/6PNgl2+worp0foNRScqrF27b/AKqhRPmeOIG8AAAAAElFTkSuQmCC" alt=""></div></div></div> <a class="fp__go-to-supporters" href="#fp__supporters"> Supporters </a> </div>')
+    },
+    adjustOverlay: function(){
+    	var overlayHeight = $('.fp__header').height() + $('.fp__count').next('div').height()
+    		$('.fp__hero__image').css('margin-bottom', '-'+(overlayHeight+90)+'px');
+    },
+    addId: function(){
+    	$($('div:contains("Recent Supporters for"):not(:has("div"))')[0]).attr('id','fp__supporters');
+    	
+    	$('div:contains("Recent Supporters for"):not(:has("div"))').parent().hide()
+    	$('.fp__go-to-supporters').on('click',function(){
+    		$('div:contains("Recent Supporters for"):not(:has("div"))').parent().show();
+    		$('.fp__go-to-supporters').click()
+    	})
     }
     
 }.init();
