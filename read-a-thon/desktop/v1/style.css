@@ -1,11 +1,169 @@
 p.fp__headline {
     margin: 0;
 }
-.fp__playground{
-	width: 90%;
-	height: 80vh;
-	margin: auto;
-	background-repeat: no-repeat;
+
+.fp__playground {
+    width: 80%;
+    height: calc(100vh - 187px);
+    margin: auto;
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    position: relative;
+}
+
+span.fp__close {
+    font-size: 12px;
+    color: #636363;
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+span.fp__close:hover {
+    color: #000;
+}
+
+div.fp__sticky-donation {
+    display: none !important;
+}
+
+.fp__overlay {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    display: flex;
+}
+
+.fp__overlay__content {
+    min-width: 364px;
+    max-width: 45vw;
+    background-color: rgba(255, 255, 255, .9);
+}
+
+.fp__overlay__supporters {
+    min-width: 341px;
+    max-width: 45vw;
+    min-height: 200px;
+    background-color: rgb(255, 255, 255);
+    padding: 30px 20px 15px;
+    overflow: auto;
+    display: none;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.fp__supporters__container {
+    display: flex;
+    align-items: center;
+    padding: 5px 20px 10px;
+    margin: .75rem 0;
+}
+
+.fp__supporters__description {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: .5rem;
+}
+
+.fp__supporters__title {
+    color: #4A4A4A;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.fp__supporters__slogan {
+    font-size: 1rem;
+    color: #E9960A;
+    display: flex;
+    align-items: center;
+}
+
+.fp__supporters__slogan svg {
+    width: 16px;
+    margin-right: 3px;
+}
+
+.fp-donation-box-circle--mini {
+    width: 48px;
+    height: 48px;
+    position: relative;
+}
+
+.fp-donation-box-circle--mini canvas {
+    max-width: 100%;
+}
+
+.fp-donation-box-circle--mini span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 1rem;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.fp__linearProgress {
+    padding: 30px 20px 35px;
+    position: relative;
+}
+
+.fp__emojies {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fp__emojies .book {
+    width: 90px;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.1;
+    position: absolute;
+}
+
+.fp__emojies .book svg {
+    margin-bottom: 7px;
+}
+
+.fp__emojies .book span {
+    color: #4B4B4B;
+}
+
+.fp-progress-container {
+    width: 100%;
+    position: relative;
+    height: 4px;
+    background: #dfdfdf;
+    margin: 7px 0;
+}
+
+.fp-progress--green {
+    background: #5ba208;
+}
+
+.fp-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.fp__remained {
+    color: #4A4A4A;
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    z-index: 9;
+    background-color: #f1f1f1;
+}
+
+.fp__remained span {
+    font-size: 10px;
+    color: #868688;
 }
