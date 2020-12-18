@@ -14,7 +14,7 @@ var FP_LP_DONATIONS_TRUST = {
     howSectionContent: function() {
         var html = '';
         html += '<h1 class="fp__how__title">How Much Could You Raise?</h1>'
-        html += '<div class="calculator-container"> <div class="calculator-inputs"> <div class="calculator-input-block"> <span class="calculator-input-title">The Number of Students</span> <input class="calculator-input" type="range" min="1" step="1" max="200" value="100" id="students"> <span class="calculator-input-value" style="left: 50%;">100</span> </div><div class="calculator-input-block"> <span class="calculator-input-title">Percent Participation</span> <input class="calculator-input" type="range" min="50" step="1" max="100" value="75" id="percent"> <span class="calculator-input-value" style="left: 50%;">75</span> </div><div class="calculator-input-block"> <span class="calculator-input-title">Donors Per Student</span> <input class="calculator-input" type="range" min="1" step="1" max="25" value="5" id="donors"> <span class="calculator-input-value" style="left: 20%;">5</span> </div><p class="calculator-paragraph"> Calculations are based on the current average donation of only <span class="blue">$38</span> per donor, if <span class="blue">75% </span>of your students just got <span class="blue">5</span> sponsors each. </p></div><div class="calculator-result"> <div class="calculator-result-title"> <h3 id="annualCost">$100</h3> <span>AVERAGE <br>TOTAL DONATION</span> </div><div class="calculator-result-button"> <a href="/info/signup" class="purple-btn">Signup for FREE!</a> </div><div class="calculator-result-bullets"> <ul> <li>No Upfront Cost</li><li>No Copy</li><li>No Obligation</li></ul> </div></div></div>'
+        html += '<div class="calculator-container"> <div class="calculator-inputs"> <div class="calculator-input-block"> <span class="calculator-input-title">The Number of Students</span> <input class="calculator-input" type="range" min="1" step="1" max="200" value="100" id="students"> <span class="calculator-input-value" style="left: 50%;">100</span> </div><div class="calculator-input-block"> <span class="calculator-input-title">Percent Participation</span> <input class="calculator-input" type="range" min="50" step="1" max="100" value="75" id="percent"> <span class="calculator-input-value" style="left: 50%;">75</span> </div><div class="calculator-input-block"> <span class="calculator-input-title">Donors Per Student</span> <input class="calculator-input" type="range" min="1" step="1" max="25" value="5" id="donors"> <span class="calculator-input-value" style="left: 20%;">5</span> </div><p class="calculator-paragraph"> If <span class="blue dynamic_percent">75%</span> of your students just got <span class="blue dynamic_donors">5</span> sponsors each.<br>Calculations are based on the current average donation of only <span class="blue">$34.10</span> per donor. </p></div><div class="calculator-result"> <div class="calculator-result-title"> <h3 id="annualCost">$100</h3> <span>AVERAGE <br>TOTAL DONATION</span> </div><div class="calculator-result-button"> <a href="/info/signup" class="purple-btn">Signup for FREE!</a> </div><div class="calculator-result-bullets"> <ul> <li>No Upfront Cost</li><li>No Copy</li><li>No Obligation</li></ul> </div></div></div>'
         $('.fp__how').html(html)
     },
     initRangeColors: function() {
@@ -85,6 +85,8 @@ var FP_LP_DONATIONS_TRUST = {
             }
             // console.log('all', student, percent, donor)
             // console.log('OTHER', otherValue)
+            $('.dynamic_donors').html(parseInt(donor))
+            $('.dynamic_percent').html(parseInt(percent) + '%')
             updateCalculatorUI(parseInt(student), parseInt(percent), parseInt(donor));
         }
 
@@ -109,7 +111,7 @@ var FP_LP_DONATIONS_TRUST = {
         document.querySelector('#donors').addEventListener('input', handleCalculatorRangeChange);
 
         initRangeColors();
-        updateCalculatorUI(20, 30, 12);
+        updateCalculatorUI(100, 75, 5);
     },
     addWhySectionContent: function() {
         var html = '<h2 class="fp__why__title"> Why use Read-A-Thon? </h2>'
