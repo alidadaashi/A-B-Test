@@ -4,13 +4,13 @@ p.fp__headline {
 
 .fp__playground {
     width: 80%;
-    height: calc(100vh - 187px);
-    min-height: 520px;
+    height: calc(100vh - 157px);
     margin: auto;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     position: relative;
+    min-height: 620px;
     background-color: #FFF;
 }
 
@@ -23,7 +23,7 @@ span.fp__close {
     text-decoration: underline;
     cursor: pointer;
     transition: all .2s;
-    margin-top: -100px;
+    margin-top: -150px;
     margin-left: 130px;
 }
 
@@ -51,22 +51,33 @@ div.fp__sticky-donation {
 
 .fp__overlay {
     position: absolute;
-    right: 1.5rem;
-    bottom: 1.5rem;
+    right: 0;
+    bottom: 0;
     display: flex;
+    height: 100%;
 }
 
 .fp__overlay__content {
     min-width: 364px;
-    max-width: 45vw;
-    background-color: rgba(255, 255, 255, .9);
+    max-width: 430px;
+    background-color: rgb(255, 255, 255);
+    margin-left: auto;
+}
+
+.fp__hero__image {
+    width: calc(100% - 370px);
+    height: 100%;
+    margin-right: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .fp__overlay__supporters {
     min-width: 341px;
     max-width: 45vw;
     min-height: 200px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, .9);
     padding: 0 20px 15px 0;
     overflow: auto;
     display: none;
@@ -74,11 +85,20 @@ div.fp__sticky-donation {
     box-sizing: border-box;
 }
 
+.fp__overlay__supporters .fp__supporters__container {
+    justify-content: center;
+}
+
+.fp__overlay__supporters h2 {
+    font-size: 20px;
+    color: #656565;
+}
+
 .fp__supporters__container {
     display: flex;
     align-items: center;
-    padding: 5px 17px 0px;
-    margin: 15px 0 43px;
+    padding: 5px 25px 0px;
+    margin: 52px 0 50px;
 }
 
 .fp__supporters__description {
@@ -86,7 +106,6 @@ div.fp__sticky-donation {
     flex-direction: column;
     text-align: left;
     margin-left: .5rem;
-    cursor: pointer;
 }
 
 .fp__supporters__title {
@@ -108,8 +127,8 @@ div.fp__sticky-donation {
 }
 
 .fp-donation-box-circle--mini {
-    width: 56px;
-    height: 56px;
+    width: 62px;
+    height: 62px;
     position: relative;
 }
 
@@ -121,15 +140,26 @@ div.fp__sticky-donation {
     position: absolute;
     left: 49%;
     top: 46%;
-    font-size: 1rem;
+    font-size: 28px;
     transform: translate(-50%, -50%);
     color: #fff;
 }
 
+.fp-donation-box-circle--mini p {
+    margin: 0;
+    font-size: 12.5px;
+    text-decoration: underline;
+    color: #636363;
+    margin-top: -7px;
+    cursor: pointer;
+}
+
 .fp__linearProgress {
-    padding: 30px 20px 35px;
+    padding: 30px 0px 10px;
     position: relative;
     margin-top: 10px;
+    margin-right: 25px;
+    margin-left: 25px;
 }
 
 .fp__emojies {
@@ -141,15 +171,15 @@ div.fp__sticky-donation {
     width: 150px;
     font-size: 11px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     line-height: 1.1;
     position: absolute;
     top: 51px;
+    text-align: left;
 }
 
 .fp__emojies .book svg {
-    margin-bottom: 7px;
+    margin-right: 7px;
 }
 
 .fp__emojies .book span {
@@ -175,7 +205,8 @@ div.fp__sticky-donation {
     height: 100%;
 }
 
-.fp__remained {
+.fp__remained,
+.fp__raised {
     color: #4A4A4A;
     font-size: 27px;
     position: absolute;
@@ -183,16 +214,22 @@ div.fp__sticky-donation {
     z-index: 9;
 }
 
-.fp__remained span {
-    font-size: 14px;
+.fp__remained {
+    right: 0;
+}
+
+.fp__remained span,
+.fp__raised span {
+    font-size: 13px;
     color: #868688;
 }
 
 .fp__header h1 {
-    font-size: 32px;
+    font-size: 33px;
     color: #000;
     text-align: left;
-    padding-left: 15px;
+    padding-left: 28px;
+    padding-right: 28px;
     font-weight: 400;
     margin-bottom: 14px;
 }
@@ -200,9 +237,10 @@ div.fp__sticky-donation {
 .fp__header h2 {
     font-size: 23px;
     line-height: 37px;
-    color: #000;
+    color: #3b3b3b;
     text-align: left;
-    padding-left: 15px;
+    padding-left: 28px;
+    padding-right: 28px;
     font-weight: 400;
     margin-top: 0;
 }

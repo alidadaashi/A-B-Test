@@ -82,6 +82,12 @@ var FP_AD_LP_DONATIONS_TRUST = {
                 scrollTop: $("#fp__supporters").offset().top
             }, 500);
         })
+        $('.fp-donation-box-circle--mini').on('click', function() {
+            $('div:contains("Recent Supporters for"):not(:has("div"))').parent().show();
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#fp__supporters").offset().top
+            }, 500);
+        })
     },
     updateElementsStyles: function() {
         var _this = this;
