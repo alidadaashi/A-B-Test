@@ -35,7 +35,7 @@ var FP_AD_LP_DONATIONS_TRUST = {
 
         var html = '<div class="fp__header">'
         html += '<h1> Donate to ' + fullName[0] + '! </h1>'
-        html += '<h2> With your help, ' + fullName[0] + ' will<br>reach her goals</h2>'
+        html += '<h2> With your help, ' + fullName[0] + ' will<br>reach the goal</h2>'
         html += '</div>'
 
         $('div:contains("Please encourage")[align="left"]').after(html)

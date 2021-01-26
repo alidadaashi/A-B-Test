@@ -3,12 +3,6 @@ var FP_LP_DONATIONS_TRUST = {
         this.attachEvents();
     },
     attachEvents: function() {
-        $('body > div > div > div > div > a > img').parent().on('click', function() {
-            console.log('sign up')
-            window._fpEvent.push(["eventConversion", {
-                value: "signup_click"
-            }]);
-        })
         $('body > div > div > div:nth-child(3) > table:first-child a:contains("Learn More")').on('click', function() {
             console.log('sign up')
 

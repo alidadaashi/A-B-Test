@@ -236,6 +236,7 @@ iframe {
     font-size: 25px;
     color: #000;
     margin-bottom: 20px;
+    margin-top: -25px;
 }
 
 .fp__how__subtitle {
