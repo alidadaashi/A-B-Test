@@ -127,6 +127,57 @@ div>button.fp_virtual-btn:hover {
     border-bottom: 1px solid #101010;
 }
 
+.fp_selectedColor {
+    font-family: 'Avenir Regular';
+    text-transform: capitalize;
+}
+
+.fp_limited {
+    font-style: italic;
+}
+
+.lo-productpage-wrapper .product-single__image-wrapper #ProductThumbs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    max-width: 90%;
+    padding-right: 5%;
+    padding-left: 5%;
+    scroll-behavior: smooth;
+    /* this will hide the scrollbar in mozilla based browsers */
+    overflow: -moz-scrollbars-none;
+    /* this will hide the scrollbar in internet explorers */
+    -ms-overflow-style: none;
+}
+
+
+/* this will hide the scrollbar in webkit based browsers - safari, chrome, etc */
+
+div#ProductThumbs::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important;
+}
+
+.fp_fit {
+    object-fit: contain;
+    height: 100%;
+}
+
+.fp_arrow {
+    position: absolute;
+    bottom: 85px;
+    z-index: 9;
+}
+
+.fp_rightArrow {
+    right: 0px;
+}
+
+.fp_leftArrow {
+    left: 0px;
+}
+
 .video-container {
     padding: 25px 18px;
     margin: 0 auto;
