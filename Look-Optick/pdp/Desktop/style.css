@@ -136,18 +136,26 @@ div>button.fp_virtual-btn:hover {
     font-style: italic;
 }
 
+.product-single__image-wrapper {
+    position: sticky;
+    top: 14rem;
+    padding-bottom: 8rem;
+}
+
 .lo-productpage-wrapper .product-single__image-wrapper #ProductThumbs {
     display: flex;
     flex-wrap: nowrap;
     overflow: auto;
     max-width: 90%;
-    padding-right: 5%;
-    padding-left: 5%;
     scroll-behavior: smooth;
     /* this will hide the scrollbar in mozilla based browsers */
     overflow: -moz-scrollbars-none;
     /* this will hide the scrollbar in internet explorers */
     -ms-overflow-style: none;
+    flex-direction: column;
+    position: absolute;
+    left: -100px;
+    height: 100%;
 }
 
 
@@ -168,6 +176,7 @@ div#ProductThumbs::-webkit-scrollbar {
     position: absolute;
     bottom: 85px;
     z-index: 9;
+    cursor: pointer;
 }
 
 .fp_rightArrow {
@@ -182,6 +191,10 @@ div#ProductThumbs::-webkit-scrollbar {
     margin-top: 5rem !important;
 }
 
+.lo-productpage-wrapper .product-single__image-wrapper .product-single__thumb-wrapper .product-single__thumbnail img {
+    max-width: 60px !important;
+}
+
 .video-container {
     padding: 25px 18px;
     margin: 0 auto;
@@ -189,6 +202,7 @@ div#ProductThumbs::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 836px;
 }
 
 .video-container .video-wrapper {
@@ -211,8 +225,8 @@ div#ProductThumbs::-webkit-scrollbar {
     right: 0;
     bottom: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: flex-end;
     width: 100%;
     height: auto;
     pointer-events: none;
@@ -237,6 +251,9 @@ div#ProductThumbs::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 450px;
+    height: 450px;
+    justify-content: center;
 }
 
 .play-button-wrapper .play-gif span {
@@ -246,7 +263,7 @@ div#ProductThumbs::-webkit-scrollbar {
 }
 
 .video_title {
-    font-size: 26px;
+    font-size: 36px;
     font-weight: 400;
     text-align: center;
     color: #435A6F;

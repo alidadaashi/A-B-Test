@@ -10,6 +10,7 @@ var FP_LP_DONATIONS_TRUST = {
         this.magnificationPopup();
         this.popupEvents();
         this.addVideo();
+        this.changeOrder();
         this.attachEvents();
     },
     addLifestyleImagesToSlideshow: function() {
@@ -204,6 +205,14 @@ var FP_LP_DONATIONS_TRUST = {
 
 
 
+    },
+    changeOrder: function() {
+        $('.product-single__image-wrapper').after('<div class="product-single__info-wrapper fp_mt-7">' +
+            $('.product-single__header-wrapper')[0].outerHTML +
+            '</div>')
+        $('.product-description-wrapper .product-single__header-wrapper').hide()
+        $('div.addtocart-wrapper').before($('.product-description-wrapper')[0].outerHTML);
+        $($('.product-description-wrapper')[0]).hide()
     },
     attachEvents: function() {
         $('#AddToCart').on('click', function() {
