@@ -109,8 +109,9 @@ div>button.fp_virtual-btn:hover {
     border: 2px solid #000;
     font-size: 16px;
     font-weight: 600;
-    text-align: center;
-    padding: 10px 15px;
+    text-align: left;
+    padding: 10px 7vw;
+    white-space: pre;
 }
 
 .fp_container .table-wrapper {
@@ -168,7 +169,7 @@ div#ProductThumbs::-webkit-scrollbar {
 }
 
 .fp_fit {
-    object-fit: none;
+    object-fit: contain;
     height: 100% !important;
     object-position: bottom;
 }

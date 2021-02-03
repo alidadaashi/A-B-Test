@@ -307,4 +307,18 @@ div#ProductThumbs::-webkit-scrollbar {
         min-height: 17px !important;
         margin-right: 7px !important;
     }
+    .lo-productpage-wrapper .product-single__image-wrapper .product-single__thumb-wrapper .product-single__thumbnail img {
+        max-width: 41px !important;
+    }
+    .lo-productpage-wrapper .product-single__image-wrapper #ProductThumbs {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .fp_modal-title {
+        white-space: pre;
+        font-size: 24px;
+    }
+    .lo-productpage-wrapper .product-single__image-wrapper .product-single__thumb-wrapper.active-variant {
+        flex: 0 0 14% !important;
+    }
 }
