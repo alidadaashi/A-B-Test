@@ -120,6 +120,7 @@ div>button.fp_virtual-btn:hover {
 
 .fp_back {
     margin-right: auto;
+    cursor: pointer;
     /* margin-left: 40px; */
 }
 
@@ -168,8 +169,12 @@ div#ProductThumbs::-webkit-scrollbar {
 
 .fp_fit {
     object-fit: none;
-    height: 100%;
-    object-position: top;
+    height: 100% !important;
+    object-position: bottom;
+}
+
+.product-main-image.product-single__photos.product-single__main-image {
+    margin-bottom: 0 !important;
 }
 
 .fp_arrow {
@@ -256,6 +261,15 @@ div#ProductThumbs::-webkit-scrollbar {
     margin-bottom: 5px;
 }
 
+.play-button-wrapper #circle-play-b2 svg {
+    width: 46px;
+    height: 46px;
+}
+
+#circle-play-b2 span {
+    font-size: 16px;
+}
+
 .play-button-wrapper .play-gif {
     display: flex;
     flex-direction: column;
@@ -269,7 +283,7 @@ div#ProductThumbs::-webkit-scrollbar {
 }
 
 .video_title {
-    font-size: 26px;
+    font-size: 36px;
     font-weight: 400;
     text-align: center;
     color: #435A6F;
@@ -317,4 +331,8 @@ div#ProductThumbs::-webkit-scrollbar {
 
 div#video-container {
     padding: 25px 36px;
+}
+
+.lo-productpage-wrapper .product-single__image-wrapper img#ProductPhotoImg {
+    top: 70%;
 }

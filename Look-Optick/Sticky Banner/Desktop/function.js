@@ -19,6 +19,7 @@ var FP_BENEFITS = {
         $(this.buildSection()).insertAfter(selector);
         if ($('body#your-shopping-cart').length) {
             $('.fp__benefits').css('top', '0px')
+            $('.fp__benefits').css('z-index', '999')
         }
 
     },

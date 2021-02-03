@@ -1,0 +1,109 @@
+/*Avenir Font fallback*/
+
+@font-face {
+    font-family: AvenirCustom;
+    src: url("https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/Avenir-Roman-12.ttf");
+}
+
+@font-face {
+    font-family: AvenirCustom;
+    src: url("https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/Avenir-Medium-09.ttf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: AvenirCustom;
+    src: url("https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/Avenir-Black-03.ttf");
+    font-weight: 600;
+}
+
+#bannerShow {
+    display: none;
+}
+
+.lo-main-content.banner-active {
+    padding-top: 120px !important;
+}
+
+.lo-nav {
+    top: 0;
+}
+
+.fp__benefits {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 8px 0;
+    background: #000000;
+    opacity: 0.7;
+    position: fixed;
+    z-index: 999;
+    top: 110px;
+}
+
+.fp__benefits-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.fp__benefits-box-icon {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.fp__benefits-box-title {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: AvenirCustom;
+    color: #fff;
+    line-height: 14px;
+    text-align: left;
+}
+
+.fp__benefits-box:nth-child(3) .fp__benefits-box-icon {
+    background-size: 100% !important;
+}
+
+@media(max-width: 375px) {
+    .fp__benefits-box-title {
+        font-size: 13px;
+    }
+    .fp__benefits-box {
+        width: 30%;
+    }
+    .fp__benefits {
+        padding: 10px 0;
+    }
+    .fp__benefits-box:nth-child(3) {
+        margin: 0 15px 0 0;
+    }
+}
+
+@media(max-width: 360px) {
+    .fp__benefits-box-title {
+        font-size: 10px;
+    }
+    .fp__benefits-box-icon {
+        width: 25px;
+        height: 25px;
+    }
+    .fp__benefits-box {
+        width: 30%;
+    }
+    .fp__benefits {
+        padding: 10px 0;
+        padding-left: 0;
+    }
+    .fp__benefits-box:nth-child(3) {
+        margin: 0 10px 0 0;
+    }
+}
+
+.lo-nav.lo-nav-toggled {
+    z-index: 9999;
+}

@@ -146,7 +146,6 @@ div>button.fp_virtual-btn:hover {
     display: flex;
     flex-wrap: nowrap;
     overflow: auto;
-    max-width: 90%;
     padding-right: 5%;
     padding-left: 5%;
     scroll-behavior: smooth;
@@ -167,21 +166,33 @@ div#ProductThumbs::-webkit-scrollbar {
 
 .fp_fit {
     object-fit: contain;
-    height: 100%;
+    height: 100% !important;
 }
 
 .fp_arrow {
     position: absolute;
-    bottom: 85px;
+    top: 30%;
     z-index: 9;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s;
+}
+
+.fp_arrow:hover {
+    background-color: #e2e2e2;
 }
 
 .fp_rightArrow {
-    right: 0px;
+    right: -14px;
 }
 
 .fp_leftArrow {
-    left: 0px;
+    left: -14px;
 }
 
 .fp_mt-7 {
@@ -265,11 +276,17 @@ div#ProductThumbs::-webkit-scrollbar {
 }
 
 .lo-productpage-wrapper .product-single__image-wrapper .product-single__thumb-wrapper.active-variant {
-    flex: 0 0 21%;
+    flex: 0 0 16%;
+    justify-content: center;
+    display: flex !important;
 }
 
-.lo-productpage-wrapper .product-single__image-wrapper .product-single__thumb-wrapper .product-single__thumbnail img {
-    max-width: 100% !important;
+.lo-productpage-wrapper .product-single__image-wrapper .product-single__thumb-wrapper:nth-child(4) .product-single__thumbnail img,
+.lo-productpage-wrapper .product-single__image-wrapper .product-single__thumb-wrapper:nth-child(5) .product-single__thumbnail img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    object-position: top center;
 }
 
 @media (max-width: 375px) {
