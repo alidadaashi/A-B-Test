@@ -1,22 +1,3 @@
-/*Avenir Font fallback*/
-
-@font-face {
-    font-family: AvenirCustom;
-    src: url("https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/Avenir-Roman-12.ttf");
-}
-
-@font-face {
-    font-family: AvenirCustom;
-    src: url("https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/Avenir-Medium-09.ttf");
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: AvenirCustom;
-    src: url("https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/Avenir-Black-03.ttf");
-    font-weight: 600;
-}
-
 #bannerShow {
     display: none;
 }
@@ -36,7 +17,7 @@
 
 .fp__benefits {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -64,10 +45,10 @@
 
 .fp__benefits-box-title {
     font-size: 16px;
-    font-weight: 500;
-    font-family: AvenirCustom;
+    font-family: 'Avenir Demi', 'Nunito', Open Sans, sans-serif;
     color: #fff;
     line-height: 21px;
+    padding-top: 2px;
 }
 
 .fp__benefits-box:nth-child(3) .fp__benefits-box-icon {

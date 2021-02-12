@@ -2,18 +2,18 @@
 
 @font-face {
     font-family: AvenirCustom;
-    src: url("https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/Avenir-Roman-12.ttf");
+    src: url("https://variations-cdn.figpii.com/variations/look+optic/home+page/Benefits+icon/Avenir-Roman-12.ttf");
 }
 
 @font-face {
     font-family: AvenirCustom;
-    src: url("https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/Avenir-Medium-09.ttf");
+    src: url("https://variations-cdn.figpii.com/variations/look+optic/home+page/Benefits+icon/Avenir-Medium-09.ttf");
     font-weight: 500;
 }
 
 @font-face {
     font-family: AvenirCustom;
-    src: url("https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/Avenir-Black-03.ttf");
+    src: url("https://variations-cdn.figpii.com/variations/look+optic/home+page/Benefits+icon/Avenir-Black-03.ttf");
     font-weight: 600;
 }
 
@@ -32,7 +32,7 @@
 .fp__benefits {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     width: 100%;
     padding: 8px 0;
@@ -48,6 +48,15 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.fp__benefits-box:first-child {
+    width: 30%
+}
+
+.fp__benefits-box:nth-child(2) {
+    margin-left: 16.6666%;
+    width: 20%;
 }
 
 .fp__benefits-box-icon {

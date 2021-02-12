@@ -1,14 +1,12 @@
-var benefits = [{
-        text: 'One-Year<br> Guarantee',
-        icon: 'https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/shield.png'
+var benefits = [
+
+    {
+        text: 'Free Shipping<br> & Returns',
+        icon: 'https://variations-cdn.figpii.com/variations/look+optic/home+page/Benefits+icon/desktop+shipping.png'
     },
     {
         text: '90-Day<br> Trial',
-        icon: 'https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/trial.png'
-    },
-    {
-        text: 'Free Shipping<br> & Returns',
-        icon: 'https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/desktop+shipping.png'
+        icon: 'https://variations-cdn.figpii.com/variations/look+optic/home+page/Benefits+icon/trial.png'
     }
 ];
 
@@ -24,6 +22,10 @@ var FP_BENEFITS = {
 
         if ($('body').hasClass('template-product')) {
             $('#navbar').css('padding-top', '45px')
+        }
+
+        if ($('body').hasClass('template-index')) {
+            $('.lo-main-content.banner-active')[0].style.setProperty('padding-top', '110px', 'important');
         }
     },
     buildSection: function() {

@@ -1,14 +1,14 @@
 var benefits = [{
         text: 'One-Year Guarantee',
-        icon: 'https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/shield.png'
+        icon: 'https://variations-cdn.figpii.com/variations/look+optic/home+page/Benefits+icon/shield.png'
     },
     {
         text: '90-Day Trial',
-        icon: 'https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/trial.png'
+        icon: 'https://variations-cdn.figpii.com/variations/look+optic/home+page/Benefits+icon/trial.png'
     },
     {
         text: 'Free Shipping & Returns',
-        icon: 'https://figpii-test-assets.s3.amazonaws.com/variations/look+optic/home+page/Benefits+icon/desktop+shipping.png'
+        icon: 'https://variations-cdn.figpii.com/variations/look+optic/home+page/Benefits+icon/desktop+shipping.png'
     }
 ];
 

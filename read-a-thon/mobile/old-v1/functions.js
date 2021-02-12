@@ -1,6 +1,6 @@
 var FP_LP_DONATIONS_TRUST = {
-    init: function () {
-    	var _this = this;
+    init: function() {
+        var _this = this;
         if (window.location.pathname.indexOf('/reader/select_amount') === -1) {
             var headerHolder = jQuery('body > div:nth-child(2) > div > div > div:nth-child(2)');
             this.hideElements();
@@ -8,111 +8,111 @@ var FP_LP_DONATIONS_TRUST = {
             headerHolder.append(this.buildHeaderSection());
             // this.attachEvents();
             var headerHolder = jQuery('body > div:nth-child(2) > div > div > div:nth-child(2)');
-			var checkEle = setInterval(function () {
-				var checkExist = $('.fp__count').length > 0;
-				if (checkExist) {
-					var selector = $('body > div:nth-child(2) > div > div > div:nth-child(2)');
-					selector.after(_this.buildBenefits());
-					selector.before(_this.buildHeadline());
-					
-					// headerHolder.append(_this.buildHeaderSection());
+            var checkEle = setInterval(function() {
+                var checkExist = $('.fp__count').length > 0;
+                if (checkExist) {
+                    var selector = $('body > div:nth-child(2) > div > div > div:nth-child(2)');
+                    selector.after(_this.buildBenefits());
+                    selector.before(_this.buildHeadline());
 
-					_this.attachEvents();
-				clearInterval(checkEle);
-				}
-			}, 1000);
+                    // headerHolder.append(_this.buildHeaderSection());
+
+                    _this.attachEvents();
+                    clearInterval(checkEle);
+                }
+            }, 1000);
         } else {
             this.addAmountGoal();
         }
     },
-    	buildHeadline: function () {
-		var oldHeadline = $('body > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(1)').html();
-		var oldCTA = $('body > div:nth-child(2) > div > div > div a').attr('href');
-		var newCTA = '<a href="' + oldCTA + '" class="fp__cta">Donate now</a>';
-		$('body').append(newCTA);
-		var studentName = oldHeadline.substring(
-			oldHeadline.lastIndexOf("encourage ") + 10,
-			oldHeadline.lastIndexOf(" to")
-		);
-		
-		// Add scroll event listener
-		$( window ).scroll(function() {
-			if($(document).scrollTop() > $('.fp__donation-box-default-first').offset().top){
-				$( ".fp__cta" ).css( "bottom", 0 )
-			}else{
-				$( ".fp__cta" ).css( "bottom", '-4rem' )
-			}
-		  
-		});
+    buildHeadline: function() {
+        var oldHeadline = $('body > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(1)').html();
+        var oldCTA = $('body > div:nth-child(2) > div > div > div a').attr('href');
+        var newCTA = '<a href="' + oldCTA + '" class="fp__cta">Donate now</a>';
+        $('body').append(newCTA);
+        var studentName = oldHeadline.substring(
+            oldHeadline.lastIndexOf("encourage ") + 10,
+            oldHeadline.lastIndexOf(" to")
+        );
 
-		var html = '<p class="fp__headline">A small donation can change <br>my world - ' + studentName + '</p>';
-		return html;
-	},
+        // Add scroll event listener
+        $(window).scroll(function() {
+            if ($(document).scrollTop() > $('.fp__donation-box-default-first').offset().top) {
+                $(".fp__cta").css("bottom", 0)
+            } else {
+                $(".fp__cta").css("bottom", '-4rem')
+            }
 
-    	buildBenefits: function () {
-		
-		// change the text and its color
-		$('div.orange').css('color', '#EFB047')
-		$('div.orange').css('font-size', '18px')
-		var sentence = $('div.orange').text().split(" ");
-		sentence[3] = "I";
-		sentence[4] = "need";
-		sentence = sentence.join(" ");
-		$('div.orange').text(sentence)
-		
-		// change the p color
-		$('div.orange').next('div').css('color','#999999')
-		$('div.orange').next('div').css('line-height',1.75)
-		$('div.orange').next('div').css('text-align','left')
-		
-		// change the blue paragraoh font-size
-		$('body > div:nth-child(2) > div > div > div:nth-child(3) > div > div:nth-child(2)').css({
+        });
+
+        var html = '<p class="fp__headline">A small donation can change <br>my world - ' + studentName + '</p>';
+        return html;
+    },
+
+    buildBenefits: function() {
+
+        // change the text and its color
+        $('div.orange').css('color', '#EFB047')
+        $('div.orange').css('font-size', '18px')
+        var sentence = $('div.orange').text().split(" ");
+        sentence[3] = "I";
+        sentence[4] = "need";
+        sentence = sentence.join(" ");
+        $('div.orange').text(sentence)
+
+        // change the p color
+        $('div.orange').next('div').css('color', '#999999')
+        $('div.orange').next('div').css('line-height', 1.75)
+        $('div.orange').next('div').css('text-align', 'left')
+
+        // change the blue paragraoh font-size
+        $('body > div:nth-child(2) > div > div > div:nth-child(3) > div > div:nth-child(2)').css({
             'color': '#4094F6',
             'fontSize': '12px',
             'lineHeight': '15px',
             'padding': '5px 20px'
         });
-		
-		var benefitsDetail = [{
-				title: 'Poor readers <br> only have',
-				bgUrl: 'https://figpii-test-assets.s3.amazonaws.com/variations/readathon/Benefits+Icons/9.png',
-				subTitle: 'chance to <br> graduate <br> HS'
-			},
-			{
-				title: 'Lack of strong <br> literacy skills ',
-				bgUrl: 'https://figpii-test-assets.s3.amazonaws.com/variations/readathon/Benefits+Icons/10.png',
-				subTitle: 'actually leads <br> to obesity'
-			},
-			{
-				title: 'Less <br> reading',
-				bgUrl: 'https://figpii-test-assets.s3.amazonaws.com/variations/readathon/Benefits+Icons/14.png',
-				subTitle: 'reduces <br> success in <br> other subjects'
-			},
-			{
-				title: 'Poor <br> reading',
-				bgUrl: 'https://figpii-test-assets.s3.amazonaws.com/variations/readathon/Benefits+Icons/11.png',
-				subTitle: 'results in a <br> greater chance <br> of poverty'
-			}
-		];
-		var html = '<div class="fp__benefits">';
-		html += '<p class="fp__benefits-headline">';
-		html+= sentence
-		html += '</p>';
-		html += '<div class="fp__benefits-box">';
-		for (var i = 0; i < benefitsDetail.length; i++) {
-			html += '<div class="fp__benefits-box-content">';
-			html += '<span class="fp__benefits-box-content-title">' + benefitsDetail[i].title + '</span>';
-			html += '<div style="background: url(' + benefitsDetail[i].bgUrl + ') no-repeat; background-position: center; background-size: 120%;" class="fp__benefits-box-content-icon"></div>';
-			html += '<span class="fp__benefits-box-content-title">' + benefitsDetail[i].subTitle + '</span>';
-			html += '</div>';
-		}
-		html += '</div>';
-		html += '</div>';
 
-		return html;
-	},
+        var benefitsDetail = [{
+                title: 'Poor readers <br> only have',
+                bgUrl: 'https://variations-cdn.figpii.com/variations/readathon/Benefits+Icons/9.png',
+                subTitle: 'chance to <br> graduate <br> HS'
+            },
+            {
+                title: 'Lack of strong <br> literacy skills ',
+                bgUrl: 'https://figpii-test-assets.s3.amazonaws.com/variations/readathon/Benefits+Icons/10.png',
+                subTitle: 'actually leads <br> to obesity'
+            },
+            {
+                title: 'Less <br> reading',
+                bgUrl: 'https://figpii-test-assets.s3.amazonaws.com/variations/readathon/Benefits+Icons/14.png',
+                subTitle: 'reduces <br> success in <br> other subjects'
+            },
+            {
+                title: 'Poor <br> reading',
+                bgUrl: 'https://figpii-test-assets.s3.amazonaws.com/variations/readathon/Benefits+Icons/11.png',
+                subTitle: 'results in a <br> greater chance <br> of poverty'
+            }
+        ];
+        var html = '<div class="fp__benefits">';
+        html += '<p class="fp__benefits-headline">';
+        html += sentence
+        html += '</p>';
+        html += '<div class="fp__benefits-box">';
+        for (var i = 0; i < benefitsDetail.length; i++) {
+            html += '<div class="fp__benefits-box-content">';
+            html += '<span class="fp__benefits-box-content-title">' + benefitsDetail[i].title + '</span>';
+            html += '<div style="background: url(' + benefitsDetail[i].bgUrl + ') no-repeat; background-position: center; background-size: 120%;" class="fp__benefits-box-content-icon"></div>';
+            html += '<span class="fp__benefits-box-content-title">' + benefitsDetail[i].subTitle + '</span>';
+            html += '</div>';
+        }
+        html += '</div>';
+        html += '</div>';
 
-    buildHeaderSection: function () {
+        return html;
+    },
+
+    buildHeaderSection: function() {
         var donationsCount = this.getDonationsCount();
         var donationsGoal = this.getDonationGoal();
         var donationsAmount = this.getTotalDonationsAmount();
@@ -129,7 +129,7 @@ var FP_LP_DONATIONS_TRUST = {
 
         var html = '';
         html += '<div class="fp-header-container">';
-        
+
 
 
         html += '<div class="fp-progress-container">';
@@ -143,10 +143,10 @@ var FP_LP_DONATIONS_TRUST = {
 
         return html;
     },
-    hideElements: function () {
+    hideElements: function() {
         jQuery('body > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(2)').hide();
     },
-    updateDonationBox: function ($box, isTop) {
+    updateDonationBox: function($box, isTop) {
         var price = $box.find('table > tbody > tr:nth-child(1) > td.donation-amt > div').text();
         var name = $box.find('table > tbody > tr:nth-child(1) > td.comment > div').text();
         var comment = $box.find('table > tbody > tr:nth-child(1) > td.comment > p > em').text();
@@ -187,14 +187,14 @@ var FP_LP_DONATIONS_TRUST = {
             $box.replaceWith(html);
         }
     },
-    getDonationsCount: function () {
+    getDonationsCount: function() {
         return jQuery('#ReaderSupporters').text();
     },
-    getTotalDonationsAmount: function () {
+    getTotalDonationsAmount: function() {
         var holder = jQuery('body > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > span').text().split('$')[1];
         return parseFloat(holder);
     },
-    getDonationGoal: function () {
+    getDonationGoal: function() {
         var clonedNode = jQuery('body > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2)').clone();
         clonedNode.find('span').remove();
 
@@ -206,21 +206,21 @@ var FP_LP_DONATIONS_TRUST = {
 
         return parseFloat(total);
     },
-    getGoalPercentage: function (current, goal) {
+    getGoalPercentage: function(current, goal) {
         return (current / goal) * 100;
     },
-    getReadMinutes: function () {
+    getReadMinutes: function() {
         return jQuery('#ReaderMinutes').text();
     },
-    getReaderName: function () {
+    getReaderName: function() {
         var title = jQuery('body > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(1)').text();
 
         return title.split(' ')[2];
     },
-    attachEvents: function () {
+    attachEvents: function() {
         var bodySelector = jQuery('body');
 
-        bodySelector.on('click', '#supporters', function () {
+        bodySelector.on('click', '#supporters', function() {
             var scrollToElement = jQuery('body > div:nth-child(2) > div > div > div:nth-child(5) > div:nth-child(1)');
             jQuery('html, body').animate({
                 scrollTop: scrollToElement.offset().top
@@ -230,21 +230,21 @@ var FP_LP_DONATIONS_TRUST = {
             }]);
         });
 
-        bodySelector.on('click', 'div:nth-child(2) > div > div > div:nth-child(3) > div > div:nth-child(1) > a', function (e) {
+        bodySelector.on('click', 'div:nth-child(2) > div > div > div:nth-child(3) > div > div:nth-child(1) > a', function(e) {
             window._fpEvent.push(["eventConversion", {
                 value: "cta_click"
             }]);
         })
-        
+
         var bodySelector = $('body');
-		bodySelector.on('click', '.fp__cta', function () {
-			window._fpEvent.push(["eventConversion", {
-				value: "cta_click"
-			}]);
-		});
+        bodySelector.on('click', '.fp__cta', function() {
+            window._fpEvent.push(["eventConversion", {
+                value: "cta_click"
+            }]);
+        });
     },
-    addAmountGoal: function () {
-        jQuery('#Don-Btn > a').on('click', function (e) {
+    addAmountGoal: function() {
+        jQuery('#Don-Btn > a').on('click', function(e) {
             window._fpEvent.push(["eventConversion", {
                 value: "select_amount_click"
             }]);
