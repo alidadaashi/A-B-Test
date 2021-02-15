@@ -114,15 +114,18 @@ var FP_LP_DONATIONS_TRUST = {
     },
     fixVideo: function() {
         $(window).on('load', function() {
-            $($('.fullContainer > .containerInner.ui-sortable > .row.bgCover:nth-child(3)')[0]).addClass('fp_video_container');
+
             $('div[data-title=cf-vimeo-video]').addClass('fp_video');
+
+            $('iframe[src*="https://player.vimeo.com"]').closest('.bgCover').addClass('fp_video_container');
+
             $('div[data-title=cf-vimeo-video]').removeClass('elVideoSkin2');
 
             // Remove progress bar under the video
-            $($('.fullContainer > .containerInner.ui-sortable > .row.bgCover:nth-child(4)')[0]).remove()
+            $($('.fullContainer > .containerInner.ui-sortable > .row.bgCover:nth-child(4)')[0]).hide()
 
             // Hide an empty div above the video
-            $($('.fullContainer > .containerInner.ui-sortable > .row.bgCover:nth-child(2)')[0]).hide()
+            $('div.progress-bar:contains(Loading Your)').closest(".row.bgCover").hide()
 
             // Remove the top padding of video-container
             $($('.container.fullContainer')[0]).css('padding-top', '0')
@@ -154,6 +157,7 @@ var FP_LP_DONATIONS_TRUST = {
 
 
     },
+
     attachEvents: function() {
 
 

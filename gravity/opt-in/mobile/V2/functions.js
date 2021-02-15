@@ -140,7 +140,8 @@ var FP_LP_DONATIONS_TRUST = {
     },
     fixVideo: function() {
         $(window).on('load', function() {
-            $($('.fullContainer > .containerInner.ui-sortable > .row.bgCover:nth-child(3)')[0]).addClass('fp_video_container');
+            $('iframe[src*="https://player.vimeo.com"]').closest('.bgCover').addClass('fp_video_container');
+
             $('div[data-title=cf-vimeo-video]').addClass('fp_video');
             $('div[data-title=cf-vimeo-video]').removeClass('elVideoSkin2');
 
@@ -148,7 +149,7 @@ var FP_LP_DONATIONS_TRUST = {
             $($('.fullContainer > .containerInner.ui-sortable > .row.bgCover:nth-child(4)')[0]).remove()
 
             // Hide an empty dive above the video
-            $($('.fullContainer > .containerInner.ui-sortable > .row.bgCover:nth-child(2)')[0]).hide()
+            $('div.progress-bar:contains(Loading Your)').closest(".row.bgCover").hide()
 
             // Remove the top padding of video-container
             $($('.container.fullContainer')[0]).css('padding-top', '0')
