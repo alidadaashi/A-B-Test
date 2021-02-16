@@ -28,7 +28,7 @@ var FP_LP_DONATIONS_TRUST = {
         $('body').append('<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js">')
 
         $('.fp_hero').after('<div class="fp_freeplan_container"></div>');
-        var freePlan = '<div class="fp_freeplan w-50"> <h3 class="title"> Your Free Diet Plan </h3> <h6 class="subtitle"> Lose 20 lbs in 6 Weeks with our <strong> 6 Week Challenge </strong> </h6> <div class="fp_freeplan_list"><div class="fp_freeplan_list_items"> </div> </div> </div>';
+        var freePlan = '<div class="fp_freeplan w-50"> <h3 class="title"> Your Free Diet Plan </h3> <h6 class="subtitle"> Lose 20 LBS or 5% Body Fat in 6 Weeks with our <strong> 6 Week Challenge </strong> </h6> <div class="fp_freeplan_list"><div class="fp_freeplan_list_items"> </div> </div> </div>';
 
 
 
@@ -185,10 +185,16 @@ var FP_LP_DONATIONS_TRUST = {
                 $('html, body').animate({
                     scrollTop: ($('.fp_video_container').offset().top)
                 }, 500);
+
+                setTimeout(function() { $('.video-sound-overlay').click() }, 500)
             })
 
 
         })
+
+        window.addEventListener('scroll', function(event) {
+            event.stopPropagation();
+        }, true);
 
 
 

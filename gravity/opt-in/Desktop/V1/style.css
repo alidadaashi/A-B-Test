@@ -116,11 +116,12 @@
 
 .fp_freeplan .subtitle {
     font-weight: 300;
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Lato';
     color: #1a1027;
     margin-top: -5px;
     margin-bottom: 13px;
+    white-space: pre;
 }
 
 .fp_freeplan_item {
@@ -438,4 +439,9 @@ iframe.cf-sticky-video-active {
     padding: 0 !important;
     left: 0 !important;
     top: 0 !important;
+}
+
+.iframeBlocker,
+.iframeUnmute {
+    z-index: 999999999 !important;
 }

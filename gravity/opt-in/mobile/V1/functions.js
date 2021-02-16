@@ -22,7 +22,7 @@ var FP_LP_DONATIONS_TRUST = {
         var watchVideo = '<a class="fp_watch" href="#"> Watch Video To Learn More </a>';
 
         $('.fp_hero').after('<div class="fp_freeplan_container">' + accessBtn + watchVideo + '</div>');
-        var freePlan = '<div class="fp_freeplan"> <h3 class="title"> Your Free Plan </h3> <h6 class="subtitle"> Lose 20 lbs in 6 Weeks with our 6 Week Challenge </h6> <div class="fp_freeplan_list"> </div> </div>';
+        var freePlan = '<div class="fp_freeplan"> <h3 class="title"> Your Free Plan </h3> <h6 class="subtitle"> Lose 20 LBS or 5% Body Fat in 6 Weeks with our 6 Week Challenge </h6> <div class="fp_freeplan_list"> </div> </div>';
 
 
 
@@ -165,10 +165,14 @@ var FP_LP_DONATIONS_TRUST = {
                 $('html, body').animate({
                     scrollTop: ($('.fp_video_container').offset().top)
                 }, 500);
+                setTimeout(function() { $('.video-sound-overlay').click() }, 500)
             })
 
             $('.fp_video_container a.elButton').addClass('fp_newOne')
 
+            window.addEventListener('scroll', function(event) {
+                event.stopPropagation();
+            }, true);
 
         })
 

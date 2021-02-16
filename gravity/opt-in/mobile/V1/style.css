@@ -76,6 +76,7 @@
     font-weight: 300;
     font-size: 14px;
     font-family: 'Lato';
+    line-height: 20px;
 }
 
 .fp_freeplan_item {
@@ -298,8 +299,19 @@
     margin-top: 7px;
 }
 
-.video-sound-overlay {
-    background-image: none !important;
+.video-sound-overlay .unmute-button {
+    background-image: url('https://variations-cdn.figpii.com/variations/gravitychallenges/optin-lp/volume.svg');
+    width: 40px;
+    height: 40px;
+    left: 10px;
+    top: 10px;
+    position: relative;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.video-sound-overlay img {
     display: none;
 }
 
@@ -325,4 +337,9 @@
 .fp_watch:hover,
 .fp_watch:focus {
     text-decoration: none;
+}
+
+.iframeBlocker,
+.iframeUnmute {
+    z-index: 999999999 !important;
 }
