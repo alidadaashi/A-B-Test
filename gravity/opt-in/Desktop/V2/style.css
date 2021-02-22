@@ -121,7 +121,7 @@
     color: #1a1027;
     margin-top: -5px;
     margin-bottom: 13px;
-    white-space: pre;
+    text-transform: none;
 }
 
 .fp_freeplan_list {
@@ -516,5 +516,5 @@ iframe.cf-sticky-video-active {
 
 .iframeBlocker,
 .iframeUnmute {
-    z-index: 999999999 !important;
+    z-index: 9999999 !important;
 }

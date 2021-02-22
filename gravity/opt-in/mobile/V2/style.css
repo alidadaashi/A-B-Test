@@ -13,7 +13,7 @@
 }
 
 .fp_hero {
-    background-image: url('https://variations-cdn.figpii.com/variations/gravitychallenges/optin-lp/hero-v2.png');
+    background-image: url('https://variations-cdn.figpii.com/variations/gravitychallenges/optin-lp/hero-v2-minified.png');
     padding: 30px 15px 30px 15px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -50,6 +50,7 @@
     font-weight: 300;
     font-size: 16px;
     line-height: 21px;
+    text-transform: none;
 }
 
 .fp_freeplan_container {
@@ -297,6 +298,7 @@
 .fp_progressbar_labels>div {
     display: flex;
     align-items: center;
+    white-space: pre;
 }
 
 .fp_progressbar_labels>div>img {

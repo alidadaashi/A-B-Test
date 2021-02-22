@@ -15,7 +15,7 @@ var FP_LP_DONATIONS_TRUST = {
         var watchVideo = '<a class="fp_watch" href="#"> Watch Video To Learn More </a>';
         var cta = $('.elButtonSubtle').parent('div')[0].innerHTML
 
-        var hero = '<div class="fp_hero"><div class="w-50 pr-50"> <h1 class="title"> We can help you <br> implement the free diet <br> plan <span>absolutely</span> FREE </h1> <h3 class="subtitle"> More diet plans are available if you join our 6 Week Challenge</h3><p> we will help you to understand which workout, diet, training plan is right for you. Your personal coach will help you succeed and keep you on track. </p> <div class="cta_container"> ' + cta + watchVideo + '</div></div></div>'
+        var hero = '<div class="fp_hero"><div class="w-50 pr-50"> <h1 class="title"> WE CAN HELP YOU IMPLEMENT YOUR DIET PLAN ABSOLUTELY FREE </h1> <h3 class="subtitle"> More diet plans are available if you join our 6 Week Challenge</h3><p> we will help you to understand which workout, diet, training plan is right for you. Your personal coach will help you succeed and keep you on track. </p> <div class="cta_container"> ' + cta + watchVideo + '</div></div></div>'
         $('.fp_logo').after(hero);
 
         $('.fp_hero .elButton .elButtonMain').text('Reserve Your Spot')
@@ -27,7 +27,7 @@ var FP_LP_DONATIONS_TRUST = {
 
 
         $('.fp_hero').after('<div class="fp_freeplan_container"></div>');
-        var freePlan = '<div class="fp_freeplan w-50"> <h3 class="title"> Your Free Diet Plan </h3> <h6 class="subtitle"> Lose 20 LBS or 5% Body Fat in 6 Weeks with our <strong> 6 Week Challenge </strong> </h6> <div class="fp_freeplan_list"> </div> </div>';
+        var freePlan = '<div class="fp_freeplan w-50"> <h3 class="title"> Your Free Diet Plan </h3> <h6 class="subtitle"> Lose 20 LBS or 5% Body Fat in 6 Weeks with our 6 Week Challenge </h6> <div class="fp_freeplan_list"> </div> </div>';
 
 
 

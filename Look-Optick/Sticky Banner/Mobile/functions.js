@@ -1,11 +1,11 @@
 var benefits = [
 
     {
-        text: 'Free Shipping<br> & Returns',
+        text: 'Free Shipping & Returns',
         icon: 'https://variations-cdn.figpii.com/variations/look+optic/home+page/Benefits+icon/desktop+shipping.png'
     },
     {
-        text: '90-Day<br> Trial',
+        text: '90-Day Trial',
         icon: 'https://variations-cdn.figpii.com/variations/look+optic/home+page/Benefits+icon/trial.png'
     }
 ];
@@ -35,7 +35,7 @@ var FP_BENEFITS = {
 
         for (var i = 0; i < benefits.length; i++) {
             html += '<div class="fp__benefits-box">';
-            html += '<div style="background: url(' + benefits[i].icon + ') no-repeat; background-size: contain; background-position: center;" class="fp__benefits-box-icon"></div>';
+            // html += '<div style="background: url(' + benefits[i].icon + ') no-repeat; background-size: contain; background-position: center;" class="fp__benefits-box-icon"></div>';
             html += '<span class="fp__benefits-box-title">' + benefits[i].text + '</span>';
             html += '</div>';
         }

@@ -30,7 +30,7 @@ var FP_BENEFITS = {
 
         for (var i = 0; i < benefits.length; i++) {
             html += '<div class="fp__benefits-box">';
-            html += '<div style="background: url(' + benefits[i].icon + ') no-repeat; background-size: 70%; background-position: center;" class="fp__benefits-box-icon"></div>';
+            // html += '<div style="background: url(' + benefits[i].icon + ') no-repeat; background-size: 70%; background-position: center;" class="fp__benefits-box-icon"></div>';
             html += '<span class="fp__benefits-box-title">' + benefits[i].text + '</span>';
             html += '</div>';
         }
