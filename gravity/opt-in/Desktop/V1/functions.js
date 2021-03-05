@@ -15,7 +15,7 @@ var FP_LP_DONATIONS_TRUST = {
         var watchVideo = '<a class="fp_watch" href="#"> Watch Video To Learn More </a>';
         var cta = $('.elButtonSubtle').parent('div')[0].innerHTML
 
-        var hero = '<div class="fp_hero"><div class="w-50 pr-50"> <h1 class="title"> WE CAN HELP YOU IMPLEMENT YOUR DIET PLAN ABSOLUTELY FREE </h1> <h3 class="subtitle"> More diet plans are available if you join our 6 Week Challenge</h3><p> we will help you to understand which workout, diet, training plan is right for you. Your personal coach will help you succeed and keep you on track. </p> <div class="cta_container"> ' + cta + watchVideo + '</div></div></div>'
+        var hero = '<div class="fp_hero"><div class="w-50 pr-50"> <h1 class="title"> WE CAN HELP YOU IMPLEMENT YOUR DIET PLAN ABSOLUTELY FREE </h1> <h3 class="subtitle"> More diet plans are available when you join our 6 Week Challenge</h3><p> we will help you understand which workout, diet, and training plan is right for you. Your personal coach will help you succeed and keep you on track. </p> <div class="cta_container"> ' + cta + watchVideo + '</div></div></div>'
         $('.fp_logo').after(hero);
 
         $('.fp_hero .elButton .elButtonMain').text('Reserve Your Spot')
@@ -28,7 +28,6 @@ var FP_LP_DONATIONS_TRUST = {
 
         $('.fp_hero').after('<div class="fp_freeplan_container"></div>');
         var freePlan = '<div class="fp_freeplan w-50"> <h3 class="title"> Your Free Diet Plan </h3> <h6 class="subtitle"> Lose 20 LBS or 5% Body Fat in 6 Weeks with our 6 Week Challenge </h6> <div class="fp_freeplan_list"> </div> </div>';
-
 
 
         // Add Static data
@@ -47,14 +46,15 @@ var FP_LP_DONATIONS_TRUST = {
             $('#proteinValue').text(planData.protein + ' G')
             $('#fatValue').text(planData.fat + ' G')
             $('#activityValue').text(planData.activity)
+            $('.activityProgressbar').addClass(planData.activity);
 
-            var sum = parseInt(planData.carbs) + parseInt(planData.protein) + parseInt(planData.fat);
+            var sum = planData.carbs + planData.protein + planData.fat;
 
-            var carbs = Math.ceil((parseInt(planData.carbs) / sum) * 100)
+            var carbs = Math.ceil((planData.carbs / sum) * 100)
             $('.carbohydrate > span').text(carbs + ' %')
             $('.fp_progressbar .carbohydrate').css('width', carbs + '%')
 
-            var protein = Math.ceil((parseInt(planData.protein) / sum) * 100)
+            var protein = Math.ceil((planData.protein / sum) * 100)
             $('.protein > span').text(protein + ' %')
             $('.fp_progressbar .protein').css('width', protein + '%')
             $('.fp_progressbar .protein').css('left', carbs + '%')
@@ -67,31 +67,6 @@ var FP_LP_DONATIONS_TRUST = {
         }
 
 
-
-        window.addEventListener("message", function(event) {
-            if (event.origin === "https://gravitytransformation.com" && typeof event.data.substr === "function" && event.data.substr(0, 11) === "[fpsetdata]") {
-                var planData = JSON.parse(event.data.substr(11));
-                console.log(">>>>>>>", planData)
-                if (planData) {
-                    clearInterval(getDataFromIframe)
-                    fillDietPlan(planData);
-                }
-            }
-        });
-
-        var getDataFromIframe = setInterval(function() {
-            var iframe = document.getElementById("resultIframe");
-
-            if (iframe) {
-                iframe.contentWindow.postMessage("[fpgetdata]", "https://gravitytransformation.com");
-            }
-        }, 500);
-
-
-
-
-
-
         $('.fp_freeplan_list').append('<div class="fp_freeplan_item"> <div class="label"> <img src="https://variations-cdn.figpii.com/variations/gravitychallenges/optin-lp/carbohydrate.svg"> Carbohydrates </div> <div class="value" id="carbohydrateValue"> ... </divhjn> </div>');
 
         $('.fp_freeplan_list').append('<div class="fp_freeplan_item"> <div class="label"> <img src="https://variations-cdn.figpii.com/variations/gravitychallenges/optin-lp/protein.svg"> Protein </div> <div class="value" id="proteinValue"> ... </divhjn> </div>');
@@ -99,6 +74,7 @@ var FP_LP_DONATIONS_TRUST = {
         $('.fp_freeplan_list').append('<div class="fp_freeplan_item"> <div class="label"> <img src="https://variations-cdn.figpii.com/variations/gravitychallenges/optin-lp/fat.svg"> Fat </div> <div class="value" id="fatValue"> ... </divhjn> </div>');
 
         $('.fp_freeplan_list').append('<div class="fp_freeplan_item"> <div class="label"> <img src="https://variations-cdn.figpii.com/variations/gravitychallenges/optin-lp/activity.svg"> Activity </div> <div class="activityProgressbar"></div><div class="value" id="activityValue"> </div> </div>');
+        fillDietPlan(this.calculateDietPlan());
     },
     aboveVideo: function() {
         $(window).on('load', function() {
@@ -128,10 +104,10 @@ var FP_LP_DONATIONS_TRUST = {
             $('div.progress-bar:contains(Loading Your)').closest(".row.bgCover").hide()
 
             // Remove the top padding of video-container
-            $($('.container.fullContainer')[0]).css('padding-top', '0')
+            $('.container.fullContainer').eq(0).css('padding-top', '0')
 
             // Remove main Iframe
-            $($('.fullContainer > .containerInner.ui-sortable > .row.bgCover:nth-child(1) .elCustomJs')[0]).hide()
+            $('.fullContainer > .containerInner.ui-sortable > .row.bgCover:nth-child(1) .elCustomJs').eq(0).remove()
 
             // Add CTA
             var cta = $('.elButtonSubtle').parent('div')[2].innerHTML;
@@ -141,15 +117,14 @@ var FP_LP_DONATIONS_TRUST = {
             $('.fp_video .elButton .elButtonMain').text('Reserve Your Spot')
 
 
-            // Video's sound overlay
-            console.log("VIDEO: ", $('.video-sound-overlay'))
-
-            // scroll to video 
+            // scroll to video
             $('.fp_watch').on('click', function() {
                 $('html, body').animate({
                     scrollTop: ($('.fp_video_container').offset().top)
                 }, 500);
-                setTimeout(function() { $('.video-sound-overlay').click() }, 500)
+                setTimeout(function() {
+                    $('.video-sound-overlay').click()
+                }, 500)
             })
 
 
@@ -159,7 +134,6 @@ var FP_LP_DONATIONS_TRUST = {
 
 
         })
-
 
 
     },
@@ -186,6 +160,132 @@ var FP_LP_DONATIONS_TRUST = {
                 value: "goToVideo"
             }]);
         })
+    },
+    getUrlParameter: function(query) {
+        var vars = query.split('&');
+        var query_string = {};
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split('=');
+            var key = decodeURIComponent(pair[0]);
+            var value = decodeURIComponent(pair[1]);
+            // If first entry with this name
+            if (typeof query_string[key] === 'undefined') {
+                query_string[key] = decodeURIComponent(value);
+                // If second entry with this name
+            } else if (typeof query_string[key] === 'string') {
+                var arr = [query_string[key], decodeURIComponent(value)];
+                query_string[key] = arr;
+                // If third or later entry with this name
+            } else {
+                query_string[key].push(decodeURIComponent(value));
+            }
+        }
+        return query_string;
+    },
+    menmetric: function(weight, height, age) {
+        return 66.5 + 13.72 * weight + 5.003 * height - 6.755 * age;
+    },
+
+    menimperial: function(weight, height, age) {
+        return 66 + 6.2 * weight + 12.7 * height - 6.76 * age;
+    },
+
+    wmenmetric: function(weight, height, age) {
+        return 655.1 + 9.563 * weight + 1.85 * height - 4.676 * age;
+    },
+
+    wmenimperial: function(weight, height, age) {
+        return 655.1 + 4.35 * weight + 4.7 * height - 4.7 * age;
+    },
+
+    getInches: function(feet, inches) {
+        return feet * 12 + inches;
+    },
+
+    getInchesCM: function(centimeters) {
+        return centimeters / 2.54;
+    },
+
+    getPounds: function(kilograms) {
+        return kilograms * 2.205;
+    },
+
+    generateTdee: function(value, activity) {
+        var tdee;
+        switch (activity) {
+            case 'sedentary':
+                tdee = value * 1.1;
+                break;
+            case 'light':
+                tdee = value * 1.2;
+                break;
+            case 'moderate':
+                tdee = value * 1.3;
+                break;
+            case 'heavy':
+                tdee = value * 1.4;
+                break;
+            case 'athlete':
+                tdee = value * 1.5;
+                break;
+        }
+        return tdee;
+    },
+
+    calculateDietPlan: function() {
+        var data = this.getUrlParameter(window.location.search.substring(1));
+        var gender = data.gender;
+        var age = parseInt(data.age);
+        var activity = data.activity;
+        var macrogoal = data.macrogoal;
+        var kilograms = data.weight;
+        var centimeters = data.height;
+        var bmr = 0;
+        var ftdee = 0;
+
+
+        if (data.units == 'metric') {
+            if (gender == 'male') {
+                bmr = this.menmetric(kilograms, centimeters, age);
+                ftdee = Math.round(this.generateTdee(bmr, activity));
+            } else {
+                bmr = this.wmenmetric(kilograms, centimeters, age);
+                ftdee = Math.round(this.generateTdee(bmr, activity));
+            }
+        } else if (data.units == 'imperial') {
+            var height1 = this.getInchesCM(centimeters);
+            var weight1 = this.getPounds(kilograms);
+            if (gender == 'male') {
+                bmr = this.menimperial(weight1, height1, age);
+                ftdee = Math.round(this.generateTdee(bmr, activity));
+            } else {
+                bmr = this.wmenimperial(weight1, height1, age);
+                ftdee = Math.round(this.generateTdee(bmr, activity));
+            }
+        }
+
+        if (macrogoal == 'build-muscle') {
+            return {
+                carbs: Math.floor((ftdee * 1.25 * 0.55) / 4),
+                protein: Math.floor((ftdee * 1.25 * 0.25) / 4),
+                fat: Math.floor((ftdee * 1.25 * 0.2) / 9),
+                activity: data.activity[0].toUpperCase() + data.activity.slice(1)
+            }
+        } else if (macrogoal == 'mesomorph') {
+            return {
+                carbs: Math.floor((ftdee * 0.75 * 0.3) / 4),
+                protein: Math.floor((ftdee * 0.75 * 0.4) / 4),
+                fat: Math.floor((ftdee * 0.75 * 0.3) / 9),
+                activity: data.activity[0].toUpperCase() + data.activity.slice(1)
+            }
+        } else if (macrogoal == 'endomorph') {
+            return {
+                carbs: Math.floor((ftdee * 0.7 * 0.25) / 4),
+                protein: Math.floor((ftdee * 0.7 * 0.35) / 4),
+                fat: Math.floor((ftdee * 0.7 * 0.4) / 9),
+                activity: data.activity[0].toUpperCase() + data.activity.slice(1)
+            }
+        }
     }
 
 }.init();

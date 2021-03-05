@@ -73,7 +73,7 @@ var FP_LP_DONATIONS_TRUST = {
     },
     mobileSection: function() {
         var watchVideo = '<a class="fp_watch" href="#"> Watch Video To Learn More </a>';
-        var content = '<div class="fp_mobile_scetion_container" ><div class="fp_mobile_scetion"> <img src="https://variations-cdn.figpii.com/variations/gravitychallenges/optin-lp/Mobile-Workouts-cropped.png"> <h3 class="title"> More diet plans are available if you join our 6 Week Challenge</h3> </div><p class="content"> we will help you to understand which workout, diet, training plan is right for you. Your personal coach will help you succeed and keep you on track. </p></div>';
+        var content = '<div class="fp_mobile_scetion_container" ><div class="fp_mobile_scetion"> <img src="https://variations-cdn.figpii.com/variations/gravitychallenges/optin-lp/Mobile-Workouts-cropped.png"> <h3 class="title"> More diet plans are available when you join our 6 Week Challenge</h3> </div><p class="content"> we will help you understand which workout, diet, and training plan is right for you. Your personal coach will help you succeed and keep you on track. </p></div>';
 
         $('.fp_freeplan').after(content);
         $('.fp_mobile_scetion_container').append($('.elButtonSubtle').parent('div')[0].innerHTML)

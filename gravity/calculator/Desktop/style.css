@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+body {
+    background: url('https://variations-cdn.figpii.com/variations/gravitychallenges/Calculator/desktop_bg_overlayed.png') !important;
+    background-size: cover;
+}
+
+.px-0 {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.fp_logo {
+    background-color: #FFF;
+    padding: 11px 14px;
+}
+
+.fp_logo img {
+    width: 80px;
+}
+
+.fp_hero {
+    background-image: linear-gradient(180deg, #6724BF 0%, #291347 100%);
+    padding: 17px 30px 17px 15px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-transform: uppercase;
+}
+
+.fp_hero .title {
+    color: #FFF;
+    font-family: Lato;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 22.5px;
+    text-transform: capitalize;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+
+.fp_hero .title span {
+    border-bottom: 1px solid #FFF;
+    padding-bottom: 10px;
+}
+
+.fp_hero .subtitle {
+    font-family: Lato;
+    font-weight: 400;
+    font-size: 21px;
+    color: #FFF;
+    text-transform: capitalize;
+    padding-right: 35%;
+    line-height: 36px;
+    margin-bottom: 20px;
+}
+
+.sc_container {
+    background-image: linear-gradient(180deg, #291347 0%, #1A1027 100%) !important;
+}
+
+.heading .heading_text {
+    display: none;
+}
+
+.steps_controller .sc_item svg {
+    fill: #515151;
+}
+
+
+/* Workout */
+
+.steps_controller .sc_item:nth-child(4) svg {
+    fill: none;
+    stroke: #515151;
+}
+
+.steps_controller .sc_item:nth-child(4).sc_item_done svg {
+    fill: none;
+    stroke: #FFF;
+}
+
+.steps_controller .sc_item:nth-child(4).sc_item_active svg {
+    fill: none;
+    stroke: #5820A0;
+}
+
+.steps_controller .sc_item.sc_item_done svg {
+    fill: #FFF;
+}
+
+.steps_controller .sc_item.sc_item_active svg {
+    fill: #5820A0;
+}
+
+.sc_container {
+    background-color: #F2F2F2 !important;
+}
+
+div.sc_item:hover {
+    box-shadow: none !important;
+}
+
+.sc_item_name {
+    font-family: 'Lato' !important;
+    text-transform: capitalize !important;
+    font-weight: 700;
+    font-size: 14px !important;
+    color: #C4C4C4 !important;
+    border-top: none !important;
+    margin-top: 8px !important;
+    padding-top: 0 !important;
+}
+
+.sc_items div.sc_item_number {
+    height: 83px;
+    width: 83px;
+    background-color: #C4C4C4;
+    z-index: 9;
+}
+
+div.sc_item_active div.sc_item_number {
+    background-color: #FFF !important;
+}
+
+div.sc_item_done div.sc_item_number {
+    background-color: #5820A0 !important;
+}
+
+.sc_item {
+    position: relative;
+}
+
+.sc_item:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50px;
+    left: 85px;
+    height: 4px;
+    width: 100%;
+    background-color: #C4C4C4;
+}
+
+.sc_item:last-child:after {
+    display: none;
+}
+
+.sc_item.sc_item_done:after,
+.sc_item.sc_item_active:after {
+    background-color: #5820A0;
+}
+
+.each_selection.age_selection .selImage img[src*="/Male"],
+.activity_selection .selImage img[src*="/Male"],
+.desc_selection .selImage img[src*="/Male"] {
+    filter: hue-rotate(113deg);
+}
+
+div.container>div[data-aos="fade-up"].gender_selection {
+    height: calc(100vh - 430px);
+    margin-top: 0;
+    margin-bottom: 18vh;
+    padding-top: 100px;
+}
+
+div.container>div[data-aos="fade-up"] {
+    height: calc(100vh - 173px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 203px;
+}
+
+.modal-content {
+    border: none !important;
+    background-color: rgba(255, 255, 255, .9) !important;
+    background: url('https://variations-cdn.figpii.com/variations/gravitychallenges/Calculator/Popup_desktop.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+.modal-content .progress {
+    display: none !important;
+}
+
+.submit-button {
+    font-family: 'Lato' !important;
+    margin: 25px auto 15px !important;
+    text-align: center !important;
+    background: #FF1400 !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    padding: 0 !important;
+    color: #FFF !important;
+    font-weight: 400 !important;
+    border-radius: 3px !important;
+    width: 215px !important;
+    height: 56px !important;
+    line-height: 56px !important;
+    border-bottom: none !important;
+}
+
+.modal-form>p {
+    font-size: 18px !important;
+    letter-spacing: 0 !important;
+    text-align: center !important;
+    color: #333 !important;
+    margin: 33px auto 8px !important;
+    font-family: 'Lato' !important;
+    font-weight: 400 !important;
+    padding: 0 2rem !important;
+    text-transform: capitalize !important;
+    line-height: 28.5px !important;
+}
+
+.safe p {
+    color: #333;
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 12px;
+    margin-top: 28px;
+    margin-bottom: 28px;
+}
+
+.modal-input {
+    display: block;
+    width: calc(100% - 30px);
+    height: 57px;
+    margin: 15px auto;
+    font-weight: normal;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid rgb(131, 131, 131);
+    background: #ECECEC;
+    color: #8D8D8D;
+    font-size: 16px;
+}
+
+input.modal-input:focus {
+    outline-color: #5820A0;
+}
+
+h3.modal-slogan {
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 24px;
+    text-align: center;
+    text-transform: capitalize;
+    padding: 0 10px;
+    color: #333;
+    margin-bottom: 0;
+}
+
+h3.modal-slogan span {
+    font-weight: 900;
+    display: block;
+    margin-top: 10px;
+}
+
+.modal-form>br {
+    display: none;
+}
+
+.fp_calculator {
+    width: 317px;
+    height: 55px;
+    background: #FF1400;
+    border-radius: 3px;
+    border: none;
+    color: #FFF;
+    margin: auto;
+    display: block;
+    font-size: 24px;
+    font-family: 'Lato';
+    font-weight: 400;
+    display: none;
+    margin-top: 3rem;
+}
+
+.modal-form {
+    max-width: 475px;
+    margin: auto;
+}
+
+.fp_quotes {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+}
+
+.fp_quote {
+    display: flex;
+    background-color: #FFF;
+    padding: 28px 22px;
+    box-shadow: 0px 0px 14.6264px rgba(0, 0, 0, 0.25);
+    border-radius: 4.38793px;
+    margin: 0 12px;
+    flex: 1;
+}
+
+.fp_quote_left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 16px;
+    flex: 0 0 120px;
+}
+
+.fp_quote_left img {
+    width: 70px !important;
+    height: 70px;
+    border-radius: 50%;
+    border: 4px solid #999999;
+}
+
+.fp_quote_right {
+    font-family: 'Lato';
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 21.35px;
+    color: #333;
+}
+
+.fp_quote_name {
+    font-weight: 700;
+    margin: 14px 0 7px;
+}

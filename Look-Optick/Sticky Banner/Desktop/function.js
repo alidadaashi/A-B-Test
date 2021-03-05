@@ -3,7 +3,7 @@ var benefits = [{
         icon: 'https://variations-cdn.figpii.com/variations/look+optic/home+page/Benefits+icon/shield.png'
     },
     {
-        text: '90-Day Trial',
+        text: '90-Day Risk-Free Trial',
         icon: 'https://variations-cdn.figpii.com/variations/look+optic/home+page/Benefits+icon/trial.png'
     },
     {

@@ -313,6 +313,8 @@ body.modal-open {
     font-size: 13px;
     text-align: left;
     /*margin-bottom: 15px;*/
+    padding: 3px 7px;
+    background-color: #ebe9e9;
 }
 
 .fp_reviews_title {
@@ -478,4 +480,20 @@ body.modal-open {
 #your-shopping-cart .lo-footer.lo-footer--secondary,
 #your-shopping-cart .lo-footer.lo-footer--tertiary {
     display: flex !important;
+}
+
+#your-shopping-cart div.lo-cart-wrapper.lo-section.fullwidth {
+    padding-top: 10px !important;
+}
+
+.fullwidth.cart__action-btns {
+    margin-top: -10px !important;
+}
+
+.vm__swatches__link.flex-center {
+    display: none !important;
+}
+
+.lo-cart-wrapper .cart__subtotal-title {
+    line-height: 2.5rem !important;
 }

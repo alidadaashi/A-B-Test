@@ -1,0 +1,113 @@
+.fp_popup_container {
+    position: fixed;
+    width: 100vw;
+    height: calc(100vh - 70px);
+    top: 70px;
+    z-index: 99999;
+    background-color: rgba(0, 0, 0, .8);
+    display: none;
+}
+
+.fp_popup_container img {
+    max-width: 100%;
+}
+
+.fp_popup_content {
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fp_popup_content>p {
+    font-size: 18px;
+    color: #435A6F;
+    line-height: 24.5px;
+    font-weight: 500;
+    font-family: 'AvenirCustom';
+    margin-top: 16px;
+    z-index: 9;
+}
+
+.fp_popup_container img {
+    max-width: 160px;
+    margin-top: -25px;
+}
+
+.fp_popup_detail {
+    width: 100%;
+    padding: 0 16px;
+    font-size: 16px;
+    color: #101010;
+    font-weight: 400;
+    line-height: 21.8px;
+    margin-bottom: 15px;
+    font-family: 'Avenir Regular';
+}
+
+.fp_popup_detail>div {
+    margin-bottom: 10px;
+}
+
+.fp_popup_detail_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    font-family: 'AvenirCustom';
+    font-weight: 400;
+}
+
+.fp_popup_detail_header h2 {
+    color: #101010;
+    font-family: 'DIN Condensed Bold', 'Din Bold', 'Din Regular', sans-serif !important;
+    font-size: 24px;
+}
+
+.fp_popup_subtotal {
+    display: flex;
+    width: calc(100% - 32px);
+    padding-top: 10px;
+    justify-content: space-between;
+    border-top: 1px solid #CCC;
+    font-size: 16px;
+    color: #101010;
+    font-family: 'Avenir Regular';
+    font-weight: 400;
+}
+
+.fp_popup_btn {
+    width: calc(100% - 32px);
+    margin: 15px 0;
+    background-color: #435A6F;
+    border: none;
+    color: #FFF;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Avenir Demi';
+    line-height: 1;
+    padding-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+span.fp_popup_continue {
+    font-family: 'Avenir Demi';
+    color: #435A6F;
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.fp_popup_icon {
+    width: 42px;
+    height: 42px;
+    background-color: #435A6F;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -20px;
+    margin-top: 10px;
+}

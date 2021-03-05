@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+body {
+    background: url('https://variations-cdn.figpii.com/variations/gravitychallenges/Calculator/mobile+bg_overlayed.png') !important;
+    background-size: cover;
+}
+
+div#scrollManager {
+    display: none;
+}
+
+.fp_logo {
+    background-color: #FFF;
+    padding: 11px 14px;
+}
+
+.fp_logo img {
+    width: 80px;
+}
+
+.fp_hero {
+    background-image: linear-gradient(180deg, #6724BF 0%, #1A1027 100%);
+    padding: 17px 30px 17px 15px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-transform: uppercase;
+}
+
+.fp_hero .title {
+    color: #FFF;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22.5px;
+    text-transform: capitalize;
+    margin-top: 0;
+}
+
+.fp_hero .title span {
+    border-bottom: 1px solid #FFF;
+}
+
+.fp_hero .subtitle {
+    font-family: Lato;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 17.5px;
+    color: #FFF;
+    margin-bottom: 0;
+    text-transform: capitalize;
+}
+
+.heading {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.heading .heading_text {
+    display: none;
+}
+
+.steps_controller .sc_item svg {
+    fill: #515151;
+}
+
+
+/* Workout */
+
+.steps_controller .sc_item:nth-child(4) svg {
+    fill: none;
+    stroke: #515151;
+}
+
+.steps_controller .sc_item:nth-child(4).sc_item_done svg {
+    fill: none;
+    stroke: #FFF;
+}
+
+.steps_controller .sc_item:nth-child(4).sc_item_active svg {
+    fill: none;
+    stroke: #5820A0;
+}
+
+.steps_controller .sc_item.sc_item_done svg {
+    fill: #FFF;
+}
+
+.steps_controller .sc_item.sc_item_active svg {
+    fill: #5820A0;
+}
+
+.sc_container {
+    background-color: #F2F2F2 !important;
+}
+
+div.sc_item:hover {
+    box-shadow: none !important;
+}
+
+.sc_item_name {
+    font-family: 'Lato' !important;
+    text-transform: capitalize !important;
+    font-weight: 700;
+    font-size: 8px !important;
+    color: #333 !important;
+    border-top: none !important;
+    margin-top: 3px !important;
+    padding-top: 0 !important;
+}
+
+.sc_items div.sc_item_number {
+    height: 39px;
+    width: 39px;
+    background-color: #C4C4C4;
+    z-index: 9;
+}
+
+div.sc_item_active div.sc_item_number {
+    background-color: #FFF !important;
+}
+
+div.sc_item_done div.sc_item_number {
+    background-color: #5820A0 !important;
+}
+
+.sc_item {
+    position: relative;
+}
+
+.sc_item:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 30px;
+    left: 45px;
+    height: 2px;
+    width: 100%;
+    background-color: #C4C4C4;
+}
+
+.sc_item:last-child:after {
+    display: none;
+}
+
+.sc_item.sc_item_done:after,
+.sc_item.sc_item_active:after {
+    background-color: #5820A0;
+}
+
+.each_selection.age_selection .selImage img[src*="/Male"],
+.activity_selection .selImage img[src*="/Male"],
+.desc_selection .selImage img[src*="/Male"] {
+    filter: hue-rotate(113deg);
+}
+
+div.container>div[data-aos="fade-up"].gender_selection {
+    min-height: calc(100vh - 70px);
+    margin-bottom: 100px;
+    padding-top: 70px;
+}
+
+div.container>div[data-aos="fade-up"] {
+    min-height: calc(100vh - 73px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 80px;
+}
+
+.modal-content {
+    border: none !important;
+    background-color: rgba(255, 255, 255, .9) !important;
+}
+
+.modal-content .progress {
+    display: none;
+}
+
+.submit-button {
+    font-family: 'Lato' !important;
+    margin: 15px auto !important;
+    text-align: center !important;
+    background: #FF1400 !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    padding: 0 !important;
+    color: #FFF !important;
+    font-weight: 400 !important;
+    border-radius: 3px !important;
+    width: 172px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    border-bottom: none !important;
+}
+
+.modal-form>p {
+    font-size: 14px !important;
+    letter-spacing: 0 !important;
+    text-align: center !important;
+    color: #515151 !important;
+    margin: 33px auto 8px !important;
+    font-family: 'Lato' !important;
+    font-weight: 400 !important;
+    padding: 0 3rem !important;
+    text-transform: capitalize !important;
+    line-height: 18.5px !important;
+}
+
+.safe p {
+    color: #8D8D8D;
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 12px;
+    margin-top: 28px;
+    margin-bottom: 28px;
+}
+
+.modal-input {
+    display: block;
+    margin: 15px auto;
+    font-weight: 400;
+    padding: 0 11px;
+    border-radius: 4px;
+    border: 2px solid #8D8D8D;
+    background: #ECECEC;
+    height: 41px;
+    width: 232px !important;
+    font-size: 12px;
+    font-family: 'Lato';
+}
+
+input.modal-input:focus {
+    outline-color: #5820A0;
+}
+
+h3.modal-slogan {
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    text-transform: capitalize;
+    padding: 0 10px;
+    color: #333;
+    margin-bottom: 0;
+}
+
+h3.modal-slogan span {
+    font-weight: 900;
+    display: block;
+    margin-top: 10px;
+}
+
+.modal-form>br {
+    display: none;
+}
+
+.fp_calculator {
+    width: 172px;
+    height: 40px;
+    background: #FF1400;
+    border-radius: 3px;
+    border: none;
+    color: #FFF;
+    margin: auto;
+    display: block;
+    font-size: 16px;
+    font-family: 'Lato';
+    font-weight: 400;
+    display: none;
+}
+
+.fp_quotes {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+}
+
+.fp_quote {
+    display: flex;
+    background-color: #FFF;
+    padding: 10px 15px;
+    box-shadow: 0px 0px 14.6264px rgba(0, 0, 0, 0.25);
+    border-radius: 4.38793px;
+    margin: 0 12px;
+    flex: 1;
+}
+
+.fp_quote_left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 12px;
+    flex: 0 0 80px;
+}
+
+.fp_quote_left img {
+    width: 40px !important;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #999999;
+}
+
+.fp_quote_right {
+    font-family: 'Lato';
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 16pxpx;
+    color: #333;
+}
+
+.fp_quote_name {
+    font-weight: 700;
+    margin: 4px 0 3px;
+    font-size: 11px;
+    text-align: center;
+}
+
+@media (max-width: 360px) {
+    h3.modal-slogan {
+        font-size: 17px;
+    }
+}

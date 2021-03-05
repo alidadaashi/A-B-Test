@@ -15,6 +15,10 @@
     padding: 70px 0 0;
 }
 
+.lo-main-content.banner-active {
+    padding: 109px 0 0;
+}
+
 .fp__benefits {
     display: flex;
     flex-direction: row-reverse;
@@ -61,11 +65,12 @@
     }
 }
 
-@media(max-width: 1200px) {
+
+/* @media(max-width: 1200px) {
     .fp__benefits-box-title {
         font-size: 20px;
     }
-}
+} */
 
 @media(max-width: 1024px) {
     .fp__benefits {

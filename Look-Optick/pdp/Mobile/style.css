@@ -1,6 +1,6 @@
 div>button.fp_virtual-btn {
     background-color: #DFE1E5;
-    color: #435A6F;
+    color: #000 !important;
     padding: 10px 15px 7px;
     text-decoration: none;
     transition: all .2s;
@@ -320,5 +320,39 @@ div#ProductThumbs::-webkit-scrollbar {
     }
     .lo-productpage-wrapper .product-single__image-wrapper .product-single__thumb-wrapper.active-variant {
         flex: 0 0 14% !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .lo-productpage-wrapper .product-single__image-wrapper .product-single__thumb-wrapper {
+        margin: 0 5px !important;
+    }
+    .lo-productpage-wrapper .product-single__image-wrapper .product-single__thumb-wrapper .product-single__thumbnail img {
+        max-width: 48px !important;
+    }
+}
+
+.product-single__thumb-wrapper.active-variant {
+    border: 1px solid #CCC;
+    padding: 3px;
+    box-sizing: border-box;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.product-single__thumb-wrapper.active-variant:nth-child(4),
+.product-single__thumb-wrapper.active-variant:nth-child(5) {
+    padding: 0;
+    border: none;
+}
+
+.product-single__thumb-wrapper.active-variant>a {
+    display: flex;
+}
+
+@media (max-width: 1024px) {
+    .template-product .lo-main-content.banner-active {
+        padding-top: 130px !important;
     }
 }

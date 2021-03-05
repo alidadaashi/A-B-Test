@@ -1,16 +1,20 @@
 var currentId, currentColor, currentMagnification, nextId, nextColor, nextMagnification, quantity;
 var FP_LP_DONATIONS_TRUST = {
     init: function() {
-        this.virtualMirror();
-        this.addProgressBar();
-        this.addTitle();
-        this.editProductModal();
-        this.orderSummary();
-        this.belowSummaryImages();
-        this.clickEvents();
-        this.reviews();
-        this.selectOtherColor();
-        this.updateCart();
+        if ($(window).width() < 1025) {
+            this.virtualMirror();
+            this.addProgressBar();
+            this.addTitle();
+            this.editProductModal();
+            this.orderSummary();
+            this.belowSummaryImages();
+            this.clickEvents();
+            this.reviews();
+            this.selectOtherColor();
+            this.updateCart();
+            this.attachEvents();
+        }
+
     },
     addProgressBar: function() {
         var rightArrow = '<svg viewBox="0 0 40.055 72.062" class="svg svg--slideArrow svg--slideArrowRight svg--arrow-right arrow-right glide-arrow"><path stroke="currentColor" fill="currentColor" d="M.006 70.168a2 2 0 003.406 1.313l36-34a2 2 0 000-2.938l-36-34a2.012 2.012 0 10-2.75 2.938L35.1 36.012.66 68.543a2 2 0 00-.655 1.625z"></path></svg>'
@@ -34,9 +38,40 @@ var FP_LP_DONATIONS_TRUST = {
 
         $('div.fyl__virtual-mirror').css('padding', 0)
         $('.fyl__section__btn.vm__trigger').text('Try On')
-
+        var counter = 0;
         $(document).on('click', '.cart__product-info-wrapper .fyl__section__btn.vm__trigger', function() {
+
+            // show the element that are hidden by lookoptic devs
             $('.cartReviewOuterWrapper').next('div').show();
+
+            // select clicked product between virtual products
+            var clickedProductName = $(this).prev('.cart__product-title').text().split(' ');
+            var that = this;
+
+            if (counter == 0) {
+                var firstTimeSelect = setInterval(function() {
+                    for (var i = 0; i < clickedProductName.length; i++) {
+
+                        var a = $(that).prev('.cart__product-title').text().split(' ');
+                        $('.vm__frame[data-product-title=' + a[i] + ']').click();
+                    }
+                }, 1000)
+                setTimeout(function() {
+                    clearInterval(firstTimeSelect)
+                }, 4000);
+                counter++
+            } else {
+                for (var i = 0; i < clickedProductName.length; i++) {
+
+                    var a = $(that).prev('.cart__product-title').text().split(' ');
+                    $('.vm__frame[data-product-title=' + a[i] + ']').click();
+                }
+            }
+
+
+
+
+
 
             // Hide nonselected products
             var selectedProducts = [];
@@ -57,7 +92,6 @@ var FP_LP_DONATIONS_TRUST = {
             })
         })
         $(document).on('click', '.vm__modalClose', function() {
-            console.log('clicked');
             $('.cartReviewOuterWrapper').next('div').hide()
         })
 
@@ -123,6 +157,37 @@ var FP_LP_DONATIONS_TRUST = {
                 $(this).attr('data-onclick', $(this).attr('onclick'));
             })
 
+
+            // Fix color's text
+            fixColor();
+
+            function fixColor() {
+                $('.swatch-active').parent('.color').css('z-index', '9')
+                var selectedColor = $($('.swatch-active').parent()[0]).children('.tooltip').text()
+                var limitedEditionColor = $('.fp_container .variant-options div[layout=column]:nth-child(2) div[layout=row]:nth-child(2) .swatch-element .tooltip')
+
+
+                var limitedEdition = ''
+                for (var i = 0; i < limitedEditionColor.length; i++) {
+                    if (selectedColor == $(limitedEditionColor[i]).text()) {
+                        limitedEdition = '<span class="fp_limited"> Limited Edition </span>'
+                    }
+                }
+
+                if ($('.swatch .lens__title:contains("Limited Edition")').length) {
+                    // $('.mobile-swatch div[layout-align="row space-between end"').append($('.swatch .lens__wrapper:contains("Limited Edition") div[layout-align="end end"]').html())
+                    $('.swatch .lens__wrapper:contains("Limited Edition")').css('padding-top', '37px')
+                    $('.swatch .lens__header:contains("Limited Edition")').hide()
+                }
+                $('.swatch__title').html('Color: <span class="fp_selectedColor">' + selectedColor + '</span>' + limitedEdition);
+            }
+
+
+
+
+
+
+
             $('.fp_appended .swatch-element').attr('onclick', '')
             $('.fp_modal_container--edit .fp_container .fp_appended .hide-small').removeClass('hide-small')
             $('.fp_modal_container--edit .fp_container .fp_appended .hide-medium').removeClass('hide-medium')
@@ -143,6 +208,12 @@ var FP_LP_DONATIONS_TRUST = {
         })
     },
     orderSummary: function() {
+
+        // Hide subtotal from order summary
+        $('.cart__subtotal-title:contains("Subtotal")').closest('.cart__subtotal-wrapper').hide();
+
+
+
         $('.cart__subtotal-title:contains("Shipping")').closest('.cart__subtotal-wrapper').append('<div class="fp_shipping"> Your Glasses Ship in 1-2 Business Days </div>')
         $('.cart__subtotal-title:contains("Total")').closest('.cart__subtotal-wrapper').append('<div class="fp_total"> Taxes & discounts calculated at checkout. </div>')
 
@@ -155,7 +226,7 @@ var FP_LP_DONATIONS_TRUST = {
         $('.cart__subtotal-title:contains("Order Summary")').css('text-transform', 'uppercase');
     },
     belowSummaryImages: function() {
-        var list = '<div class="fp_list"> <ul> <li> <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.9021 4.79436L4.79436 17.9021M9.50682 1.00384C13.3262 0.87257 15.0401 4.14604 17.8328 4.68792C17.9095 4.70279 17.967 4.77205 17.9673 4.85016C18.0252 18.3413 10.198 20.8135 9.54947 20.9952C9.51848 21.0039 9.48979 21.0002 9.45971 20.9888C0.431539 17.5615 0.946395 6.13106 1.03507 4.8321C1.04009 4.75852 1.09601 4.70426 1.1685 4.69074C3.6575 4.22676 5.22338 1.16069 9.50682 1.00384Z" stroke="#515152"/></svg> One-Year Guarantee</li>        <li> <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.13788 7.2069V5.13793C4.13788 2.85261 5.99049 1 8.27581 1C10.5611 1 12.4137 2.85262 12.4137 5.13793V7.2069" stroke="#515152" stroke-linecap="round"/><path d="M0.5 4.55855C0.5 4.39286 0.634316 4.25854 0.8 4.25854H15.7517C15.9174 4.25854 16.0517 4.39286 16.0517 4.55854V20.1999C16.0517 20.3656 15.9174 20.4999 15.7517 20.4999H0.800001C0.634314 20.4999 0.5 20.3656 0.5 20.1999V4.55855Z" stroke="#515152"/></svg> 90-Day Trial </li>         <li> <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.76595 2.32931L16.0098 6.03599M10.976 21V7.82068M10.976 7.82068L1 4.15979M10.976 7.82068L20.5859 4.29708M1 4.74437V17.0366C1 17.3813 1.22031 17.6874 1.54716 17.7969L10.722 20.8692C10.8869 20.9244 11.0652 20.9245 11.2301 20.8695L20.0377 17.9337C20.3651 17.8245 20.5859 17.5182 20.5859 17.1731V4.86714C20.5859 4.52582 20.3698 4.22192 20.0474 4.10985L11.2292 1.04445C11.0649 0.987334 10.8864 0.985206 10.7208 1.03839L1.55663 3.98102C1.22495 4.08752 1 4.39601 1 4.74437Z" stroke="#515152"/></svg> Free Shipping & Returns </li> </ul> </div>'
+        var list = '<div class="fp_list"> <ul> <li> <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.76595 2.32931L16.0098 6.03599M10.976 21V7.82068M10.976 7.82068L1 4.15979M10.976 7.82068L20.5859 4.29708M1 4.74437V17.0366C1 17.3813 1.22031 17.6874 1.54716 17.7969L10.722 20.8692C10.8869 20.9244 11.0652 20.9245 11.2301 20.8695L20.0377 17.9337C20.3651 17.8245 20.5859 17.5182 20.5859 17.1731V4.86714C20.5859 4.52582 20.3698 4.22192 20.0474 4.10985L11.2292 1.04445C11.0649 0.987334 10.8864 0.985206 10.7208 1.03839L1.55663 3.98102C1.22495 4.08752 1 4.39601 1 4.74437Z" stroke="#515152"/></svg> Free Shipping </li>         <li> <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.13788 7.2069V5.13793C4.13788 2.85261 5.99049 1 8.27581 1C10.5611 1 12.4137 2.85262 12.4137 5.13793V7.2069" stroke="#515152" stroke-linecap="round"/><path d="M0.5 4.55855C0.5 4.39286 0.634316 4.25854 0.8 4.25854H15.7517C15.9174 4.25854 16.0517 4.39286 16.0517 4.55854V20.1999C16.0517 20.3656 15.9174 20.4999 15.7517 20.4999H0.800001C0.634314 20.4999 0.5 20.3656 0.5 20.1999V4.55855Z" stroke="#515152"/></svg> 90-day Risk Free Trial </li>        <li> <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.9021 4.79436L4.79436 17.9021M9.50682 1.00384C13.3262 0.87257 15.0401 4.14604 17.8328 4.68792C17.9095 4.70279 17.967 4.77205 17.9673 4.85016C18.0252 18.3413 10.198 20.8135 9.54947 20.9952C9.51848 21.0039 9.48979 21.0002 9.45971 20.9888C0.431539 17.5615 0.946395 6.13106 1.03507 4.8321C1.04009 4.75852 1.09601 4.70426 1.1685 4.69074C3.6575 4.22676 5.22338 1.16069 9.50682 1.00384Z" stroke="#515152"/></svg> One Year Guarantee</li>        </ul> </div>'
         $('.cart__checkout-list').after(list);
 
         var carts = '<div class="fp_carts"> <img src="https://variations-cdn.figpii.com/variations/look+optic/Cart/cart-1.svg" > <img src="https://variations-cdn.figpii.com/variations/look+optic/Cart/cart-2.png" > <img src="https://variations-cdn.figpii.com/variations/look+optic/Cart/cart-3.png" > <img src="https://variations-cdn.figpii.com/variations/look+optic/Cart/cart-4.png" > <img src="https://variations-cdn.figpii.com/variations/look+optic/Cart/cart-5.png" class="afterpay" > <span class="fp_carts_question"> <img src="https://variations-cdn.figpii.com/variations/look+optic/Cart/icon-question.svg" > </span> </div> <div class="fp_split"> Split your purchase into four easy interest free payments. </div>';
@@ -171,10 +242,10 @@ var FP_LP_DONATIONS_TRUST = {
 
 
 
-            $('.afterpay').on('click', function() {
+            $(document).on('click', '.afterpay', function() {
                 $('.fp_split').show();
             })
-            $('.fp_carts_question').on('click', function() {
+            $(document).on('click', '.fp_carts_question', function() {
                 $('.fp_split').show();
             })
 
@@ -354,6 +425,46 @@ var FP_LP_DONATIONS_TRUST = {
 
 
     },
+    attachEvents: function() {
+
+
+        $(document).on('click', '.fyl__section__btn.vm__trigger', function() {
+            window._fpEvent.push(["eventConversion", {
+                value: "tryOn"
+            }]);
+        })
+
+
+        $(document).on('click', '.continue-shopping > a', function() {
+            window._fpEvent.push(["eventConversion", {
+                value: "continueShopping"
+            }]);
+        })
+
+
+        $(document).on('click', '.fp_editBtn', function() {
+            window._fpEvent.push(["eventConversion", {
+                value: "editButton"
+            }]);
+        })
+
+
+        $(document).on('click', '#CartSubmit', function() {
+            window._fpEvent.push(["eventConversion", {
+                value: "secureCheckout"
+            }]);
+        })
+
+
+        $(document).on('click', '.cart__remove', function() {
+            window._fpEvent.push(["eventConversion", {
+                value: "cartRemove"
+            }]);
+        })
+
+
+
+    }
 
 
 }.init();
