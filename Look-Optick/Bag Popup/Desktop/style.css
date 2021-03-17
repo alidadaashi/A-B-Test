@@ -1,0 +1,206 @@
+.fp_popup_container {
+    position: absolute;
+    width: 36vw;
+    top: 70px;
+    right: 0rem;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    z-index: 99999;
+    max-width: 550px;
+    display: none;
+}
+
+.fp_popup_container img {
+    max-width: 100%;
+}
+
+.fp_popup_container img {
+    max-height: 76px;
+    width: 185px;
+    object-fit: contain;
+    background: #FFF;
+}
+
+.fp_popup_content {
+    background-color: #F7F7F7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fp_popup_content>p {
+    font-size: 16px;
+    color: #435A6F;
+    line-height: 24.5px;
+    font-weight: 700;
+    font-family: 'Avenir Regular';
+    margin-top: 20px;
+    z-index: 9;
+    width: calc(100% - 32px);
+    text-align: center;
+    border-bottom: 1px solid #D1D1D2;
+    padding-bottom: 20px;
+    /*margin-bottom: 25px;*/
+}
+
+.fp_popup_detail {
+    width: 100%;
+    padding: 0 16px;
+    font-size: 16px;
+    color: #101010;
+    font-weight: 400;
+    line-height: 21.8px;
+    font-family: 'Avenir Regular';
+}
+
+.fp_popup_detail>div {
+    margin-bottom: 10px;
+}
+
+.fp_popup_detail>div:last-child {
+    margin-bottom: 0;
+}
+
+.fp_popup_detail_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    font-family: 'Avenir Regular';
+    /*font-weight: 700;*/
+}
+
+.fp_popup_detail_header h2 {
+    color: #101010;
+    font-family: 'DIN Condensed Bold', 'Din Bold', 'Din Regular', sans-serif !important;
+    font-size: 24px;
+}
+
+.fp_popup_subtotal {
+    display: flex;
+    width: calc(100% - 32px);
+    padding-top: 20px;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #101010;
+    font-family: 'Avenir Regular';
+    font-weight: 400;
+}
+
+.fp_popup_btn {
+    width: calc(100% - 32px);
+    margin: 20px 0;
+    background-color: #435A6F;
+    border: none;
+    color: #FFF;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Avenir Demi';
+    line-height: 1;
+    padding-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fp_popup_btn:hover {
+    color: #FFF;
+}
+
+span.fp_popup_continue {
+    font-family: 'Avenir Demi';
+    color: #435A6F;
+    font-size: 16px;
+    text-decoration: underline;
+    margin-bottom: 16px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.fp_popup_icon {
+    width: 30px;
+    height: 30px;
+    background-color: #435A6F;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    cursor: pointer;
+}
+
+
+/*Dsktop version*/
+
+.product-single {
+    position: relative;
+}
+
+.fp_popup_detail_container {
+    display: flex;
+    width: calc(100% - 32px);
+    padding: 0 16px;
+    align-items: center;
+    margin: auto;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    border-bottom: 1px solid #CCC;
+}
+
+.fp_popup_container2 {
+    position: absolute;
+    width: 36vw;
+    top: 55px;
+    right: 0rem;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    z-index: 99999;
+    display: none;
+    cursor: initial;
+    max-width: 550px;
+}
+
+.fp_popup_container2 img {
+    max-width: 100%;
+}
+
+.fp_popup_container2 img {
+    max-height: 76px;
+    width: 185px;
+    object-fit: contain;
+    background: #FFF;
+}
+
+.fp_case {
+    max-height: 300px;
+    overflow: auto;
+    width: 100%;
+}
+
+.fp_popup_container2 .fp_popup_detail_container {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.fp_popup_container2 .fp_popup_detail {
+    padding-right: 0;
+}
+
+.fp_popup_detail_container a i {
+    position: absolute;
+    left: -6px;
+    font-style: normal;
+    color: #FFF;
+    background-color: #435b6f;
+    font-size: 11px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    top: -7px;
+}
+
+.fp_popup_subtotal i {
+    font-style: normal;
+}

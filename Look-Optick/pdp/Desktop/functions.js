@@ -79,12 +79,15 @@ var FP_LP_DONATIONS_TRUST = {
             $(document).on('click', '.product-single__thumb-wrapper', function() {
 
 
-                if ($(this).is(":nth-child(2)") || $(this).children().hasClass('fp_lifestyle_thumbnail')) {
+                if ($(this).children().hasClass('fp_lifestyle_thumbnail')) {
                     $('.product-single__photos').css('height', '430px')
                     $('.product-single__photos').css('max-height', '430px')
                     $('.product-single__photos a img').addClass('fp_fit')
                     $('img#ProductPhotoImg').css('top', '50%')
 
+                } else if ($(this).is(":nth-child(2)")) {
+                    $('.product-single__photos').css('height', '500px')
+                    $('.product-single__photos').css('max-height', '500px')
                 } else {
                     $('.product-single__photos').css('height', '300px');
                     $('.product-single__photos').css('max-height', '300px');
@@ -178,12 +181,10 @@ var FP_LP_DONATIONS_TRUST = {
             var thumbs = $('.product-single__thumb-wrapper');
             for (var i = 0; i < thumbs.length; i++) {
                 if ($(thumbs[i]).hasClass('fp_active')) {
-
                     var temp = 61 + i
                     return temp;
                 }
             }
-
         }
 
         var video = document.getElementById("video2");
@@ -193,11 +194,14 @@ var FP_LP_DONATIONS_TRUST = {
             console.log('activeSlide(): ', activeSlide())
 
             // if the slideshow's height should be increased
-            if (index % 6 == 5 || index % 6 == 0 || index % 6 == 2) {
+            if (index % 6 == 5 || index % 6 == 0) {
                 $('.product-single__photos').css('height', '430px')
                 $('.product-single__photos').css('max-height', '430px')
                 $('.product-single__photos a img').addClass('fp_fit')
                 $('img#ProductPhotoImg').css('top', '50%')
+            } else if (index % 6 == 2) {
+                $('.product-single__photos').css('height', '500px')
+                $('.product-single__photos').css('max-height', '500px')
             } else {
                 $('.product-single__photos').css('height', '300px');
                 $('.product-single__photos').css('max-height', '300px');

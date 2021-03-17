@@ -371,6 +371,26 @@
     border-radius: 4px;
 }
 
+.activityProgressbar.Sedentary:after {
+    width: 10%;
+}
+
+.activityProgressbar.Light:after {
+    width: 30%;
+}
+
+.activityProgressbar.Moderate:after {
+    width: 50%;
+}
+
+.activityProgressbar.Heavy:after {
+    width: 70%;
+}
+
+.activityProgressbar.Athlete:after {
+    width: 90%;
+}
+
 .fp_watch:hover,
 .fp_watch:focus {
     text-decoration: none;

@@ -141,9 +141,9 @@ var FP_LP_DONATIONS_TRUST = {
 
             $('.fp_video_container a.elButton').addClass('fp_newOne');
 
-            window.addEventListener('scroll', function(event) {
-                event.stopPropagation();
-            }, true);
+            // window.addEventListener('scroll', function(event) {
+            //     event.stopPropagation();
+            // }, true);
 
 
         })

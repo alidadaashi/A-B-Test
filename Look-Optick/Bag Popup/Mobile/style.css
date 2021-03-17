@@ -3,7 +3,7 @@
     width: 100vw;
     height: calc(100vh - 70px);
     top: 70px;
-    z-index: 99999;
+    z-index: 9999;
     background-color: rgba(0, 0, 0, .8);
     display: none;
 }
@@ -23,8 +23,8 @@
     font-size: 18px;
     color: #435A6F;
     line-height: 24.5px;
-    font-weight: 500;
-    font-family: 'AvenirCustom';
+    font-weight: 700;
+    font-family: 'Avenir Regular';
     margin-top: 16px;
     z-index: 9;
 }
@@ -32,6 +32,7 @@
 .fp_popup_container img {
     max-width: 160px;
     margin-top: -25px;
+    margin-bottom: -25px;
 }
 
 .fp_popup_detail {
@@ -54,8 +55,8 @@
     align-items: center;
     justify-content: space-between;
     font-size: 18px;
-    font-family: 'AvenirCustom';
-    font-weight: 400;
+    font-family: 'Avenir Regular';
+    /*font-weight: 700;*/
 }
 
 .fp_popup_detail_header h2 {

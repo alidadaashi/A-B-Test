@@ -10,9 +10,15 @@ var FP_LP_DONATIONS_TRUST = {
         $('body').prepend(popupContainer);
 
         var popupImageSrc = $('a.popup-image').attr('href')
-        var popupContent = '<p>Added To Your Cart! </p>     <img src="' + popupImageSrc + '" >     <div class="fp_popup_detail"> </div>     <div class="fp_popup_subtotal"> Subtotal: <span> ...$ </span> </div>         <a href="/cart" class="fp_popup_btn"> VIEW YOUR CART </a>           <span class="fp_popup_continue"> Continue Shopping </span>         <div class="fp_popup_icon"><svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 11L9 2L17 11" stroke="white" stroke-width="2"/></svg></div>'
+        var popupContent = '<p>Added To Your Cart! </p>     <img src="' + popupImageSrc + '" >     <div class="fp_popup_detail"> </div>     <div class="fp_popup_subtotal"> Subtotal: <span> </span> </div>         <a href="/cart" class="fp_popup_btn"> VIEW YOUR CART </a>           <span class="fp_popup_continue"> Continue Shopping </span>         <div class="fp_popup_icon"><svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 11L9 2L17 11" stroke="white" stroke-width="2"/></svg></div>'
 
         $('.fp_popup_content').append(popupContent);
+        $(window).on('load', function() {
+            if ($('#bannerShow').is(':visible')) {
+                $('.fp_popup_container').css('top', '110px')
+            }
+        })
+
 
 
     },
@@ -39,9 +45,16 @@ var FP_LP_DONATIONS_TRUST = {
         })
 
         $('.fp_popup_continue').on('click', function() {
-            $('.fp_popup_container').fadeOut();
+            $('.fp_popup_container').slideUp();
         })
 
+    },
+    priceFormat: function(price) {
+        price = price.toString()
+        var b = ".";
+        var position = price.length - 2;
+        var output = [price.slice(0, position), b, price.slice(position)].join('');
+        return output;
     },
     addToCart: function() {
         $('#AddToCart').attr('type', 'button')
@@ -52,10 +65,12 @@ var FP_LP_DONATIONS_TRUST = {
             var magnification = $('input[name="option-1"]:checked').val();
             $('.fp_popup_detail_magnification').text(magnification)
 
-            $('.fp_popup_container').show();
             $('html').animate({ scrollTop: 0 }, 300);
             setTimeout(function() {
-                $('.fp_popup_container').fadeOut();
+                $('.fp_popup_container').slideDown()
+            }, 300)
+            setTimeout(function() {
+                $('.fp_popup_container').slideUp();
             }, 6000);
         })
 
@@ -76,25 +91,27 @@ var FP_LP_DONATIONS_TRUST = {
 
                 }
                 // Optional: success/error functions
-            }).then(data => {
-                calculateCurrentCart();
-                console.log(data)
+            }).then(function(data) {
+                return calculateCurrentCart();
             })
 
         }
 
+        var that = this;
 
         function calculateCurrentCart() {
 
-
             var num = parseInt($('div.cart-indicator').eq(0).text())
-            $('div.cart-indicator').text(parseInt(num) + 1)
+            if ($('div.cart-indicator').length) {
+                $('div.cart-indicator').text(parseInt(num) + 1)
+            } else {
+                $('.lo-nav-header .lo-cart > a').prepend('<div layout="" layout-align="center center" class="cart-indicator flex-center">1</div>');
+            }
 
             fetch('/cart.js')
-                .then(response => response.json())
-                .then(data => {
-                    $('.fp_popup_subtotal span').text(data.items_subtotal_price / 100 + '$');
-                    console.log(data)
+                .then(function(response) { return response.json() })
+                .then(function(data) {
+                    return $('.fp_popup_subtotal span').text('$ ' + that.priceFormat(data.items_subtotal_price));
 
                 })
                 .catch(function(data) {
@@ -117,6 +134,27 @@ var FP_LP_DONATIONS_TRUST = {
                 value: "addToCart_click"
             }]);
         })
+
+        $('.fp_popup_continue').on('click', function() {
+            window._fpEvent.push(["eventConversion", {
+                value: "continueShopping"
+            }]);
+        })
+
+        $('.fp_popup_btn').on('click', function() {
+            window._fpEvent.push(["eventConversion", {
+                value: "viewYourCart"
+            }]);
+        })
+
+        $('.fp_popup_icon').on('click', function() {
+            window._fpEvent.push(["eventConversion", {
+                value: "arrowIcon"
+            }]);
+        })
+
+
+
 
 
 

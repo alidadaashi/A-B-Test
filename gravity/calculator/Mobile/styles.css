@@ -2,6 +2,7 @@
 body {
     background: url('https://variations-cdn.figpii.com/variations/gravitychallenges/Calculator/mobile+bg_overlayed.png') !important;
     background-size: cover;
+    background-position: center -50px !important;
 }
 
 div#scrollManager {
@@ -100,7 +101,7 @@ div.sc_item:hover {
     font-family: 'Lato' !important;
     text-transform: capitalize !important;
     font-weight: 700;
-    font-size: 8px !important;
+    font-size: 10px !important;
     color: #333 !important;
     border-top: none !important;
     margin-top: 3px !important;
@@ -146,16 +147,24 @@ div.sc_item_done div.sc_item_number {
     background-color: #5820A0;
 }
 
+.each_selection.gender_selection div[data-value="male"] .selImage img[src*="-selected"],
 .each_selection.age_selection .selImage img[src*="/Male"],
 .activity_selection .selImage img[src*="/Male"],
 .desc_selection .selImage img[src*="/Male"] {
-    filter: hue-rotate(113deg);
+    filter: hue-rotate(41deg) saturate(1.2);
+}
+
+.each_selection.gender_selection div[data-value="female"] .selImage img[src*="-selected"],
+.each_selection.age_selection .selImage img[src*="/Female"],
+.activity_selection .selImage img[src*="/Female"],
+.desc_selection .selImage img[src*="/Female"] {
+    filter: hue-rotate(284deg) saturate(2.5);
 }
 
 div.container>div[data-aos="fade-up"].gender_selection {
     min-height: calc(100vh - 70px);
     margin-bottom: 100px;
-    padding-top: 70px;
+    /*padding-top: 70px;*/
 }
 
 div.container>div[data-aos="fade-up"] {
@@ -163,12 +172,16 @@ div.container>div[data-aos="fade-up"] {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding-top: 80px;
+    /*padding-top: 80px;*/
 }
 
 .modal-content {
     border: none !important;
-    background-color: rgba(255, 255, 255, .9) !important;
+    background-color: rgb(255, 255, 255) !important;
+    background-image: url('https://variations-cdn.figpii.com/variations/gravitychallenges/Calculator/popup_mobile.png') !important;
+    background-size: contain !important;
+    background-position: top !important;
+    background-repeat: no-repeat;
 }
 
 .modal-content .progress {
@@ -235,12 +248,13 @@ input.modal-input:focus {
 h3.modal-slogan {
     font-family: 'Lato';
     font-weight: 400;
-    font-size: 18px;
+    font-size: 17px;
     text-align: center;
     text-transform: capitalize;
     padding: 0 10px;
     color: #333;
     margin-bottom: 0;
+    margin-top: 35px;
 }
 
 h3.modal-slogan span {
@@ -303,8 +317,10 @@ h3.modal-slogan span {
     font-family: 'Lato';
     font-size: 11px;
     font-weight: 300;
-    line-height: 16pxpx;
+    line-height: 16px;
     color: #333;
+    display: flex;
+    align-items: center;
 }
 
 .fp_quote_name {
@@ -318,4 +334,20 @@ h3.modal-slogan span {
     h3.modal-slogan {
         font-size: 17px;
     }
+}
+
+div.os_options div.os_selected {
+    background: #5820a0;
+    box-shadow: 1px 1px 5px #5820a0;
+    border: 1px solid #5820a0;
+    color: #fff;
+    text-shadow: 1px 1px 5px #58209f;
+}
+
+div.os_options div.os_selected:hover {
+    background: #5820a0;
+}
+
+div.os_options div.os_option:hover {
+    background: #753ebc;
 }

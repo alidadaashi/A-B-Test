@@ -1,11 +1,13 @@
 var FP_LP_DONATIONS_TRUST = {
     init: function() {
-        this.addLogo();
-        this.addHero();
-        this.freePlan();
-        this.aboveVideo();
-        this.fixVideo();
-        this.attachEvents();
+        if ($(window).width() > 1024) {
+            this.addLogo();
+            this.addHero();
+            this.freePlan();
+            this.aboveVideo();
+            this.fixVideo();
+            this.attachEvents();
+        }
     },
     addLogo: function() {
         var logo = '<div class="fp_logo"> <img src="https://variations-cdn.figpii.com/variations/gravitychallenges/optin-lp/logo-desktop.png"> </div>'
@@ -185,9 +187,9 @@ var FP_LP_DONATIONS_TRUST = {
 
         })
 
-        window.addEventListener('scroll', function(event) {
-            event.stopPropagation();
-        }, true);
+        // window.addEventListener('scroll', function(event) {
+        //     event.stopPropagation();
+        // }, true);
 
 
     },

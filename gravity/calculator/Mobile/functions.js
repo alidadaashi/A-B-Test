@@ -14,8 +14,22 @@ var FP_LP_DONATIONS_TRUST = {
         $('.container').before(logo);
     },
     addHero: function() {
-        var hero = '<div class="fp_hero"><div class="w-50 pr-50"> <h1 class="title"> Transform Your Body with a FREE <span>Personalized</span> Diet Plan in 6 Weeks </h1> <h3 class="subtitle"> Complete this simple quiz to find out FREE diet plan. to lose 20lbs, 5% body fat and gain muscles by eating. by your metabolic type.</h3><div class="cta_container"> </div></div></div>'
+        var hero = '<div class="fp_hero"><div class="w-50 pr-50"> <h1 class="title"> Transform Your Body in just 6 weeks with a FREE <span>Personalized</span> Diet Plan </h1> <h3 class="subtitle"> Complete this simple quiz to get a free diet plan based on your metabolic type to lose 20lbs and 5% body fat while gaining muscle.</h3><div class="cta_container"> </div></div></div>'
         $('.fp_logo').after(hero);
+
+
+        $(window).scroll(function() {
+            var height = $('.fp_hero').outerHeight() + $('.fp_logo').outerHeight();
+            console.log(height)
+            if ($(this).scrollTop() > height) {
+                $('.each_selection').css('padding-top', '80px')
+            }
+            if ($(this).scrollTop() < height) {
+                $('.each_selection').css('padding-top', '0')
+            }
+        })
+
+
     },
     addTestimonial: function() {
         var quotes = [{
@@ -24,9 +38,9 @@ var FP_LP_DONATIONS_TRUST = {
                 text: 'Great program. I lost 20lbs in 6 weeks. My accountability was awesome and the meal plans are easy to follow. I definitely recommend this program.'
             },
             {
-                name: 'Jacob Stock',
-                avatar: 'https://lh3.googleusercontent.com/a-/AOh14Gjj7XkwAR42gUf3efE5o9nMu2qb3qhd8imhOkhjHQ=c0x00000000-cc-rp-s120',
-                text: 'Everything about the program is great. I have emerged much more educated about nutrition, dieting, and exercising. Not only that, it is super easy to follow and most importantly, it works. I lost 15 pounds and over 5% body fat in only 42 days. '
+                name: 'Maria Ovalles',
+                avatar: 'https://lh3.googleusercontent.com/a-/AOh14GimYEz5j2FGv1-96BjoER_Bl6aeYLswAeZa3lCl=c0x00000000-cc-rp-s120',
+                text: 'I lost 22.6lbs doing the 6 week challenge! Great coaches to work with! They have everything detailed out for you from workouts to meal prepping. Highly recommended!'
             },
             {
                 name: 'Rene Caballero',
@@ -34,34 +48,36 @@ var FP_LP_DONATIONS_TRUST = {
                 text: 'Great experience. Life changing! I lost 23 pounds in 60 days, from 212 to 189. And even taught me how to follow up with the healthier lifestyle.'
             },
             {
-                name: 'Susane Leandro',
-                avatar: 'https://lh3.googleusercontent.com/a-/AOh14GineCDVe0hR7bLUX-I3F6VcLnraZDFMHB7GxfaL6A=c0x00000000-cc-rp-s120',
-                text: 'GTZ planned the perfect blend of nutrition and exercise for me to kick start my new routine. I now love exercising and the trainers and staff at GTZ are awesome! I lost weight, met their challenge, and feel great.'
+                name: 'Johanna Badenhop',
+                avatar: 'https://lh3.googleusercontent.com/a-/AOh14GidJfkbQhbeqz9NCYXZ9pI5u8s0dUyXRguh0S9D=c0x00000000-cc-rp-s120',
+                text: 'The Gravity Training Zone produces amazing results. I lost 20.4 lbs and 5.5% body fat in 6 weeks. The have taught me how to eat right (I was never hungry on the program) and the right exercises to tone up the whole body. The end result is amazing, I got a stronger and healthier me in the end.'
             },
             {
                 name: 'Maiky Vermeulen',
                 avatar: 'https://lh3.googleusercontent.com/a-/AOh14GgEJbiYoCyuRuQfsMokz4f60lngrcZftucWpBBuMA=c0x00000000-cc-rp-s120',
                 text: 'I lost 28 lbs with the 6 week gravity program. It\'s been amazing. Would definitely recommend it!! It\'s a lifestyle change program not just another workout program.'
             },
-            {
-                name: 'Maria Ovalles',
-                avatar: 'https://lh3.googleusercontent.com/a-/AOh14GimYEz5j2FGv1-96BjoER_Bl6aeYLswAeZa3lCl=c0x00000000-cc-rp-s120',
-                text: 'I lost 22.6lbs doing the 6 week challenge! Great coaches to work with! They have everything detailed out for you from workouts to meal prepping. Highly recommended!'
-            },
+
             {
                 name: 'Nirmiti Parekh',
                 avatar: 'https://lh3.googleusercontent.com/a-/AOh14GiaD0N54C8c5NvRkUsJM00uJzudTAVw2Y54oafwHg=c0x00000000-cc-rp-s120',
                 text: 'At my final weigh in, I lost 5.5% body fat and 9.6 lbs! I’m so surprised at how much I was able to accomplish thanks to GTZ. It really taught me the importance of a healthy lifestyle!!'
             },
             {
+                name: 'Jacob Stock',
+                avatar: 'https://lh3.googleusercontent.com/a-/AOh14Gjj7XkwAR42gUf3efE5o9nMu2qb3qhd8imhOkhjHQ=c0x00000000-cc-rp-s120',
+                text: 'Everything about the program is great. I have emerged much more educated about nutrition, dieting, and exercising. Not only that, it is super easy to follow and most importantly, it works. I lost 15 pounds and over 5% body fat in only 42 days. '
+            },
+
+            {
                 name: 'Erica V Aguirre',
                 avatar: 'https://lh3.googleusercontent.com/a-/AOh14Gi5kdgu7LJEIHSeAHoLeqG-ddpn6PDNVMiyctkhig=c0x00000000-cc-rp-s120',
                 text: 'This is an amazing program for anyone who is serious about making a change in their health and quality of life.This program has been set up to work but puts the responsibility back on you and I love that!  '
             },
             {
-                name: 'Johanna Badenhop',
-                avatar: 'https://lh3.googleusercontent.com/a-/AOh14GidJfkbQhbeqz9NCYXZ9pI5u8s0dUyXRguh0S9D=c0x00000000-cc-rp-s120',
-                text: 'The Gravity Training Zone produces amazing results. I lost 20.4 lbs and 5.5% body fat in 6 weeks. The have taught me how to eat right (I was never hungry on the program) and the right exercises to tone up the whole body. The end result is amazing, I got a stronger and healthier me in the end.'
+                name: 'Joshua Alldredge',
+                avatar: 'https://lh3.googleusercontent.com/a-/AOh14Gh49Un3G-LIx7DnzSRMQHOVXuf5c8A8TwmWn7ocLw=c0x00000000-cc-rp-s120',
+                text: 'I just finished my 6 weeks and cannot Express how pleased I am with the results. I lost a total of 25 pounds and 3.5% body fat. The program was great, the coaching was perfect, and the encouragement throughout helped to keep me motivated. If you can have a bit of self control and dedication, you too can see the results that I have seen!'
             },
             {
                 name: 'Brenda Butler',
@@ -92,7 +108,7 @@ var FP_LP_DONATIONS_TRUST = {
 
     },
     changeModal: function() {
-        var slogan = '<h3 class="modal-slogan">People of all shapes and sizes have transformed their bodies, and lives just in <span> 6  weeks with  FREE diet plan </span></h3>';
+        var slogan = '<h3 class="modal-slogan">People of All Shapes and Sizes Have Transformed Their Bodies And Lives In Just 6 Weeks With Our <span>Free Diet Plan and Program</span></h3>';
 
         $('.modal-form').prepend(slogan)
 
@@ -203,42 +219,43 @@ var FP_LP_DONATIONS_TRUST = {
     },
 
     attachEvents: function() {
-        $('#submit-form').on('click', function() {
+        $(document).on('click', '#submit-form', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "optinlp+musclelp"
             }]);
         })
 
-        $('.gender_selection .selImage').on('click', function() {
+        $(document).on('click', '.gender_selection .selImage', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "genderClick"
             }]);
         })
 
-        $('.age_selection .selImage').on('click', function() {
+        $(document).on('click', '.age_selection .selImage', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "ageClick"
             }]);
         })
 
 
-        $('#sb_weight').on('scrolled', function() {
+        $(document).on('scrolled', '#sb_weight', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "weightClick"
             }]);
         })
 
-        $('.activity_selection .selImage').on('click', function() {
+        $(document).on('click', '.activity_selection .selImage', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "workoutClick"
             }]);
         })
 
-        $('.desc_selection .selImage').on('click', function() {
+        $(document).on('click', '.desc_selection .selImage', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "descClick"
             }]);
         })
+
     }
 
 
