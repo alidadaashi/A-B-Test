@@ -2,10 +2,11 @@
     position: fixed;
     width: 100vw;
     height: calc(100vh - 70px);
-    top: 70px;
-    z-index: 9999;
+    top: -100vh;
+    z-index: 99;
     background-color: rgba(0, 0, 0, .8);
-    display: none;
+    /*display: none;*/
+    transition: all .3s ease-in-out;
 }
 
 .fp_popup_container img {
@@ -63,6 +64,7 @@
     color: #101010;
     font-family: 'DIN Condensed Bold', 'Din Bold', 'Din Regular', sans-serif !important;
     font-size: 24px;
+    text-transform: uppercase !important;
 }
 
 .fp_popup_subtotal {

@@ -10,7 +10,7 @@ var FP_LP_DONATIONS_TRUST = {
 
         var sticky = '<div class="fp_new_sticky_container">'
         sticky += '<img class="fp_new_sticky_image" src="https://gravitychallenges.com/hosted/images/ca/0796f0530f11e8b28695bada5c63d9/Mobile-Workouts.png" >'
-        sticky += '<div class="fp_new_sticky_slogan"><p> It’s not a program, it’s a lifestyle change </p> <span>Money-Back Guarantee ı Lifetime Access</span></div> <a target="_blank" class="fp_new_sticky_btn" href="#" > Reserve Your Spot </a>'
+        sticky += '<div class="fp_new_sticky_slogan"><p> It’s not a program, it’s a lifestyle change </p> <span>Money-Back Guarantee & Lifetime Access</span></div> <a target="_blank" class="fp_new_sticky_btn" href="#" > Reserve Your Spot </a>'
         sticky += '</div>'
 
         $('body').prepend(sticky);

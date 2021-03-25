@@ -79,7 +79,10 @@ var FP_LP_DONATIONS_TRUST = {
     attachEvents: function() {
 
 
-        $('.fp_new_sticky_cta').on('click', function() {
+
+
+        $(document).on('click', '.fp_new_sticky_cta', function() {
+            console.log("EVENT")
             window._fpEvent.push(["eventConversion", {
                 value: "stickyCTA"
             }]);
@@ -89,12 +92,14 @@ var FP_LP_DONATIONS_TRUST = {
         // All original cta clicks
         // Muscles
         $('.elButton span:contains("CHALLENGE ACCEPTED")').closest('a').on('click', function() {
+            console.log("EVENT")
             window._fpEvent.push(["eventConversion", {
                 value: "allCTAsClick"
             }]);
         })
 
         $('.elButton span:contains("ready to start this challenge")').closest('a').on('click', function() {
+            console.log("EVENT")
             window._fpEvent.push(["eventConversion", {
                 value: "allCTAsClick"
             }]);
@@ -103,16 +108,30 @@ var FP_LP_DONATIONS_TRUST = {
 
         // Optin Orange and Red
         $('.elButton span:contains("RESERVE YOUR SPOT")').closest('a').on('click', function() {
+            console.log("EVENT")
             window._fpEvent.push(["eventConversion", {
                 value: "allCTAsClick"
             }]);
         })
 
         $('.elButton span:contains("EVERYTHING FOR JUST $100")').closest('a').on('click', function() {
+            console.log("EVENT")
             window._fpEvent.push(["eventConversion", {
                 value: "allCTAsClick"
             }]);
         })
+
+        $(document).on('click', '.fp_newOne', function() {
+            console.log("EVENT")
+            window._fpEvent.push(["eventConversion", {
+                value: "allCTAsClick"
+            }]);
+        })
+
+
+
+
+
 
 
 

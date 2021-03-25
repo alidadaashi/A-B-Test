@@ -13,11 +13,7 @@ var FP_LP_DONATIONS_TRUST = {
         var popupContent = '<p>Added To Your Cart! </p>     <img src="' + popupImageSrc + '" >     <div class="fp_popup_detail"> </div>     <div class="fp_popup_subtotal"> Subtotal: <span> </span> </div>         <a href="/cart" class="fp_popup_btn"> VIEW YOUR CART </a>           <span class="fp_popup_continue"> Continue Shopping </span>         <div class="fp_popup_icon"><svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 11L9 2L17 11" stroke="white" stroke-width="2"/></svg></div>'
 
         $('.fp_popup_content').append(popupContent);
-        $(window).on('load', function() {
-            if ($('#bannerShow').is(':visible')) {
-                $('.fp_popup_container').css('top', '110px')
-            }
-        })
+
 
 
 
@@ -41,11 +37,11 @@ var FP_LP_DONATIONS_TRUST = {
         $('.fp_popup_detail').append(content)
 
         $('.fp_popup_icon').on('click', function() {
-            $('.fp_popup_container').slideUp();
+            $('.fp_popup_container').css('top', '-100vh');
         })
 
         $('.fp_popup_continue').on('click', function() {
-            $('.fp_popup_container').slideUp();
+            $('.fp_popup_container').css('top', '-100vh');
         })
 
     },
@@ -57,6 +53,17 @@ var FP_LP_DONATIONS_TRUST = {
         return output;
     },
     addToCart: function() {
+
+        var top = "70px"
+        $(window).on('load', function() {
+            if ($('#bannerShow').is(':visible')) {
+                top = '110px'
+                    // $('.fp_popup_container').css('top', '110px')
+            }
+        })
+
+
+
         $('#AddToCart').attr('type', 'button')
         $(document).on('click', '#AddToCart', function(e) {
             e.preventDefault();
@@ -67,10 +74,10 @@ var FP_LP_DONATIONS_TRUST = {
 
             $('html').animate({ scrollTop: 0 }, 300);
             setTimeout(function() {
-                $('.fp_popup_container').slideDown()
+                $('.fp_popup_container').css('top', top)
             }, 300)
             setTimeout(function() {
-                $('.fp_popup_container').slideUp();
+                $('.fp_popup_container').css('top', '-100vh');
             }, 6000);
         })
 
@@ -129,25 +136,25 @@ var FP_LP_DONATIONS_TRUST = {
         }
     },
     attachEvents: function() {
-        $('#AddToCart').on('click', function() {
+        $(document).on('click', '#AddToCart', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "addToCart_click"
             }]);
         })
 
-        $('.fp_popup_continue').on('click', function() {
+        $(document).on('click', '.fp_popup_continue', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "continueShopping"
             }]);
         })
 
-        $('.fp_popup_btn').on('click', function() {
+        $(dsocument).on('click', '.fp_popup_btn', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "viewYourCart"
             }]);
         })
 
-        $('.fp_popup_icon').on('click', function() {
+        $(document).on('click', '.fp_popup_icon', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "arrowIcon"
             }]);

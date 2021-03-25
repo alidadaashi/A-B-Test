@@ -147,7 +147,7 @@ var FP_LP_DONATIONS_TRUST = {
                 var a = num + 1
                 $('div.cart-indicator').text(a)
             } else {
-                $('.fp_popup_container2').after('<div layout="" layout-align="center center" class="cart-indicator flex-center">1</div>');
+                $('.fp_popup_container2').after('<a href="/cart" style="position: initial;"><div layout="" layout-align="center center" class="cart-indicator flex-center">1</div></a>');
             }
 
             fetch('/cart.js')
@@ -172,6 +172,22 @@ var FP_LP_DONATIONS_TRUST = {
         var output = [price.slice(0, position), b, price.slice(position)].join('');
         return output;
     },
+    correctName: function(name) {
+        var arr = name.split(' ')
+        console.log(arr)
+        if (arr.length > 1) {
+            if (arr[1] == 'screen' || arr[1] == 'Screen') {
+                return 'BLUE-LIGHT ' + arr[0]
+            } else if (arr[1] == 'Sun' || arr[1] == 'sun') {
+                return 'Sun ' + arr[0]
+            } else if (arr[1] == 'Kids' || arr[1] == 'kids') {
+                return arr[0] + ' ' + arr[1]
+            }
+        } else {
+            return name
+        }
+
+    },
     cartDetail: function() {
 
         $('.fp_popup_container2 .fp_popup_detail_container').remove();
@@ -192,7 +208,7 @@ var FP_LP_DONATIONS_TRUST = {
 
         function buildCart(data) {
             for (var i = 0; i < data.items.length; i++) {
-                var html = '<div class="fp_popup_detail_container"><a target="_blank" href="' + data.items[i].url + '"><img src="' + data.items[i].image + '"> <i>' + data.items[i].quantity + '</i> </a> <div class="fp_popup_detail"><div class="fp_popup_detail_header"><a target="_blank" href="' + data.items[i].url + '"><h2>' + data.items[i].product_title + '</h2></a><span>$' + that.priceFormat(data.items[i].price) + '</span></div> <div> Color: ' + data.items[i].variant_options[0] + '  </div> <div> Magnification: <span class="fp_popup_detail_magnification">' + data.items[i].variant_options[1] + ' </span></div></div></div>'
+                var html = '<div class="fp_popup_detail_container"><a target="_blank" href="' + data.items[i].url + '"><img src="' + data.items[i].image + '"> <i>' + data.items[i].quantity + '</i> </a> <div class="fp_popup_detail"><div class="fp_popup_detail_header"><a target="_blank" href="' + data.items[i].url + '"><h2>' + that.correctName(data.items[i].product_title) + '</h2></a><span>$' + that.priceFormat(data.items[i].price) + '</span></div> <div> Color: ' + data.items[i].variant_options[0] + '  </div> <div> Magnification: <span class="fp_popup_detail_magnification">' + data.items[i].variant_options[1] + ' </span></div></div></div>'
 
                 $('.fp_popup_container2 .fp_popup_content .fp_case').append(html)
             }
@@ -201,9 +217,13 @@ var FP_LP_DONATIONS_TRUST = {
 
 
 
-        $('.fp_popup_container2').on('click', function(e) {
-            e.preventDefault()
-        })
+        // $('.fp_popup_container2').on('click', function(e) {
+        //     e.preventDefault()
+        // })
+
+        $('.fp_popup_container2').closest('a').attr('href', '#')
+        $('.svg--cart').wrap('<a style="position: initial;" href="/cart" />');
+        $('.cart-indicator').wrap('<a style="position: initial;" href="/cart" />')
 
 
 

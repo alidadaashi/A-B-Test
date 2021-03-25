@@ -20,3 +20,7 @@
     width: auto !important;
     padding: 10px 30px !important;
 }
+
+div.iframeBlocker {
+    z-index: 999 !important;
+}
