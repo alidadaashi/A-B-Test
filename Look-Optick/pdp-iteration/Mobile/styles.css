@@ -12,7 +12,7 @@ div>button.fp_virtual-btn {
 }
 
 button#AddToCart {
-    border-radius: 3px !important;
+    border-radius: 5px !important;
 }
 
 div>button.fp_virtual-btn:hover {
@@ -149,7 +149,7 @@ div>button.fp_virtual-btn:hover {
 .lo-productpage-wrapper .product-single__image-wrapper #ProductThumbs {
     display: flex;
     flex-wrap: nowrap;
-    overflow: auto;
+    overflow: visible;
     padding-right: 5%;
     padding-left: 5%;
     scroll-behavior: smooth;
@@ -338,6 +338,10 @@ div#ProductThumbs::-webkit-scrollbar {
         max-width: 48px !important;
         max-height: 48px !important;
     }
+    .lo-productpage-wrapper .product-single__image-wrapper .product-single__thumb-wrapper .product-single__thumbnail img[alt="Casper"] {
+        position: relative;
+        top: 1px;
+    }
 }
 
 .product-single__thumb-wrapper.active-variant {
@@ -357,6 +361,7 @@ div#ProductThumbs::-webkit-scrollbar {
 
 .product-single__thumb-wrapper.active-variant>a {
     display: flex;
+    height: 111%;
 }
 
 @media (max-width: 1024px) {
@@ -480,11 +485,36 @@ span.lens__info .lens__info-icon {
 }
 
 form#AddToCartForm {
-    margin-bottom: 10px;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 20px;
+    margin-bottom: 0px;
+    /*border-bottom: 1px solid #e0e0e0;*/
+    padding-bottom: 10px;
 }
 
 section.product-single {
     padding-bottom: 10px !important;
+}
+
+button.vm__trigger.text-blue.fp_virtual-btn {
+    background-color: #edf0f4;
+    color: #495b6e;
+}
+
+.fp__details {
+    margin-top: 20px;
+}
+
+.lens__title--extra {
+    display: none !important;
+}
+
+.lo-section.section-border {
+    border-top: none !important;
+    background-color: #FFF !important;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.3);
+}
+
+.product-description-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-flow: column-reverse;
 }

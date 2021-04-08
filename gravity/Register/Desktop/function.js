@@ -17,19 +17,25 @@ var FP_LP_DONATIONS_TRUST = {
         $('.containerWrapper').prepend(logo);
     },
     addHero: function() {
-        var hero;
-        if (window.location.href.includes('order-')) {
-            hero = '<div class="fp_hero"> <h2> It\'s a win-win! </h2> <p> Gain 15 LBS in 12 Weeks and Get Your Money Back! </p> </div>'
+        var hero, moneyBackText;
+        if (window.location.href.includes('order-2849')) {
+            hero = '<div class="fp_hero"> <h2>  It\'s a win-win! </h2> <p>Be 20LBs or 5% Leaner In 6 Weeks And Get Your Money Back!</p> </div>';
+            moneyBackText = "You put down a $100 refundable security deposit. Don't Cheat, Don't Quit, Be 20LBs or 5% Leaner In 6 Weeks, And You Get The Whole Thing Back. It's a free challenge, but you have to earn it."
+        } else if (window.location.href.includes('order-2845')) {
+            hero = '<div class="fp_hero"> <h2> It\'s a win-win! </h2> <p> Gain 15 LBS in 12 Weeks and Get Your Money Back! </p> </div>';
+            moneyBackText = "You put down a $100 refundable security deposit. Don't Cheat, Don't Quit, gain 15 pounds in 12 weeks, And You Get The Whole Thing Back. It's a free challenge, but you have to earn it."
         } else {
-            hero = '<div class="fp_hero"> <h2> It\'s a win-win! </h2> <p> Lose the weight in 6 weeks and Get Your Money Back! </p> </div>'
+            hero = '<div class="fp_hero"> <h2> It\'s a win-win! </h2> <p> Lose the weight in 6 weeks and Get Your Money Back! </p> </div>';
+            moneyBackText = "You put down a $100 refundable security deposit. Don't Cheat, Don't Quit, Lose 20lbs or 5% Bodyfat in 6 weeks, And You Get The Whole Thing Back. It's a free challenge, but you have to earn it."
         }
 
         $('.fp_logo').after(hero);
+        var successText = "Over 15,000 people have been through this program and 93% of them hit their goals because they have skin in the game. The way our business makes money is after you lose a whole bunch of weight, you'll get addicted and want to continue training."
         var close = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.987419" y="0.0805664" width="15.3606" height="1.39642" rx="0.69821" transform="rotate(45 0.987419 0.0805664)" fill="#C4C4C4"/><rect x="11.8698" y="0.987427" width="15.3606" height="1.39642" rx="0.69821" transform="rotate(135 11.8698 .987427)" fill="#C4C4C4"/></svg>';
         var tooltip = '<div class="fp_tooltip_container">'
-        tooltip += '<div class="fp_tooltip money"> <div class="fp_tooltip_number"> 100% </div>       <div class="fp_tooltip_title"> Money-Back <br> Guarantee <div class="fp_tooltip_icon" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOCAYAAAASVl2WAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADoSURBVHgBlY69ccJAFIR3T8KxS1AB2HODG3AJ7oBxB3YGTuQMMpsOpAosVwA0ABp+YqACyCAQ93jHgAYNQ8BGe2/fvf0IVctOX0nGIKw+HyHIheh1R/WEX415LJBvHS6F8q8LGwqbuhyp/wydkxWM9Lrjpw+c1LLjhKwt1MbEDbUbs7WvMzfCHx8KkFQu6OmIQe1PeRRWsq0r3lkJzUNfg8jDdUb1Xz8vKxgE/lfkz57DyoII7ckOL2vD0rkiEYSDHYoc96iEbL9M3iBBE26fdvLn7LoCJlYSC+NhkV1BYo/0CAuXXlYcAOnKUYqj6fKnAAAAAElFTkSuQmCC"> <div class="fp_tooltip_text"> ' + $('div.ne div:contains("You put down a $100 refundable security deposit. ")').text() + '</div> </div> </div>    </div>'
+        tooltip += '<div class="fp_tooltip money"> <div class="fp_tooltip_number"> 100% </div>       <div class="fp_tooltip_title"> Money-Back <br> Guarantee <div class="fp_tooltip_icon" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOCAYAAAASVl2WAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADoSURBVHgBlY69ccJAFIR3T8KxS1AB2HODG3AJ7oBxB3YGTuQMMpsOpAosVwA0ABp+YqACyCAQ93jHgAYNQ8BGe2/fvf0IVctOX0nGIKw+HyHIheh1R/WEX415LJBvHS6F8q8LGwqbuhyp/wydkxWM9Lrjpw+c1LLjhKwt1MbEDbUbs7WvMzfCHx8KkFQu6OmIQe1PeRRWsq0r3lkJzUNfg8jDdUb1Xz8vKxgE/lfkz57DyoII7ckOL2vD0rkiEYSDHYoc96iEbL9M3iBBE26fdvLn7LoCJlYSC+NhkV1BYo/0CAuXXlYcAOnKUYqj6fKnAAAAAElFTkSuQmCC"> <div class="fp_tooltip_text"> ' + moneyBackText + '</div> </div> </div>    </div>'
         tooltip += '<div class="fp_tooltip access"> <div class="fp_tooltip_number"> Lifetime </div>       <div class="fp_tooltip_title"> Access To <br> Materials </div>    </div>'
-        tooltip += '<div class="fp_tooltip success"> <div class="fp_tooltip_number"> 93% </div>       <div class="fp_tooltip_title"> Success <br> Rate <div class="fp_tooltip_icon" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOCAYAAAASVl2WAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADoSURBVHgBlY69ccJAFIR3T8KxS1AB2HODG3AJ7oBxB3YGTuQMMpsOpAosVwA0ABp+YqACyCAQ93jHgAYNQ8BGe2/fvf0IVctOX0nGIKw+HyHIheh1R/WEX415LJBvHS6F8q8LGwqbuhyp/wydkxWM9Lrjpw+c1LLjhKwt1MbEDbUbs7WvMzfCHx8KkFQu6OmIQe1PeRRWsq0r3lkJzUNfg8jDdUb1Xz8vKxgE/lfkz57DyoII7ckOL2vD0rkiEYSDHYoc96iEbL9M3iBBE26fdvLn7LoCJlYSC+NhkV1BYo/0CAuXXlYcAOnKUYqj6fKnAAAAAElFTkSuQmCC"> <div class="fp_tooltip_text">' + $('div.ne:contains("Over 10,000 people have been through this program and")').text() + '</div> </div>     </div>    </div>'
+        tooltip += '<div class="fp_tooltip success"> <div class="fp_tooltip_number"> 93% </div>       <div class="fp_tooltip_title"> Success <br> Rate <div class="fp_tooltip_icon" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOCAYAAAASVl2WAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADoSURBVHgBlY69ccJAFIR3T8KxS1AB2HODG3AJ7oBxB3YGTuQMMpsOpAosVwA0ABp+YqACyCAQ93jHgAYNQ8BGe2/fvf0IVctOX0nGIKw+HyHIheh1R/WEX415LJBvHS6F8q8LGwqbuhyp/wydkxWM9Lrjpw+c1LLjhKwt1MbEDbUbs7WvMzfCHx8KkFQu6OmIQe1PeRRWsq0r3lkJzUNfg8jDdUb1Xz8vKxgE/lfkz57DyoII7ckOL2vD0rkiEYSDHYoc96iEbL9M3iBBE26fdvLn7LoCJlYSC+NhkV1BYo/0CAuXXlYcAOnKUYqj6fKnAAAAAElFTkSuQmCC"> <div class="fp_tooltip_text">' + successText + '</div> </div>     </div>    </div>'
         tooltip += '</div>'
 
         $('.fp_hero').append(tooltip)
@@ -60,6 +66,7 @@ var FP_LP_DONATIONS_TRUST = {
             $('.elVideoWrapper').closest('.row').hide()
             $('b:contains("Gain 15 LBS in 12 Weeks")').closest('.row').hide()
             $('img[src*="Untitled-design.png"]').closest('.container').hide();
+            $('img[src*="Untitled-design2.png"]').closest('.container').hide();
             $('.elOrderProductOptinItem:contains("Item")').closest('.elProductOptionsBox').hide();
             $('div.ne:contains("Over 10,000 people have been through this program and")').closest('.row').hide();
 
@@ -85,7 +92,7 @@ var FP_LP_DONATIONS_TRUST = {
 
         var cartTable = '<div class="fp_cart">'
         cartTable += '<div class="fp_cart_header"> <div> Item </div> <div> Price </div> </div>'
-        cartTable += '<div class="fp_cart_item"> <div> 6 Week Challenge <br> Security Deposit - Lose 20 lb </div> <div> <span> Was <i>$500</i> </span> <div>Now $100</div> </div> </div>'
+        cartTable += '<div class="fp_cart_item"> <div> Challenge Security Deposit </div> <div> <span> Was <i>$500</i> </span> <div>Now $100</div> </div> </div>'
         cartTable += '</div>'
 
         $('.fp_cta_container').prepend(cartTable)
@@ -104,14 +111,26 @@ var FP_LP_DONATIONS_TRUST = {
         $('.fp_payment_form_container').append('<iframe src="https://embedsocial.com/api/reviews/widget/d1303b3bbcb11bd8f87d42551c858e3437982fa3"> </iframe>')
     },
     addLifetime: function() {
+        var moneyBackText;
+
+        if (window.location.href.includes('order-2845')) {
+            moneyBackText = "You put down a $100 refundable security deposit. Don't Cheat, Don't Quit, gain 15 pounds in 12 weeks, And You Get The Whole Thing Back. It's a free challenge, but you have to earn it."
+        } else if (window.location.href.includes('order-2849')) {
+            moneyBackText = "You put down a $100 refundable security deposit. Don't Cheat, Don't Quit, Be 20LBs or 5% Leaner In 6 Weeks, And You Get The Whole Thing Back. It's a free challenge, but you have to earn it."
+        } else {
+            moneyBackText = "You put down a $100 refundable security deposit. Don't Cheat, Don't Quit, Lose 20lbs or 5% Bodyfat in 6 weeks, And You Get The Whole Thing Back. It's a free challenge, but you have to earn it."
+        }
+
+        var successText = "Over 15,000 people have been through this program and 93% of them hit their goals because they have skin in the game. The way our business makes money is after you lose a whole bunch of weight, you'll get addicted and want to continue training."
+
         var close = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.987419" y="0.0805664" width="15.3606" height="1.39642" rx="0.69821" transform="rotate(45 0.987419 0.0805664)" fill="#C4C4C4"/><rect x="11.8698" y="0.987427" width="15.3606" height="1.39642" rx="0.69821" transform="rotate(135 11.8698 .987427)" fill="#C4C4C4"/></svg>';
 
         var lifetime = '<div class="fp_lifetime">'
-        lifetime += '<div class="fp_lifetime_item money">          <span> 100% </span>                 <div class="fp_lifetime_text"> Money-Back <br> Guarantee                <div class="fp_tooltip_icon" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOCAYAAAASVl2WAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACESURBVHgBnVBBDYAwEGtQgAQkIAEJSEACDsABOCAoQAJBwSRMwiSMG3RhWXYfmjR3Wy9dd4DAe98JT6HzL4xwAMWJl1a4Cmf2AWMYGIKABHJuOOCgIT6niQsdNhSsDcVDWOfiF65g25dsq6RvWS8owRourMYvMENI3msD8XsWSsg9qw9uQ52lFsHvl30AAAAASUVORK5CYII="> <div class="fp_tooltip_text">' + $('div.ne div:contains("You put down a $100 refundable security deposit. ")').text() + '<div class="fp_close">' + close + '</div></div> </div>             </div> </div>'
+        lifetime += '<div class="fp_lifetime_item money">          <span> 100% </span>                 <div class="fp_lifetime_text"> Money-Back <br> Guarantee                <div class="fp_tooltip_icon" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOCAYAAAASVl2WAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACESURBVHgBnVBBDYAwEGtQgAQkIAEJSEACDsABOCAoQAJBwSRMwiSMG3RhWXYfmjR3Wy9dd4DAe98JT6HzL4xwAMWJl1a4Cmf2AWMYGIKABHJuOOCgIT6niQsdNhSsDcVDWOfiF65g25dsq6RvWS8owRourMYvMENI3msD8XsWSsg9qw9uQ52lFsHvl30AAAAASUVORK5CYII="> <div class="fp_tooltip_text">' + moneyBackText + '<div class="fp_close">' + close + '</div></div> </div>             </div> </div>'
 
         lifetime += '<div class="fp_lifetime_item access"><span> Lifetime </span> <div class="fp_lifetime_text"> Access <br> To Materials </div> </div>'
 
-        lifetime += '<div class="fp_lifetime_item success">          <span> 93% </span>                 <div class="fp_lifetime_text"> Success <br> Rate                <div class="fp_tooltip_icon" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOCAYAAAASVl2WAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACESURBVHgBnVBBDYAwEGtQgAQkIAEJSEACDsABOCAoQAJBwSRMwiSMG3RhWXYfmjR3Wy9dd4DAe98JT6HzL4xwAMWJl1a4Cmf2AWMYGIKABHJuOOCgIT6niQsdNhSsDcVDWOfiF65g25dsq6RvWS8owRourMYvMENI3msD8XsWSsg9qw9uQ52lFsHvl30AAAAASUVORK5CYII="> <div class="fp_tooltip_text">' + $('div.ne:contains("Over 10,000 people have been through this program and")').text() + '<div class="fp_close">' + close + '</div></div> </div>              </div> </div>'
+        lifetime += '<div class="fp_lifetime_item success">          <span> 93% </span>                 <div class="fp_lifetime_text"> Success <br> Rate                <div class="fp_tooltip_icon" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOCAYAAAASVl2WAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACESURBVHgBnVBBDYAwEGtQgAQkIAEJSEACDsABOCAoQAJBwSRMwiSMG3RhWXYfmjR3Wy9dd4DAe98JT6HzL4xwAMWJl1a4Cmf2AWMYGIKABHJuOOCgIT6niQsdNhSsDcVDWOfiF65g25dsq6RvWS8owRourMYvMENI3msD8XsWSsg9qw9uQ52lFsHvl30AAAAASUVORK5CYII="> <div class="fp_tooltip_text">' + successText + '<div class="fp_close">' + close + '</div></div> </div>              </div> </div>'
 
         lifetime += '</div>'
         $('.fp_cta').closest('.container').after(lifetime)

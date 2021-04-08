@@ -1,0 +1,225 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    src: url('https://cdn.shopify.com/s/files/1/0797/7215/t/313/assets/AvenirNextLTPro-Regular.woff2?v=5040201248403754606');
+    font-family: Avenir Next;
+}
+
+.fp_modal {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, .8);
+    top: -1200vh;
+    z-index: -1;
+}
+
+.fp_modal_content {
+    width: 100%;
+    height: 78vh;
+    margin-top: 11vh;
+    background-color: #FFF;
+    padding: 60px 15px;
+    text-align: center;
+    position: relative;
+}
+
+.fp_close {
+    cursor: pointer;
+    float: right;
+}
+
+.fp_modal_title {
+    font-weight: 600;
+    font-size: 32px;
+    color: #101010;
+    width: 60%;
+    margin: 30px auto 20px;
+    font-family: Avenir Next;
+}
+
+.fp_modal_subtitle {
+    font-size: 24px;
+    line-height: 22px;
+    font-family: 'Avenir Next';
+    color: #101010;
+    width: 80%;
+    margin: 0 auto 40px;
+}
+
+.fp_slide_image {
+    width: 220px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.fp_slide_title {
+    color: #101010;
+    font-size: 28px;
+    font-family: 'DIN Condensed Bold';
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: -15px;
+}
+
+.fp_slide .lens__header {
+    display: none;
+}
+
+.fp_slide .swatch {
+    border-top: none;
+    padding: 7px 0;
+}
+
+.fp_slide .swatch .fullwidth {
+    display: flex;
+}
+
+.fp_slide .swatch__title {
+    display: none;
+}
+
+.fp_colors {
+    display: flex;
+}
+
+.fp_slide div.color.swatch-element label {
+    margin-right: 10px !important;
+    width: 18px !important;
+    min-width: 18px !important;
+    height: 18px !important;
+    min-height: 18px !important;
+}
+
+.swiper-container {
+    width: 100%;
+    /*height:50vh;*/
+    overflow: initial !important;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    background-color: rgba(16, 16, 16, 0.5);
+    color: #FFF;
+    width: 45px !important;
+    height: 45px !important;
+    top: 40% !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 19px !important;
+    color: #FFF;
+}
+
+.swiper-button-next,
+.swiper-container-rtl .swiper-button-prev {
+    right: -15px !important;
+    left: auto;
+}
+
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+    left: -15px !important;
+}
+
+.fp_continue {
+    position: absolute;
+    bottom: 30px;
+    right: 0;
+    left: 0;
+    color: #101010;
+    font-size: 16px;
+    font-family: 'Avenir Demi';
+    font-weight: 600;
+    border-bottom: 1px solid #101010;
+    width: max-content;
+    margin: auto;
+    line-height: 1.1;
+    cursor: pointer;
+}
+
+.fp_slide div.magnify.swatch-element,
+.gift-card.swatch-element {
+    cursor: pointer;
+    text-align: center !important;
+    width: 50px !important;
+    margin-right: 3px;
+    height: 30px;
+}
+
+.magnify.swatch-element label,
+.gift-card.swatch-element label {
+    padding-top: 8px !important;
+    border: 1px solid #CCC !important;
+}
+
+.magnify.swatch-element.active label,
+.gift-card.swatch-element.active label {
+    border: 1px solid #435A6F !important;
+    color: #555 !important;
+}
+
+.fp_slide .AddToCart {
+    width: 170px;
+    height: 40px !important;
+    font-size: 16px;
+    margin-top: 15px;
+    font-family: 'DIN Regular' !important;
+    font-weight: 600;
+}
+
+#magnification_container .fullwidth {
+    display: none;
+}
+
+.fp_magnification {
+    display: flex;
+}
+
+.fp_magnification div {
+    cursor: pointer;
+    margin-left: 15px;
+    text-decoration: underline;
+}
+
+.fp_slide_price {
+    display: flex;
+}
+
+.fp_slide_price div {
+    margin-right: 15px;
+    color: #101010;
+    font-family: Avenir Next;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+
+.fp_slide_price span {
+    font-size: 16px;
+    font-weight: 600;
+    color: #101010;
+    font-family: Avenir Next;
+}
