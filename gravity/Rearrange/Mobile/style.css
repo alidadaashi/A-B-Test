@@ -1,0 +1,435 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500;700&display=swap');
+.fp_banner {
+    color: #FFF;
+}
+
+.fp_banner_header {
+    padding: 0 16px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    z-index: 2;
+    position: relative;
+}
+
+.fp_banner_icon {
+    width: 93px;
+    height: 93px;
+    background-color: #FFF;
+    border-radius: 50%;
+    padding: 12px;
+    margin-right: 22px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fp_banner_header img {}
+
+.fp_banner_title span {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 30px;
+    color: #5820A0;
+}
+
+.fp_banner_title strong {
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 500;
+}
+
+.fp_banner_title {
+    font-weight: 300;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.fp_banner_description {
+    padding: 80px 16px 14px;
+    background: linear-gradient(90deg, #7932D5 0%, #401675 100%);
+    top: -80px;
+    position: relative;
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: -60px;
+}
+
+.fp_quotes {
+    padding: 0 15px;
+    margin: 30px auto 20px;
+}
+
+.fp_quotes_header {
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: #1A1027;
+    margin-bottom: 20px;
+}
+
+.fp_quotes .swiper-container {
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    padding: 13px 13px 17px;
+}
+
+.fp_quotes .header {
+    display: flex;
+    align-items: center;
+}
+
+.fp_quotes .header img {
+    width: 43px;
+    height: 43px;
+    object-fit: contain;
+    border: 3px solid #999;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.fp_quotes .rate {
+    text-align: center;
+}
+
+.fp_quotes .name {
+    margin-bottom: 2px;
+    margin-top: 0;
+}
+
+.fp_quotes .description {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 21px;
+    margin-top: 7px;
+    /*max-height: 50px;*/
+}
+
+.fp_quotes .swiper-pagination.swiper-pagination-bullets,
+.fp_sixWeek .swiper-pagination2.swiper-pagination-bullets {
+    width: calc(100% - 30px);
+    margin-top: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.fp_quotes span.swiper-pagination-bullet,
+.fp_sixWeek span.swiper-pagination-bullet {
+    margin-right: 4px;
+}
+
+.fp_quotes .swiper-pagination-bullet,
+.fp_sixWeek .swiper-pagination-bullet {
+    width: 6px !important;
+    height: 6px !important;
+}
+
+.fp_quotes .swiper-pagination-bullet-active,
+.fp_sixWeek .swiper-pagination-bullet-active {
+    background: #401675 !important;
+    width: 10px !important;
+    height: 10px !important;
+}
+
+.fp_online-course {
+    padding: 0 24px;
+    margin: 60px 0 20px!important;
+}
+
+.fp_online-course .header {
+    color: #1A1027;
+    padding-bottom: 7px;
+    font-size: 20px;
+}
+
+.fp_online-course .header:after {
+    content: '';
+    width: 33px;
+    height: 3px;
+    background-color: #7932D4;
+    display: block;
+    top: 3px;
+    position: relative;
+}
+
+.fp_online-course img {
+    max-width: 100%;
+    margin: 20px 0 20px;
+}
+
+.fp_online-course span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #494949;
+    text-transform: capitalize;
+    font-family: 'Open Sans';
+}
+
+.fp_weeks {
+    background: #FFFFFF;
+    padding: 20px 16px 0px;
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 15%);
+    margin-bottom: -10px;
+}
+
+.fp_weeks ul {
+    margin-bottom: 20px;
+}
+
+.fp_weeks .fp_header {
+    display: flex;
+    align-items: center;
+}
+
+.fp_weeks .icon {
+    background: linear-gradient(90deg, #7932D5 0%, #401675 100%);
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 15%);
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.fp_weeks h3 {
+    font-size: 18px !important;
+    margin-bottom: 0;
+    color: #1A1027;
+}
+
+.fp_weeks span {
+    font-weight: 400;
+    font-size: 16px;
+    color: #494949;
+}
+
+.fp_weeks ul {
+    padding-left: 0px;
+    margin-top: 16px;
+    padding-bottom: 20px;
+    list-style-type: none;
+}
+
+.fp_weeks ul li {
+    color: #494949;
+    font-size: 14px;
+    font-family: 'open sans';
+    text-transform: capitalize;
+    font-weight: 400;
+    background-image: url('https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/check.svg');
+    background-repeat: no-repeat;
+    padding-left: 26px;
+    line-height: 2.25;
+    background-position: 0 center;
+    background-size: 18px;
+}
+
+.fp_registeration-text {
+    color: #494949;
+    font-weight: 400;
+    font-size: 18px;
+    font-family: 'Fira Sans';
+    text-shadow: none;
+    text-transform: uppercase;
+}
+
+.fp_timer .cdBlue.cdStyleFlat .countdown-amount {
+    background-color: transparent !important;
+    border: none !important;
+    color: #BDA2DF !important;
+    font-family: 'Fira Sans' !important;
+    font-size: 40px !important;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.fp_timer .wideCountdownSize2 .countdown-period {
+    font-size: 12px;
+    font-family: 'Fira Sans';
+    font-weight: 400;
+    color: #494949;
+    margin-top: -5px;
+}
+
+.fp_timer span.countdown-amount:after {
+    content: ':';
+    display: block;
+    right: -14px;
+    position: absolute;
+    top: 7px;
+}
+
+.fp_timer .countdown-section:last-child span.countdown-amount:after {
+    display: none;
+}
+
+.fp_price>span {
+    color: #494949;
+    font-size: 18px;
+    text-shadow: none;
+    text-decoration: line-through;
+    font-weight: 400;
+    font-family: 'Fira Sans';
+}
+
+.fp_price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.fp_price>p {
+    font-size: 18px;
+    font-weight: 600;
+    text-shadow: none;
+    font-family: 'Open Sans';
+    margin-bottom: 0;
+    margin-left: 20px;
+    color: #FF1400;
+}
+
+a.fp_timer_cta {
+    width: 230px;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    margin: auto;
+    background-color: #FF1400;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    border-radius: 3px;
+    font-family: 'Lato';
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.swiper-container-sixWeek .swiper-slide {
+    width: 80%;
+    padding: 0;
+    opacity: .5;
+}
+
+.swiper-container-sixWeek .swiper-slide.swiper-slide-active {
+    opacity: 1;
+}
+
+.swiper-container-sixWeek .swiper-slide img {
+    max-width: 100%;
+}
+
+.fp_sixWeek .swiper-pagination2 {
+    position: initial !important;
+    width: initial !important;
+}
+
+.fp_sixWeek {
+    width: calc(100% + 30px);
+    margin-left: -15px;
+    background-color: #FFF;
+    padding: 20px 0px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+.fp_sixWeek .header {
+    font-family: 'Fira Sans';
+    padding: 0 16px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #1A1027;
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+.subheader {
+    font-family: 'Fira Sans';
+    font-weight: 300;
+    padding: 0 16px;
+    line-height: 24px;
+    /*font-style: italic;*/
+    width: 80%;
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #494949;
+}
+
+.fp_purpleBanner {
+    width: calc(100% + 30px);
+    margin-left: -15px;
+    background: linear-gradient(90deg, #7932D5 0%, #401675 100%);
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 15%);
+    display: flex;
+    color: #FFF;
+    padding: 20px 28px;
+    margin-right: -15px;
+    justify-content: space-between;
+}
+
+.fp_purpleBanner .column {
+    text-align: center;
+}
+
+.fp_purpleBanner .column>span {
+    font-family: 'Fira Sans';
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.fp_purpleBanner .column p {
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 300;
+    font-family: 'Fira Sans';
+    text-decoration: capitalize;
+}
+
+
+/* CTA CODES */
+
+.fp_new_sticky_cta {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    background-color: #FF1400;
+    color: #FFF;
+    cursor: pointer;
+    text-decoration: none !important;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: -100px;
+    z-index: 99999;
+    transition: .3s all ease-in-out;
+    font-weight: 600;
+}
+
+.fp_newOne {
+    width: auto !important;
+    padding: 10px 30px !important;
+}
+
+div.iframeBlocker {
+    z-index: 999 !important;
+}
+
+.fp_quotes_header {
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 500;
+}

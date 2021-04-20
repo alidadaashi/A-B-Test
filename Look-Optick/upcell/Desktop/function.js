@@ -1,20 +1,53 @@
 var FP_LP_DONATIONS_TRUST = {
     init: function() {
-        if (!localStorage.getItem('fpModalShow')) {
-            this.addModal();
-            this.defineProducts();
-            this.getProducts();
-            this.attachEvents();
-            setTimeout(function() {
-                $('.fp_modal').css('top', '0');
-                $('.fp_modal').css('z-index', '9');
-            }, 8000);
+        if (!localStorage.getItem('fpModalShow') && $(window).width() > 1024) {
+            this.checkCart();
         }
+    },
+    start: function() {
+        localStorage.setItem('fpModalShow', 'false')
+        this.addModal();
+        this.defineProducts();
+        this.getProducts();
+        this.attachEvents();
+        setTimeout(function() {
+            $('body').prepend('<link class="amazing" rel="stylesheet" rel="preload" href="//cdn.shopify.com/s/files/1/0797/7215/t/313/assets/lo-main-alt.scss.css?v=7269078551120231796" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">')
+            $('body').prepend('<link class="amazing" rel="preconnect" href="https://stamped.io" crossorigin="anonymous"><link class="amazing" rel="stylesheet" rel="preload" href="//cdn.shopify.com/s/files/1/0797/7215/t/313/assets/timber.scss.css?v=2575031289169295196" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">')
+        }, 4500);
+        setTimeout(function() {
+            $('.fp_modal').css('top', '0');
+            $('.fp_modal').css('z-index', '9');
+        }, 5000);
+    },
+    checkCart: function() {
+        var i;
+        var that = this
+        jQuery.ajax({
+            url: '/cart.js',
+            type: 'get',
+            dataType: 'json',
+            // Optional: success/error functions
+        }).then(function(data) {
+            console.log('Cart', data);
+            i = data.items.length
+            data.items.forEach(function(a) {
+                console.log('>>>>', a.product_type)
+                if (a.product_title.includes('Kids')) {
+                    i--
+                }
+            })
+            console.log('I: ', i)
+            if (i) {
+                that.start()
+            }
+        })
+
+
     },
     addModal: function() {
         var closeIcon = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L15 15" stroke="#878787" stroke-width="2" stroke-miterlimit="1.5" stroke-linejoin="round"/><path d="M15 1L1 15" stroke="#878787" stroke-width="2" stroke-miterlimit="1.5" stroke-linejoin="round"/></svg>'
-        var header = '<h2 class="fp_modal_title">  Add Another Pair & Get 10% OFF </h2>'
-        var subHeader = '<h4 class="fp_modal_subtitle"> Look stylish for every occasion.Buy your extra pair and save. </h4>'
+        var header = '<h2 class="fp_modal_title">   Add Another Pair And Get 10% OFF Your Entire Order </h2>'
+        var subHeader = '<h4 class="fp_modal_subtitle"> This will be applied with other discounts if available. </h4>'
 
         var html = '<div class="fp_modal">'
         html += '<div class="fp_modal_content">'
@@ -28,93 +61,109 @@ var FP_LP_DONATIONS_TRUST = {
         $(document).on('click', '.fp_close', function() {
             $('.fp_modal').fadeOut();
             localStorage.setItem('fpModalShow', 'false')
+            $('body > link.amazing').remove()
         })
 
         $(document).on('click', '.fp_continue', function() {
             $('.fp_modal').fadeOut();
             localStorage.setItem('fpModalShow', 'false')
+            $('body > link.amazing').remove()
         })
 
     },
     defineProducts: function() {
         window.jsProducts = [{
-            "cleanedProductTitle": "Sullivan",
-            "productTitle": "Sullivan",
-            "title": "Black / +1.0",
-            "url": "/products/sullivan-black?variant=34325158428731",
-            "type": "READING GLASSES",
-            "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/Sullivan_7_1_30x.jpg?v=1592833041",
-            "image": "//cdn.shopify.com/s/files/1/0797/7215/products/Sullivan_7_1_large.jpg?v=1592833041",
-            "price": "",
-            "color": "Black",
-            "sku": "SU30BLK10",
-            "id": "34325158428731"
-        }, {
-            "cleanedProductTitle": "Abbey",
-            "productTitle": "Abbey",
-            "title": "Black / +1.0",
-            "url": "/products/abbey-black?variant=34316285804603",
-            "type": "READING GLASSES",
-            "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/Abbey_3_1_30x.jpg?v=1592831016",
-            "image": "//cdn.shopify.com/s/files/1/0797/7215/products/Abbey_3_1_large.jpg?v=1592831016",
-            "price": "",
-            "color": "Black",
-            "sku": "AB10BLK10",
-            "id": "34316285804603"
-        }, {
-            "cleanedProductTitle": "Bond",
-            "productTitle": "Bond",
-            "title": "Black / +1.0",
-            "url": "/products/bond-black?variant=34325159313467",
-            "type": "READING GLASSES",
-            "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/Bond_7_1_30x.jpg?v=1592831837",
-            "image": "//cdn.shopify.com/s/files/1/0797/7215/products/Bond_7_1_large.jpg?v=1592831837",
-            "price": "",
-            "color": "Black",
-            "sku": "BO20BLK10",
-            "id": "34325159313467"
-        }, {
-            "cleanedProductTitle": "Laurel",
-            "productTitle": "Laurel",
-            "title": "Black / +1.0",
-            "url": "/products/laurel-black?variant=34325148860475",
-            "type": "READING GLASSES",
-            "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/22_v2_grande_3fc3421a-c1bf-46ca-b59e-d48928988d8e_30x.jpg?v=1592832268",
-            "image": "//cdn.shopify.com/s/files/1/0797/7215/products/22_v2_grande_3fc3421a-c1bf-46ca-b59e-d48928988d8e_large.jpg?v=1592832268",
-            "price": "",
-            "color": "Black",
-            "sku": "LA40BLK10",
-            "id": "34325148860475"
-        }, {
-            "cleanedProductTitle": "Liam",
-            "productTitle": "Liam",
-            "title": "Black / +1.0",
-            "url": "/products/liam-black?variant=34325147189307",
-            "type": "READING GLASSES",
-            "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/60_30x.png?v=1607726718",
-            "image": "//cdn.shopify.com/s/files/1/0797/7215/products/60_large.png?v=1607726718",
-            "price": "",
-            "color": "Black",
-            "sku": "LI50BLK10",
-            "id": "34325147189307"
-        }, {
-            "cleanedProductTitle": "Casper",
-            "productTitle": "Casper",
-            "title": "Black / +1.0",
-            "url": "/products/casper-black?variant=34325129855035",
-            "type": "READING GLASSES",
-            "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/CasperBlackFront_30x.jpg?v=1602774622",
-            "image": "//cdn.shopify.com/s/files/1/0797/7215/products/CasperBlackFront_large.jpg?v=1602774622",
-            "price": "",
-            "color": "Black",
-            "sku": "CA60BLK10",
-            "id": "34325129855035"
-        }];
+                "cleanedProductTitle": "Sullivan",
+                "productTitle": "Sullivan",
+                "title": "Black / +1.0",
+                "url": "/products/sullivan-black?variant=34325158428731",
+                "type": "READING GLASSES",
+                "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/Sullivan_7_1_30x.jpg?v=1592833041",
+                "image": "//cdn.shopify.com/s/files/1/0797/7215/products/Sullivan_7_1_large.jpg?v=1592833041",
+                "price": "",
+                "color": "Black",
+                "sku": "SU30BLK10",
+                "id": "34325158428731"
+            }, {
+                "cleanedProductTitle": "Abbey",
+                "productTitle": "Abbey",
+                "title": "Black / +1.0",
+                "url": "/products/abbey-black?variant=34316285804603",
+                "type": "READING GLASSES",
+                "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/Abbey_3_1_30x.jpg?v=1592831016",
+                "image": "//cdn.shopify.com/s/files/1/0797/7215/products/Abbey_3_1_large.jpg?v=1592831016",
+                "price": "",
+                "color": "Black",
+                "sku": "AB10BLK10",
+                "id": "34316285804603"
+            }, {
+                "cleanedProductTitle": "Bond",
+                "productTitle": "Bond",
+                "title": "Black / +1.0",
+                "url": "/products/bond-black?variant=34325159313467",
+                "type": "READING GLASSES",
+                "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/Bond_7_1_30x.jpg?v=1592831837",
+                "image": "//cdn.shopify.com/s/files/1/0797/7215/products/Bond_7_1_large.jpg?v=1592831837",
+                "price": "",
+                "color": "Black",
+                "sku": "BO20BLK10",
+                "id": "34325159313467"
+            }, {
+                "cleanedProductTitle": "Laurel",
+                "productTitle": "Laurel",
+                "title": "Black / +1.0",
+                "url": "/products/laurel-black?variant=34325148860475",
+                "type": "READING GLASSES",
+                "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/22_v2_grande_3fc3421a-c1bf-46ca-b59e-d48928988d8e_30x.jpg?v=1592832268",
+                "image": "//cdn.shopify.com/s/files/1/0797/7215/products/22_v2_grande_3fc3421a-c1bf-46ca-b59e-d48928988d8e_large.jpg?v=1592832268",
+                "price": "",
+                "color": "Black",
+                "sku": "LA40BLK10",
+                "id": "34325148860475"
+            }, {
+                "cleanedProductTitle": "Liam",
+                "productTitle": "Liam",
+                "title": "Black / +1.0",
+                "url": "/products/liam-black?variant=34325147189307",
+                "type": "READING GLASSES",
+                "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/60_30x.png?v=1607726718",
+                "image": "//cdn.shopify.com/s/files/1/0797/7215/products/60_large.png?v=1607726718",
+                "price": "",
+                "color": "Black",
+                "sku": "LI50BLK10",
+                "id": "34325147189307"
+            }, {
+                "cleanedProductTitle": "Casper",
+                "productTitle": "Casper",
+                "title": "Black / +1.0",
+                "url": "/products/casper-black?variant=34325129855035",
+                "type": "READING GLASSES",
+                "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/CasperBlackFront_30x.jpg?v=1602774622",
+                "image": "//cdn.shopify.com/s/files/1/0797/7215/products/CasperBlackFront_large.jpg?v=1602774622",
+                "price": "",
+                "color": "Black",
+                "sku": "CA60BLK10",
+                "id": "34325129855035"
+            },
+            {
+                cleanedProductTitle: "Cosmo",
+                productTitle: "Cosmo",
+                title: "Honey / +1.0",
+                url: "/products/cosmo-honey?variant=34343182532667",
+                type: "READING GLASSES",
+                imageLazy: "//cdn.shopify.com/s/files/1/0797/7215/products/4_4f105958-c80c-44c2-a7f2-7ea30842d23b_30x.png?v=1612303255",
+                image: "//cdn.shopify.com/s/files/1/0797/7215/products/4_4f105958-c80c-44c2-a7f2-7ea30842d23b_large.png?v=1612303255",
+                price: "",
+                color: "Honey",
+                magnification: "+1.0",
+                sku: "CO70HON10",
+                id: "34343182532667"
+            }
+        ];
     },
     swiperJS: function() {
-        $('body').prepend('<link rel="stylesheet" rel="preload" href="//cdn.shopify.com/s/files/1/0797/7215/t/313/assets/lo-main-alt.scss.css?v=7269078551120231796" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">')
-        $('body').prepend('<link rel="preconnect" href="https://stamped.io" crossorigin="anonymous"><link rel="stylesheet" rel="preload" href="//cdn.shopify.com/s/files/1/0797/7215/t/313/assets/timber.scss.css?v=2575031289169295196" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">')
-            // $('body').append('<link rel="preload" href="//cdn.shopify.com/s/files/1/0797/7215/t/313/assets/AvenirNextLTPro-Regular.woff2?v=5040201248403754606" as="font" type="font/woff" crossorigin="anonymous">')
+
+        // $('body').append('<link rel="preload" href="//cdn.shopify.com/s/files/1/0797/7215/t/313/assets/AvenirNextLTPro-Regular.woff2?v=5040201248403754606" as="font" type="font/woff" crossorigin="anonymous">')
         $('body').append('<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>')
             /**
              * Swiper 6.5.3
@@ -4518,6 +4567,7 @@ var FP_LP_DONATIONS_TRUST = {
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 3,
             spaceBetween: 30,
+            simulateTouch: false,
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
@@ -4529,19 +4579,19 @@ var FP_LP_DONATIONS_TRUST = {
     getProducts: function() {
 
         var that = this;
-        var html = '<div class="swiper-container"><div class="swiper-wrapper"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div>'
+        var html = '<div class="swiper-container"><div class="swiper-wrapper"></div></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div>'
         $('.fp_modal_content').append(html);
 
 
         function addSlide(image, title, options, id, price, url) {
             var temp = price.split('$ ')[1]
             temp = parseInt(temp)
-            console.log('TEMP: ', temp, price.split('$ '))
+                // console.log('TEMP: ', temp, price.split('$ '))
             var html = '<div class="swiper-slide fp_slide">'
             html += '<img class="fp_slide_image" src="' + image + '" >'
             html += '<a class="fp_slide_title" href="' + url + '" >' + title + '</a>'
             html += options
-            html += '<div class="fp_slide_price"><div>' + price + '</div><span> $ ' + (temp - (temp * .1)).toFixed(2) + '</span></div>'
+            html += '<div class="fp_slide_price"><div>' + price + '</div></div>'
             html += '<button class="lo-btn AddToCart" data-id="' + id + '"> Add To Cart </button>'
             html += '</div>'
 
@@ -4585,6 +4635,7 @@ var FP_LP_DONATIONS_TRUST = {
         this.setMagnification();
         this.changeColor();
 
+
         $(document).on('click', '.AddToCart', function() {
             var id = $(this).attr('data-id')
             jQuery.ajax({
@@ -4596,9 +4647,13 @@ var FP_LP_DONATIONS_TRUST = {
                 }
                 // Optional: success/error functions
             }).then(function(data) {
-                console.log(data);
+                // console.log(data);
                 localStorage.setItem('fpModalShow', 'false');
-                location.reload();
+
+                var url = new URL(location.href);
+                url.searchParams.append('discount', 'SOMETHINGFANCY10');
+
+                window.location.href = url
             })
         })
     },
@@ -4666,18 +4721,11 @@ var FP_LP_DONATIONS_TRUST = {
         $(document).on('click', '.swatch-element[dataTarget*=location] > label', function() {
             var url = $(this).closest('.swatch-element').attr('dataTarget').split('href=')[1];
             url = url.substring(2, url.length - 1)
-            console.log('hi', url)
+                // console.log('hi', url)
             var id = url.split('=')[1]
             var color = $(this).closest('div').children('.tooltip').text()
             var that = this;
             $(that).closest('.fullwidth').children('div').children('.fp_colors').children('div').children('label').removeClass('swatch-active');
-            // For enhancing the transition
-            // if(!$(this).hasClass('swatch-active')){
-            // 	$(this).closest('.fp_slide').children('.fp_slide_image').hide()
-            // 	$(this).closest('.fp_slide').children('.fp_slide_image').addClass('fp_fitImage')
-            // 	$(this).closest('.fp_slide').children('.fp_slide_image').attr('src','https://variations-cdn.figpii.com/variations/look+optic/Cart/loading.svg');
-            // 	$(this).closest('.fp_slide').children('.fp_slide_image').show()
-            // }
 
             jQuery.ajax({
                 url: 'https://www.lookoptic.com/' + url,
@@ -4686,27 +4734,21 @@ var FP_LP_DONATIONS_TRUST = {
                 a = $('<div>' + data + '');
 
                 var image = a.find('.popup-image > img').attr('src')
-                console.log(image)
-                    // $(this).closest('.fp_slide').children('.fp_slide_image').hide()
-                    // $(that).closest('.fp_slide').children('.fp_slide_image').removeClass('fp_fitImage')
+
                 $(that).closest('.fp_slide').children('.fp_slide_image').attr('src', image)
-                    // $(this).closest('.fp_slide').children('.fp_slide_image').show()
-
-
 
 
                 // change color's text
                 if ($(that).closest('.swatch').children('div').children('div').eq(0).text().includes(color)) {
-
                     $(that).closest('.fp_slide').children('.fp_selectedColor').text(color);
                 } else {
-                    $(that).closest('.fp_slide').children('.fp_selectedColor').html('<span>Limited Edition: </span>' + color);
+                    $(that).closest('.fp_slide').children('.fp_selectedColor').html('<span>Limited Edition </span>' + color);
                 }
 
 
                 // change magnifications select box
                 var selectBox = a.find('#productSelect')
-                console.log(selectBox)
+                    // console.log(selectBox)
                 $(that).closest('.fp_slide').children('#productSelect').html($(selectBox).html())
 
 
@@ -4735,6 +4777,14 @@ var FP_LP_DONATIONS_TRUST = {
                     }
                     i++
                 })
+
+
+
+
+
+                $(that).closest('.fp_slide').children('.swatch.clearfix[data-option-index="1"]').children('.fp_magnification').children('div').click()
+
+
             })
 
 

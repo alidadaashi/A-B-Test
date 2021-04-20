@@ -710,55 +710,55 @@ var FP_LP_DONATIONS_TRUST = {
 
     },
     attachEvents: function() {
-        $('#AddToCart').on('click', function() {
+        $(document).on('click', '#AddToCart', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "addToCart_click"
             }]);
         })
 
-        $('.product-single__thumb-wrapper:first-child').on('click', function() {
+        $(document).on('click', '.product-single__thumb-wrapper:first-child', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "heroPlayIcon_click"
             }]);
         })
 
-        $('.play-gif').on('click', function() {
+        $(document).on('click', '.play-gif', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "seperatePlayIcon_click"
             }]);
         })
 
-        $('.vm__trigger').on('click', function() {
+        $(document).on('click', '.vm__trigger', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "virtualMirror_click"
             }]);
         })
 
-        $('a.klaviyo-bis-trigger:contains("Out of Stock")').on('click', function() {
+        $(document).on('click', 'a.klaviyo-bis-trigger:contains("Out of Stock")', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "outOfStock_click"
             }]);
         })
 
-        $('.fp_notsure').on('click', function() {
+        $(document).on('click', '.fp_notsure', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "notSure_click"
             }]);
         })
 
-        $('.fp_modal_container--first .fp_close').on('click', function() {
+        $(document).on('click', '.fp_modal_container--first .fp_close', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "closeIcon_click"
             }]);
         })
 
-        $('.download-eye-chart').on('click', function() {
+        $(document).on('click', '.download-eye-chart', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "downloadEyeChart_click"
             }]);
         })
 
-        $('.determine-by-age').on('click', function() {
+        $(document).on('click', '.determine-by-age', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "determineByAge_click"
             }]);
