@@ -1,195 +1,369 @@
 var FP_LP_DONATIONS_TRUST = {
     init: function() {
-        $('span:contains("BUNDLE10")').closest('.tag').hide();
-        $('span:contains("BUNDLE10")').closest('.reduction-code').hide();
-        this.checkDiscount();
-        if (!localStorage.getItem('fpModalShow') && $(window).width() > 1024) {
-            this.checkCart();
+        if ($(window).width() > 1225) {
+            this.addCTA();
+
+            var that = this;
+            $(window).on('load', function() {
+                that.addMoneyBackBanner();
+                that.addQuotesSlideshow();
+                that.onlineCourseMaterials();
+                that.addWeeks();
+                that.timer();
+                that.sixWeekBody();
+                that.purpleBanner();
+                that.removeExtras();
+                that.swiperJS();
+            })
+            this.attachEvents();
+        }
+
+    },
+    checkPageType: function() {
+        if (window.location.href.includes("optin-43021")) {
+            // 5% returns true
+            return true;
         }
     },
-    start: function() {
-        localStorage.setItem('fpModalShow', 'false')
-        this.addModal();
-        this.defineProducts();
-        this.getProducts();
-        this.attachEvents();
-        setTimeout(function() {
-            $('body').prepend('<link class="amazing" rel="stylesheet" rel="preload" href="//cdn.shopify.com/s/files/1/0797/7215/t/313/assets/lo-main-alt.scss.css?v=7269078551120231796" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">')
-            $('body').prepend('<link class="amazing" rel="preconnect" href="https://stamped.io" crossorigin="anonymous"><link class="amazing" rel="stylesheet" rel="preload" href="//cdn.shopify.com/s/files/1/0797/7215/t/313/assets/timber.scss.css?v=2575031289169295196" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">')
-        }, 4500);
-        setTimeout(function() {
-            $('.fp_modal').css('top', '0');
-            $('.fp_modal').css('z-index', '9');
-        }, 5000);
-    },
-    checkDiscount: function() {
-        var i;
-        var that = this
-        jQuery.ajax({
-            url: '/cart.js',
-            type: 'get',
-            dataType: 'json',
-            // Optional: success/error functions
-        }).then(function(data) {
-            // console.log('Cart', data);
-            i = data.items.length
-            data.items.forEach(function(a) {
-                // console.log('>>>>', a.product_type)
-                if (a.product_title.includes('Kids')) {
-                    i--
-                }
-            })
-            console.log('I: ', i)
-            if (i < 2) {
-                // Remove the coupon
-                // console.log('Coupon should be removed')
-                if ($('span:contains("BUNDLE10")').length) {
-                    $('.tag__button').click()
-                }
-            }
-        })
-    },
-    checkCart: function() {
-        var i;
-        var that = this
-        jQuery.ajax({
-            url: '/cart.js',
-            type: 'get',
-            dataType: 'json',
-            // Optional: success/error functions
-        }).then(function(data) {
-            // console.log('Cart', data);
-            i = data.items.length
-            data.items.forEach(function(a) {
-                    // console.log('>>>>', a.product_type)
-                    if (a.product_title.includes('Kids')) {
-                        i--
-                    }
-                })
-                // console.log('I: ', i)
-            if (i) {
-                that.start()
-            }
-        })
 
-
-    },
-    addModal: function() {
-        var closeIcon = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L15 15" stroke="#878787" stroke-width="2" stroke-miterlimit="1.5" stroke-linejoin="round"/><path d="M15 1L1 15" stroke="#878787" stroke-width="2" stroke-miterlimit="1.5" stroke-linejoin="round"/></svg>'
-        var header = '<h2 class="fp_modal_title">   Add Another Pair And Get 10% OFF Your Entire Order </h2>'
-        var subHeader = '<h4 class="fp_modal_subtitle"> This will be applied with other discounts if available. </h4>'
-
-        var html = '<div class="fp_modal">'
-        html += '<div class="fp_modal_content">'
-        html += '<span class="fp_close">' + closeIcon + '</span>'
-        html += header + subHeader
-        html += '<span class="fp_continue"> Continue Checkout </span>'
+    addMoneyBackBanner: function() {
+        var html = '<div class="fp_banner fp_banner--moneyBack">'
+        html += '<div class="fp_banner_header">'
+        html += '<h3 class="fp_banner_title"> <strong> 100% MONEY BACK </strong> GUARANTEE </h3>'
         html += '</div>'
+        if (this.checkPageType) {
+            html += '<p class="fp_banner_description"> You put down a $100 refundable security deposit. Don’t cheat,<br> don’t quit, and lose 5% body fat in 6 weeks you get the whole <br> thing back. It’s a free challenge, but you have to earn it. </p>'
+        } else {
+            html += '<p class="fp_banner_description"> You put down a $100 refundable security deposit. Don\'t cheat,<br> don\'t quit, and lose 20lbs in 6 weeks you get the whole <br> thing back. It\'s a free challenge, but you have to earn it. </p>'
+        }
+
         html += '</div>'
-        $('body').append(html)
 
-        $(document).on('click', '.fp_close', function() {
-            $('.fp_modal').fadeOut();
-            localStorage.setItem('fpModalShow', 'false')
-            $('body > link.amazing').remove()
-        })
-
-        $(document).on('click', '.fp_continue', function() {
-            $('.fp_modal').fadeOut();
-            localStorage.setItem('fpModalShow', 'false')
-            $('body > link.amazing').remove()
-        })
+        $('.video-sound-overlay').closest('.emptySection').after(html)
 
     },
-    defineProducts: function() {
-        window.jsProducts = [{
-                "cleanedProductTitle": "Sullivan",
-                "productTitle": "Sullivan",
-                "title": "Black / +1.0",
-                "url": "/products/sullivan-black?variant=34325158428731",
-                "type": "READING GLASSES",
-                "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/Sullivan_7_1_30x.jpg?v=1592833041",
-                "image": "//cdn.shopify.com/s/files/1/0797/7215/products/Sullivan_7_1_large.jpg?v=1592833041",
-                "price": "",
-                "color": "Black",
-                "sku": "SU30BLK10",
-                "id": "34325158428731"
-            }, {
-                "cleanedProductTitle": "Abbey",
-                "productTitle": "Abbey",
-                "title": "Black / +1.0",
-                "url": "/products/abbey-black?variant=34316285804603",
-                "type": "READING GLASSES",
-                "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/Abbey_3_1_30x.jpg?v=1592831016",
-                "image": "//cdn.shopify.com/s/files/1/0797/7215/products/Abbey_3_1_large.jpg?v=1592831016",
-                "price": "",
-                "color": "Black",
-                "sku": "AB10BLK10",
-                "id": "34316285804603"
-            }, {
-                "cleanedProductTitle": "Bond",
-                "productTitle": "Bond",
-                "title": "Black / +1.0",
-                "url": "/products/bond-black?variant=34325159313467",
-                "type": "READING GLASSES",
-                "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/Bond_7_1_30x.jpg?v=1592831837",
-                "image": "//cdn.shopify.com/s/files/1/0797/7215/products/Bond_7_1_large.jpg?v=1592831837",
-                "price": "",
-                "color": "Black",
-                "sku": "BO20BLK10",
-                "id": "34325159313467"
-            }, {
-                "cleanedProductTitle": "Laurel",
-                "productTitle": "Laurel",
-                "title": "Black / +1.0",
-                "url": "/products/laurel-black?variant=34325148860475",
-                "type": "READING GLASSES",
-                "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/22_v2_grande_3fc3421a-c1bf-46ca-b59e-d48928988d8e_30x.jpg?v=1592832268",
-                "image": "//cdn.shopify.com/s/files/1/0797/7215/products/22_v2_grande_3fc3421a-c1bf-46ca-b59e-d48928988d8e_large.jpg?v=1592832268",
-                "price": "",
-                "color": "Black",
-                "sku": "LA40BLK10",
-                "id": "34325148860475"
-            }, {
-                "cleanedProductTitle": "Liam",
-                "productTitle": "Liam",
-                "title": "Black / +1.0",
-                "url": "/products/liam-black?variant=34325147189307",
-                "type": "READING GLASSES",
-                "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/60_30x.png?v=1607726718",
-                "image": "//cdn.shopify.com/s/files/1/0797/7215/products/60_large.png?v=1607726718",
-                "price": "",
-                "color": "Black",
-                "sku": "LI50BLK10",
-                "id": "34325147189307"
-            }, {
-                "cleanedProductTitle": "Casper",
-                "productTitle": "Casper",
-                "title": "Black / +1.0",
-                "url": "/products/casper-black?variant=34325129855035",
-                "type": "READING GLASSES",
-                "imageLazy": "//cdn.shopify.com/s/files/1/0797/7215/products/CasperBlackFront_30x.jpg?v=1602774622",
-                "image": "//cdn.shopify.com/s/files/1/0797/7215/products/CasperBlackFront_large.jpg?v=1602774622",
-                "price": "",
-                "color": "Black",
-                "sku": "CA60BLK10",
-                "id": "34325129855035"
+    addQuotesSlideshow: function() {
+        var stars = '<div><svg width="69" height="13" viewBox="0 0 69 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 0L7.95934 4.49139H12.6819L8.86126 7.26722L10.3206 11.7586L6.5 8.98278L2.6794 11.7586L4.13874 7.26722L0.318133 4.49139H5.04066L6.5 0Z" fill="#fedb32"/><path d="M20.5 0L21.9593 4.49139H26.6819L22.8613 7.26722L24.3206 11.7586L20.5 8.98278L16.6794 11.7586L18.1387 7.26722L14.3181 4.49139H19.0407L20.5 0Z" fill="#fedb32"/><path d="M34.5 0L35.9593 4.49139H40.6819L36.8613 7.26722L38.3206 11.7586L34.5 8.98278L30.6794 11.7586L32.1387 7.26722L28.3181 4.49139H33.0407L34.5 0Z" fill="#fedb32"/><path d="M48.5 0L49.9593 4.49139H54.6819L50.8613 7.26722L52.3206 11.7586L48.5 8.98278L44.6794 11.7586L46.1387 7.26722L42.3181 4.49139H47.0407L48.5 0Z" fill="#fedb32"/><path d="M62.5 0L63.9593 4.49139H68.6819L64.8613 7.26722L66.3206 11.7586L62.5 8.98278L58.6794 11.7586L60.1387 7.26722L56.3181 4.49139H61.0407L62.5 0Z" fill="#fedb32"/></svg></div>'
+
+        var quotes = [{
+                name: 'Andy Siemens',
+                image: 'https://lh3.googleusercontent.com/a-/AOh14Gh3ZvKDqm9W7z4f7cFfxNohGyY57ii0UaCMxE2D=c0x00000000-cc-rp-s120',
+                text: 'I took the 6 week fat loss challenge and it was more than 100% worth it. Great support from trainers and Facebook group. I lost 5.3% Body fat and kept losing another % just the week after the challenge. I will definitely do the 12 week Lean Muscle Multiplier next. Gravity Transformation makes exercising fun without starving to death'
             },
             {
-                cleanedProductTitle: "Cosmo",
-                productTitle: "Cosmo",
-                title: "Honey / +1.0",
-                url: "/products/cosmo-honey?variant=34343182532667",
-                type: "READING GLASSES",
-                imageLazy: "//cdn.shopify.com/s/files/1/0797/7215/products/4_4f105958-c80c-44c2-a7f2-7ea30842d23b_30x.png?v=1612303255",
-                image: "//cdn.shopify.com/s/files/1/0797/7215/products/4_4f105958-c80c-44c2-a7f2-7ea30842d23b_large.png?v=1612303255",
-                price: "",
-                color: "Honey",
-                magnification: "+1.0",
-                sku: "CO70HON10",
-                id: "34343182532667"
+                name: 'Matt Dellinger',
+                image: 'https://lh6.googleusercontent.com/-fptuFszYwxU/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucmJLo3-CA1LkLoXv-1ubdQ6nz7bRQ/c0x00000000-cc-rp/photo.jpg?sz=120',
+                text: "Man. I can't say enough good things about this program. If you're thinking about doing it, if you're skeptical like I was, just do it. You won't regret it! The nutrition plan and workouts are wonderful. I lost 22 pounds and learned so much. The best part of the program is the concern of the team behind it that you learn about nutrition and weight loss. The information they offered is invaluable. Do it!"
+            },
+            {
+                name: 'Heather Casey',
+                image: 'https://lh3.googleusercontent.com/a-/AOh14GjCjsYcenSGYX6DfuI4qGd6ydx46zTVPTHRQG2NVw=c0x00000000-cc-rp-s120',
+                text: "I LOVE Gravity Training Zone!!! I couldn't be happier with the results from my six week challenge! I lost 16 lbs and 5.2% body fat. The challenge came by just at the right time too! I was planning on going on vacation and didn't fit into any of my bathing suits..Determined to get in those swimsuits, I joined the challenge. I quickly realized, it was much more than just losing weight. I learned how to eat better, exercise correctly, made wonderful friends and now look forward to working out rather than dreading it. The coaches are all fantastic! Really helped me out when I hurt my back and gave me the right modifications so I could still work out. Cheered me on when I needed that extra push and the online accountability coaches were super quick and helpful when I had a food question online. The support at Gravity is amazing! I strongly recommend the six week challenge to everyone. You are going to love it! "
+            },
+            {
+                name: 'Fahad Alotaibi',
+                image: 'https://lh4.googleusercontent.com/-XrlOeHIc6kY/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnRKOmTepvxyRV2IhAx9wHBv-2B_g/c0x00000000-cc-rp-ba3/photo.jpg?sz=120',
+                text: 'My best experience ever in diet and workout programs. Never seen these numbers on the scale before .. I lost 21 Lbs wt and 6% body fat over 6 weeks easy to follow diet program and well explained workouts with online coaching support all the time.. Thanks Rad, Max for this incredible work ❤'
+            },
+            {
+                name: 'Daxa Patel',
+                image: 'https://lh3.googleusercontent.com/a-/AOh14GiCfn_DGGpOasxudOkM-cHsejlb-s7bcPm74kyENg=c0x00000000-cc-rp-s120',
+                text: "I had my weight out this weekend and I’m so happy to say that I met the goal of GTZ challenge! I lost 20 lbs and 2.4% body fat! I have tried so many fitness programs and diets and this is the first time something worked! I am so glad I saw GTZ on Facebook and called that first day and joined the challenge. I will continue on this journey but wanted to thank everyone at GTZ for all the motivation and support the coaches Scotty, Kimberly, Josh, and Arbi! Thanks to the online support for nutrition Radoslav Pavlov AccountabilityCoach ! Thanks GTZ for changing so many lives! ♥️"
+            },
+            {
+                name: 'RileyCoyote',
+                image: 'https://lh3.googleusercontent.com/a-/AOh14Gi3m1Bm1VmA20HKdvwvzSZnaD7xz6RY0iVKGaKEeA=c0x00000000-cc-rp-s120',
+                text: 'This is an amazing program for total body transformation! The team of coaches and the FB motivation group are both so motivating and encouraging. I took the 6-week challenge and got way more healthy and energetic feeling. I have some health issues and so my doctor was very pleased to see my health improvements at my last checkup. Over the course of the challenge I lost 20lbs exactly and plan to keep up with the diet and workouts. Thanks to the Gravity Transformation team!'
+            },
+            {
+                name: 'Johanna Badenhop',
+                image: 'https://lh3.googleusercontent.com/a-/AOh14GidJfkbQhbeqz9NCYXZ9pI5u8s0dUyXRguh0S9D=c0x00000000-cc-rp-s120',
+                text: 'Gravity Training Zone produces amazing results. I lost 20.4 lbs and 5.5% body fat in 6 weeks. The have taught me how to eat right (I was never hungry on the program) and the right exercises to tone up the whole body. They have totally reset my very sluggish metabolism with their excellent combination of diet plan and exercise program. I was so sore in the first week, but thanks to the wonderful coaches, I kept going and even increasing the weights I lifted later. The end result is amazing, I got a stronger and healthier me in the end.'
+            },
+            {
+                name: 'Evaldo Junior',
+                image: 'https://lh3.googleusercontent.com/a-/AOh14GiH1Yrgd0WYLOWGPUbFHPDi0zndNAuHJUAjLtOo=c0x00000000-cc-rp-s120',
+                text: 'Since I am 17 I try to have a shredded body! During 9 years I started working out almost 10 times, always giving up after a couple of weeks, as results were not coming. For the first time in my life, in ONLY 42 days my body responded just like I desired! Magic? No! By just following a plan, being consistent and having discipline, I lost 13 lb and 6.0 % body fat in only 42 days. I learned some much about how important it is to eat properly and to follow a correct workout plan! I hope my review stimulates real people like me to give these guys a chance to help them reach their goals. This review is 100 % mine and I am so glad to spend a couple of minutes to write that IT WAS WORTH IT! Give them a chance, it is impressive to see results!'
+            },
+            {
+                name: 'Niklaus Molina Panadero',
+                image: 'https://lh3.googleusercontent.com/a-/AOh14GguLml6Bg50v2VmSuJNpORQG2z6UEF-8c5AfY10Ng=c0x00000000-cc-rp-ba2-s120',
+                text: 'Tried The 6 Week Challenge and I can\'t believe it... I lost 10 Kg!!! The workouts are amazing both the in home and gym version, the videos in each week and the nutrition program are super duper awesome and helpful. It takes strength of will and effort but it is possible! Thank you guys for everything and for those of you that haven\'t decided yet don\'t hesitate, this is the best program I\'ve ever seen.'
             }
-        ];
+        ]
+        var html = '<div class="fp_quotes">'
+        html += '<h3 class="fp_quotes_header"> People of All Shapes and sizes have transformed their bodies </h3>'
+        html += '<div class="swiper-container swiper-container-quotes"><div class="swiper-wrapper">'
+        for (var i = 0; i < quotes.length; i++) {
+            html += '<div class="swiper-slide">'
+            html += '<div class="header">'
+            html += '<img src="' + quotes[i].image + '" >'
+            html += '<div class="name-rate"><h5 class="name">' + quotes[i].name + '</h5> <span class="rate">' + stars + '</span> </div>'
+            html += '</div>'
+            html += '<div class="description"> ' + quotes[i].text + ' </div>'
+            html += '</div>'
+        }
+
+        html += '</div>        </div>            <div class="swiper-pagination"></div> <div class="swiper-button-next"></div><div class="swiper-button-prev"></div>'
+        html += '</div>'
+        $('.fp_banner--moneyBack').after(html)
+    },
+    onlineCourseMaterials: function() {
+        var html = '<div class="fp_online-course">'
+        html += '<h3 class="header"> Online Course Materials </h3>'
+            // html+= '<img src="https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/online-course-materials.png">'
+            // html += '<span> Start your free challenge to see all weeks </span>'
+        html += '</div>'
+        $('.fp_quotes').after(html)
+    },
+    addWeeks: function() {
+        var weeks = [{
+                image: 'https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/week-1.png',
+                title: 'Week 1',
+                subtitle: 'Fat Loss Kickstarter',
+                items: ['Official Weigh In', ' In Home Workout Plan', 'Full Video Exercise Library ', 'Custom Nutrition / Meal Plan', ' Breaking Limiting Beliefs', ' Detailed Gym Training Program']
+            },
+            {
+                image: 'https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/week-2.png',
+                title: 'Week 2',
+                subtitle: 'Workout + Diet Accelerator',
+                items: ['Mindset Training', 'Cravings + Meal Coaching', 'Eating Out Guide', 'Travel Diet Hacks', 'Travel Workout Plans', 'Gym and Home Workouts']
+            },
+            {
+                image: 'https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/week-3.png',
+                title: 'Week 3',
+                subtitle: 'Motivation + Constant Coaching',
+                items: ['Dealing With Hunger', 'Breaking Food Addiction', 'Progressive Overload', 'Metabolic Conditioning', 'Cardio Acceleration', 'Gym and Home Workouts']
+            },
+            {
+                image: 'https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/week-4.png',
+                title: 'Week 4',
+                subtitle: 'Timing + Nutrition Intensive',
+                items: ['Training Your Mind', 'Calories + Macros Lesson', 'Control Insulin', 'Custom Nutrition / Meal Plan', 'Non Exercise Activity Thermogenesis', 'Gym and Home Workouts']
+            },
+            {
+                image: 'https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/week-5.png',
+                title: 'Week 5',
+                subtitle: 'Living A Healthy Lifestyle',
+                items: ['Overcoming Plateaus', 'Planning Ahead', 'Rapid Fat loss Plans', 'Metabolic Conditioning', 'Workout Structuring Lesson', 'Gym and Home Workouts']
+            },
+            {
+                image: 'https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/week-6.png',
+                title: 'Week 6',
+                subtitle: 'Wrap Up + Maintanence Plan',
+                items: ['Final Weigh Out', 'Setting Up Your Vision', 'Long Term Diet Planning', 'Maintenance Strategy', 'TRX + Kettlebells', 'Gym and Home Workouts']
+            }
+        ]
+        var html = '<div class="fp_weeks">'
+        html += '<div class="swiper-container swiper-container-weeks"><div class="swiper-wrapper">'
+
+
+
+        for (var i = 0; i < weeks.length; i++) {
+            html += '<div class="swiper-slide"><div>'
+            html += '<img class="fp_image" src="' + weeks[i].image + '" >'
+            html += '<div class="fp_header">'
+            html += '<div class="icon"> <img src="https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/todo.svg"> </div>'
+            html += '<div class="title"> <h3> ' + weeks[i].title + ' </h3> <span>' + weeks[i].subtitle + '</span> </div>'
+            html += '</div>'
+
+            html += '<ul>'
+            for (var j = 0; j < weeks[i].items.length; j++) {
+                html += '<li> ' + weeks[i].items[j] + ' </li>'
+            }
+
+            html += '</ul>'
+            html += '</div></div>'
+        }
+
+
+
+
+        html += '</div></div> <div class="swiper-button-next"></div><div class="swiper-button-prev"></div>'
+        html += '<div class="fp_nextWeeks "> See Next 3 Weeks <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.37341 5.77958L1.23486 1.11438C1.0665 0.961615 0.793923 0.961872 0.625846 1.11517C0.4579 1.26844 0.458334 1.51673 0.626714 1.66961L5.4594 6.05715L0.626541 10.4447C0.458182 10.5976 0.457748 10.8457 0.625673 10.999C0.709928 11.0758 0.820308 11.1143 0.930689 11.1143C1.04079 11.1143 1.15073 11.0761 1.23484 10.9998L6.37341 6.3347C6.4545 6.26125 6.5 6.16129 6.5 6.05715C6.5 5.953 6.45437 5.85316 6.37341 5.77958Z" fill="#401675" stroke="#401675"/><path d="M11.3734 5.77958L6.23486 1.11438C6.0665 0.961615 5.79392 0.961872 5.62585 1.11517C5.4579 1.26844 5.45833 1.51673 5.62671 1.66961L10.4594 6.05715L5.62654 10.4447C5.45818 10.5976 5.45775 10.8457 5.62567 10.999C5.70993 11.0758 5.82031 11.1143 5.93069 11.1143C6.04079 11.1143 6.15073 11.0761 6.23484 10.9998L11.3734 6.3347C11.4545 6.26125 11.5 6.16129 11.5 6.05715C11.5 5.953 11.4544 5.85316 11.3734 5.77958Z" fill="#401675" stroke="#401675"/></svg> </div>'
+        html += '</div>'
+        $('.fp_online-course').after(html)
+
+        $(document).on('click', '.fp_nextWeeks', function() {
+            $('.fp_weeks .swiper-button-next').click();
+        })
+    },
+    timer: function() {
+        $('font:contains("6 WEEK BODY")').closest('.row').hide()
+        $('font:contains("6 WEEK BODY")').closest('.row').next('.row').hide();
+        $('.ne div:contains("Registration Closing")').hide()
+        $('div:contains("Registration Closing")').closest('.de').next('div').addClass('fp_timer')
+        $('.fp_registeration-text').next('div').hide();
+        $('.fp_registeration-text').closest('.de').css('margin-top', '-20px')
+        $('div:contains("Registration Closing")').closest('.col-inner').children('div.de').children('a.elButton:contains("Closing Soon")').hide();
+
+
+        $(".fp_timer .is-countdown").wrap("<div class='fp_leftSide'></div>");
+
+
+        $('.fp_leftSide').prepend('<div class="fp_registeration-text">Registration Closing In:</div>')
+
+        var html = '<div class="fp_rightSide"><div class="fp_price">'
+        html += '<span> Was $500 </span> <p> Now $100 </p>'
+        html += '</div></div>'
+        $('.fp_timer').closest('.de').append(html)
+
+        var sticky = '<a target="_blank" href="' + $('.elButton span:contains("RESERVE YOUR SPOT")').eq(2).closest('a').attr('href') + '" class="fp_timer_cta"> Reserve Your Spot </a>'
+        $('.fp_rightSide').append(sticky)
+
+        var slogan = '<div class="fp_join"> Join Our Money-Back Guarantee Challenge </div>'
+
+        $('.fp_rightSide').append(slogan)
+
+    },
+    sixWeekBody: function() {
+        // $('.fp_timer').closest('.row').css('background-color','#FAFAFA')
+        var images = [
+            'https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/sixweek-1-(1).png',
+            'https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/sixWeek-2.png',
+            'https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/sixWeek-3.png',
+            'https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/sixWeek-4.png',
+            'https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/sixWeek-5.png',
+            'https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/sixWeek-6.png',
+        ]
+        var html = '<div class="fp_sixWeek">'
+        html += '<div class="header"> 6 Week Body Transformation Challenge </div>'
+        html += '<div class="subheader"> OVER 15.000 Success Stories And Counting... Will You Be Next? </div>'
+
+
+
+
+        html += '<div class="swiper-container swiper-container-sixWeek"><div class="swiper-wrapper">'
+        for (var i = 0; i < images.length; i++) {
+            html += '<div class="swiper-slide">'
+            html += '<img src="' + images[i] + '" >'
+            html += '</div>'
+        }
+
+        html += '</div>                    <div class="swiper-scrollbar"></div></div>'
+
+
+
+
+        html += '</div>'
+        $('.fp_timer').closest('.de').after(html)
+
+    },
+    purpleBanner: function() {
+        var html = '<div class="fp_purpleBanner">'
+        html += '<div class="column"> <span> 100% </span> <p> Money-Back <br> Guarantee </p> </div>'
+        html += '<div class="column"> <span> 93% </span> <p> Of People <br> Hit Their Goals </p> </div>'
+        html += '<div class="column"> <span> LIFETIME </span> <p> Access <br> To materials </p> </div>'
+        html += '<div class="column"> <span> PROVEN </span> <p> Lose-Weight  <br> Program </p> </div>'
+        html += '</div>'
+        $('.fp_sixWeek').after(html)
+    },
+    removeExtras: function() {
+        $('span:contains("Lose 5% body fat or 10% Body Weight and the challenge is")').closest('.de').hide();
+        $('div.ne:contains("Only Join if You\'re Ready to Get in The")').closest('.row').hide()
+        $('div.ne:contains("Only Join if You\'re Ready to Get in The")').closest('.row').nextAll('.row').hide();
+        $('div:contains("Disclaimer: Results may vary depending on starting point, goals")').closest('.container').css('margin-top', '-55px');
+        $('.fp_timer').closest('.row').children('div').children('div').children('div').children('a:contains("Yes")').hide()
+    },
+    addCTA: function() {
+        var sticky = '<div class="fp_new_sticky_container">'
+        sticky += '<img class="fp_new_sticky_image" src="https://gravitychallenges.com/hosted/images/ca/0796f0530f11e8b28695bada5c63d9/Mobile-Workouts.png" >'
+        sticky += '<div class="fp_new_sticky_slogan"><p> It’s not a program, it’s a lifestyle change </p> <span>Money-Back Guarantee & Lifetime Access</span></div> <a target="_blank" class="fp_new_sticky_btn" href="#" > Reserve Your Spot </a>'
+        sticky += '</div>'
+
+        $('body').prepend(sticky);
+
+        var height;
+
+        $(window).on('load', function() {
+
+            if ($('.elButton span:contains("CHALLENGE ACCEPTED")').length) {
+
+                $('.fp_new_sticky_btn').attr('href', $('.elButton span:contains("CHALLENGE ACCEPTED")').eq(2).closest('a').attr('href'))
+
+            } else {
+                $('.fp_new_sticky_btn').attr('href', $('.elButton span:contains("RESERVE YOUR SPOT")').eq(2).closest('a').attr('href'))
+
+            }
+
+
+        })
+
+        $(window).scroll(function() {
+
+            if ($('.elButton span:contains("CHALLENGE ACCEPTED")').length) {
+                // Muscle page
+                height = $('div:contains("Before you run off with your macros")').closest('.container').offset().top
+            } else {
+                // Optin page
+                height = $('div:contains("6 WEEK BODY TRANSFORMATION CHALLENGE")').closest('.container').offset().top
+            }
+
+            if ($(this).scrollTop() + window.innerHeight > height) {
+                // console.log($(this).scrollTop(), 'HEIGHT>>>>>: ', height)
+                $('.fp_new_sticky_container').css('bottom', '0')
+            }
+            if ($(this).scrollTop() + window.innerHeight < height) {
+                // console.log($(this).scrollTop(), 'HEIGHT<<<: ', height)
+                $('.fp_new_sticky_container').css('bottom', '-150px')
+            }
+        })
+
+    },
+    attachEvents: function() {
+
+        $(window).on('load', function() {
+
+
+
+            $('.fp_new_sticky_cta').on('click', function() {
+                console.log("EVENT")
+                window._fpEvent.push(["eventConversion", {
+                    value: "allCTAsClick"
+                }]);
+            })
+
+
+            // All original cta clicks
+            // Muscles
+            $('.elButton span:contains("CHALLENGE ACCEPTED")').closest('a').on('click', function() {
+                console.log("EVENT")
+                window._fpEvent.push(["eventConversion", {
+                    value: "allCTAsClick"
+                }]);
+            })
+
+            $('.elButton span:contains("ready to start this challenge")').closest('a').on('click', function() {
+                console.log("EVENT")
+                window._fpEvent.push(["eventConversion", {
+                    value: "allCTAsClick"
+                }]);
+            })
+
+
+            // Optin Orange and Red
+            $('.elButton span:contains("RESERVE YOUR SPOT")').closest('a').on('click', function() {
+                console.log("EVENT")
+                window._fpEvent.push(["eventConversion", {
+                    value: "allCTAsClick"
+                }]);
+            })
+
+            $('.elButton span:contains("EVERYTHING FOR JUST $100")').closest('a').on('click', function() {
+                console.log("EVENT")
+                window._fpEvent.push(["eventConversion", {
+                    value: "allCTAsClick"
+                }]);
+            })
+
+
+
+
+        })
+
+
+
+
     },
     swiperJS: function() {
 
@@ -4592,12 +4766,32 @@ var FP_LP_DONATIONS_TRUST = {
 
 
 
+        setTimeout(function() {
+            var swiper = new Swiper('.swiper-container-quotes', {
+                slidesPerView: 3,
+                // slidesPerGroup: 3,
+                spaceBetween: 28,
+                autoHeight: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        }, 1000);
 
 
-        var swiper = new Swiper('.swiper-container', {
+
+        var swiper = new Swiper('.swiper-container-weeks', {
             slidesPerView: 3,
-            spaceBetween: 30,
-            simulateTouch: false,
+            slidesPerGroup: 3,
+            spaceBetween: 15,
+            autoHeight: true,
+            pagination: {
+                el: '.swiper-pagination',
+            },
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
@@ -4605,236 +4799,17 @@ var FP_LP_DONATIONS_TRUST = {
         });
 
 
-    },
-    getProducts: function() {
+        var swiper2 = new Swiper('.swiper-container-sixWeek', {
+            slidesPerView: 2,
+            spaceBetween: 0,
+            scrollbar: {
+                el: '.swiper-scrollbar',
+                hide: true,
+            },
 
-        var that = this;
-        var html = '<div class="swiper-container"><div class="swiper-wrapper"></div></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div>'
-        $('.fp_modal_content').append(html);
-
-
-        function addSlide(image, title, options, id, price, url) {
-            var temp = price.split('$ ')[1]
-            temp = parseInt(temp)
-                // console.log('TEMP: ', temp, price.split('$ '))
-            var html = '<div class="swiper-slide fp_slide">'
-            html += '<img class="fp_slide_image" src="' + image + '" >'
-            html += '<a class="fp_slide_title" href="' + url + '" >' + title + '</a>'
-            html += options
-            html += '<div class="fp_slide_price"><div>' + price + '</div></div>'
-            html += '<button class="lo-btn AddToCart" data-id="' + id + '"> Add To Cart </button>'
-            html += '</div>'
-
-            $('.swiper-wrapper').append(html)
-        }
-
-
-        function getProduct(url, id, i) {
-            jQuery.ajax({
-                url: url,
-                type: 'get',
-            }).then(function(data) {
-                a = $('<div>' + data + '');
-                // console.log(a)
-
-                var image = a.find('.popup-image > img').attr('src')
-                var title = a.find('.product-single__header').text();
-                var options = a.find('.variant-options').html()
-                var price = a.find('.product-single__price').text();
-                addSlide(image, title, options, id, price, url)
-
-                // console.log(i, jsProducts.length)
-                if (i == jsProducts.length - 1) {
-                    that.swiperJS()
-                    setTimeout(function() {
-                        that.adjustProducts()
-
-                    }, 400);
-                }
-            })
-        }
-
-        for (var i = 0; i < jsProducts.length; i++) {
-            getProduct(jsProducts[i]['url'], jsProducts[i]['id'], i)
-        }
-    },
-    adjustProducts: function() {
-        $('.swatch').removeClass('hide-small')
-        $('.swatch').removeClass('hide-medium')
-        $('.swatch-element').parent('div').addClass('fp_colors');
-        this.setMagnification();
-        this.changeColor();
-
-
-        $(document).on('click', '.AddToCart', function() {
-            var id = $(this).attr('data-id')
-            jQuery.ajax({
-                url: '/cart/add.js',
-                type: 'post',
-                dataType: 'json',
-                data: {
-                    id: id,
-                }
-                // Optional: success/error functions
-            }).then(function(data) {
-                // console.log(data);
-                localStorage.setItem('fpModalShow', 'false');
-
-                var url = new URL(location.href);
-                url.searchParams.append('discount', 'BUNDLE10');
-
-                window.location.href = url
-            })
-        })
-    },
-    setMagnification: function() {
-        var magnification;
-
-        function editDefaultMagnifications() {
-            $('.swiper-slide').each(function() {
-                var id = $(this).children('#productSelect').children('option:contains("' + magnification + '")').attr('value');
-                $(this).children('.AddToCart').attr('data-id', id)
-
-
-                // FixColor
-                // var selectedColor = $(this).children('.swatch').children('.fullwidth').children('div[layout="column"]').children('.fp_colors').children('.swatch-element').eq(0).children('div').text();
-                $(this).children('.swatch.clearfix[data-option-index="1"]').before('<div class="fp_selectedColor"> ' + 'Black' + '</div>')
-                    // $($('.swatch-active').parent()[0]).children('.tooltip').text()
-            })
-        }
-
-
-        jQuery.ajax({
-            url: '/cart.js',
-            type: 'get',
-            dataType: 'json',
-            // Optional: success/error functions
-        }).then(function(data) {
-            // console.log('Cart', data);
-            if (data.items && data.items.length) {
-                magnification = data.items[0].variant_options[1]
-                $('.swatch.clearfix[data-option-index=1] .fullwidth .swatch-element[data-value="' + magnification + '"]').addClass('active');
-                $('.swatch.clearfix[data-option-index=1]').append('<div class="fp_magnification"> <span>' + magnification + '</span> <div> Edit </div> </div>')
-                editDefaultMagnifications();
-
-            }
-
-        })
-
-        $(document).on('click', '.fp_magnification div', function() {
-            $(this).closest('.fp_magnification').hide();
-            $(this).closest('.swatch.clearfix[data-option-index=1]').children('.fullwidth').css('display', 'flex')
-        });
-
-        $(document).on('click', '.swatch-element.magnify', function() {
-            if (!$(this).hasClass('soldout')) {
-                var mag = $(this).attr('data-value')
-                $('.swatch-element').removeClass('active');
-                $('.swatch-element[data-value="' + mag + '"]').addClass('active');
-
-                var id = $(this).closest('.fp_slide').children('#productSelect').children('option:contains("' + mag + '")').attr('value');
-                $(this).closest('.fp_slide').children('.AddToCart').attr('data-id', id)
-            }
-        })
-    },
-    changeColor: function() {
-
-        $('.swatch-element').each(function() {
-            var $t = $(this);
-            $t.attr({
-                    dataTarget: $t.attr('onclick')
-                })
-                .removeAttr('onclick');
         });
 
 
-        $(document).on('click', '.swatch-element[dataTarget*=location] > label', function() {
-            var url = $(this).closest('.swatch-element').attr('dataTarget').split('href=')[1];
-            url = url.substring(2, url.length - 1)
-                // console.log('hi', url)
-            var id = url.split('=')[1]
-            var color = $(this).closest('div').children('.tooltip').text()
-            var that = this;
-            $(that).closest('.fullwidth').children('div').children('.fp_colors').children('div').children('label').removeClass('swatch-active');
-
-            jQuery.ajax({
-                url: 'https://www.lookoptic.com/' + url,
-                type: 'get',
-            }).then(function(data) {
-                a = $('<div>' + data + '');
-
-                var image = a.find('.popup-image > img').attr('src')
-
-                $(that).closest('.fp_slide').children('.fp_slide_image').attr('src', image)
-
-
-                // change color's text
-                if ($(that).closest('.swatch').children('div').children('div').eq(0).text().includes(color)) {
-                    $(that).closest('.fp_slide').children('.fp_selectedColor').text(color);
-                } else {
-                    $(that).closest('.fp_slide').children('.fp_selectedColor').html('<span>Limited Edition </span>' + color);
-                }
-
-
-                // change magnifications select box
-                var selectBox = a.find('#productSelect')
-                    // console.log(selectBox)
-                $(that).closest('.fp_slide').children('#productSelect').html($(selectBox).html())
-
-
-
-                var mag = $(that).closest('.fp_slide').children('.swatch.clearfix[data-option-index="1"]').children('.fullwidth').children('.swatch-element.active').attr('data-value')
-
-                var newId = $(that).closest('.fp_slide').children('#productSelect').children('option:contains("' + mag + '")').attr('value');
-                // Change button id
-                $(that).closest('.fp_slide').children('.AddToCart').attr('data-id', newId)
-
-
-
-                $(that).addClass('swatch-active')
-
-
-                // checkSoldout
-                var i = 0
-                $(that).closest('.fp_slide').children('#productSelect').children('option').each(function() {
-                    if ($(this).is(':disabled')) {
-                        $(that).closest('.fp_slide').children('.swatch.clearfix[data-option-index="1"]').children('.fullwidth').children('div').eq(i).removeClass('active')
-
-                        $(that).closest('.fp_slide').children('.swatch.clearfix[data-option-index="1"]').children('.fullwidth').children('div').eq(i).addClass('soldout')
-                    } else {
-
-                        $(that).closest('.fp_slide').children('.swatch.clearfix[data-option-index="1"]').children('.fullwidth').children('div').eq(i).removeClass('soldout')
-                    }
-                    i++
-                })
-
-
-
-
-
-                $(that).closest('.fp_slide').children('.swatch.clearfix[data-option-index="1"]').children('.fp_magnification').children('div').click()
-
-
-            })
-
-
-
-        })
-
-
-
     },
-    attachEvents: function() {
-        $('#AddToCart').on('click', function() {
-            window._fpEvent.push(["eventConversion", {
-                value: "addToCart_click"
-            }]);
-        })
-
-
-
-
-
-    }
 
 }.init();

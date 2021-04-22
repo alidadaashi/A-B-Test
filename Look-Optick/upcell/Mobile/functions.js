@@ -1,5 +1,8 @@
 var FP_LP_DONATIONS_TRUST = {
     init: function() {
+        $('span:contains("BUNDLE10")').closest('.tag').hide();
+        $('span:contains("BUNDLE10")').closest('.reduction-code').hide();
+        this.checkDiscount();
         if (!localStorage.getItem('fpModalShow')) {
             this.checkCart();
         }
@@ -20,6 +23,33 @@ var FP_LP_DONATIONS_TRUST = {
             $('.fp_modal').css('z-index', '9');
         }, 5000);
     },
+    checkDiscount: function() {
+        var i;
+        var that = this
+        jQuery.ajax({
+            url: '/cart.js',
+            type: 'get',
+            dataType: 'json',
+            // Optional: success/error functions
+        }).then(function(data) {
+            // console.log('Cart', data);
+            i = data.items.length
+            data.items.forEach(function(a) {
+                    // console.log('>>>>', a.product_type)
+                    if (a.product_title.includes('Kids')) {
+                        i--
+                    }
+                })
+                // console.log('I: ', i)
+            if (i < 2) {
+                // Remove the coupon
+                // console.log('Coupon should be removed')
+                if ($('span:contains("BUNDLE10")').length) {
+                    $('.tag__button').click()
+                }
+            }
+        })
+    },
     checkCart: function() {
         var i;
         var that = this
@@ -29,15 +59,15 @@ var FP_LP_DONATIONS_TRUST = {
             dataType: 'json',
             // Optional: success/error functions
         }).then(function(data) {
-            console.log('Cart', data);
+            // console.log('Cart', data);
             i = data.items.length
             data.items.forEach(function(a) {
-                console.log('>>>>', a.product_type)
-                if (a.product_title.includes('Kids')) {
-                    i--
-                }
-            })
-            console.log('I: ', i)
+                    // console.log('>>>>', a.product_type)
+                    if (a.product_title.includes('Kids')) {
+                        i--
+                    }
+                })
+                // console.log('I: ', i)
             if (i) {
                 that.start()
             }
@@ -4582,7 +4612,7 @@ var FP_LP_DONATIONS_TRUST = {
         function addSlide(image, title, options, id, price) {
             var temp = price.split('$ ')[1]
             temp = parseInt(temp)
-            console.log('TEMP: ', temp, price.split('$ '))
+                // console.log('TEMP: ', temp, price.split('$ '))
             var html = '<div class="swiper-slide fp_slide">'
             html += '<img class="fp_slide_image" src="' + image + '" >'
             html += '<a class="fp_slide_title">' + title + '</a>'
@@ -4601,7 +4631,7 @@ var FP_LP_DONATIONS_TRUST = {
                 type: 'get',
             }).then(function(data) {
                 a = $('<div>' + data + '');
-                console.log(a)
+                // console.log(a)
 
                 var image = a.find('.popup-image > img').attr('src')
                 var title = a.find('.product-single__header').text();
@@ -4609,7 +4639,7 @@ var FP_LP_DONATIONS_TRUST = {
                 var price = a.find('.product-single__price').text();
                 addSlide(image, title, options, id, price)
 
-                console.log(i, jsProducts.length)
+                // console.log(i, jsProducts.length)
                 if (i == jsProducts.length - 1) {
                     that.swiperJS()
                     setTimeout(function() {
@@ -4644,12 +4674,12 @@ var FP_LP_DONATIONS_TRUST = {
                 }
                 // Optional: success/error functions
             }).then(function(data) {
-                console.log(data);
+                // console.log(data);
                 localStorage.setItem('fpModalShow', 'false');
 
 
                 var url = new URL(location.href);
-                url.searchParams.append('discount', 'SOMETHINGFANCY10');
+                url.searchParams.append('discount', 'BUNDLE10');
 
                 window.location.href = url
 
@@ -4679,7 +4709,7 @@ var FP_LP_DONATIONS_TRUST = {
             dataType: 'json',
             // Optional: success/error functions
         }).then(function(data) {
-            console.log('Cart', data);
+            // console.log('Cart', data);
             if (data.items && data.items.length) {
                 magnification = data.items[0].variant_options[1]
                 $('.swatch.clearfix[data-option-index=1] .fullwidth .swatch-element[data-value="' + magnification + '"]').addClass('active');
