@@ -1,27 +1,33 @@
 var FP_LP_DONATIONS_TRUST = {
     init: function() {
-        $('span:contains("BUNDLE10")').closest('.tag').hide();
-        $('span:contains("BUNDLE10")').closest('.reduction-code').hide();
-        this.checkDiscount();
-        if (!localStorage.getItem('fpModalShow')) {
-            this.checkCart();
+        if (window.location.href.includes('/checkouts/')) {
+            $('span:contains("BUNDLE10")').closest('.tag').hide();
+            $('span:contains("BUNDLE10")').closest('.reduction-code').hide();
+            if (localStorage.getItem('added') == 'true' && localStorage.getItem('once') == 'true') {
+                localStorage.setItem('once', false)
+                var url = new URL(location.href);
+                url.searchParams.append('discount', 'BUNDLE10');
+
+                window.location.href = url
+            }
+            this.checkDiscount();
+        } else {
+            this.checkDiscount();
+            if (!localStorage.getItem('fpModalShow') && $(window).width() > 340) {
+                this.checkCart();
+            }
         }
+
+
 
     },
     start: function() {
-        localStorage.setItem('fpModalShow', 'false')
+        // localStorage.setItem('fpModalShow', 'false')
         this.addModal();
         this.defineProducts();
         this.getProducts();
         this.attachEvents();
-        setTimeout(function() {
-            $('body').prepend('<link class="amazing" rel="stylesheet" rel="preload" href="//cdn.shopify.com/s/files/1/0797/7215/t/313/assets/lo-main-alt.scss.css?v=7269078551120231796" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">')
-            $('body').prepend('<link class="amazing" rel="preconnect" href="https://stamped.io" crossorigin="anonymous"><link class="amazing" rel="stylesheet" rel="preload" href="//cdn.shopify.com/s/files/1/0797/7215/t/313/assets/timber.scss.css?v=2575031289169295196" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">')
-        }, 4500);
-        setTimeout(function() {
-            $('.fp_modal').css('top', '0');
-            $('.fp_modal').css('z-index', '9');
-        }, 5000);
+
     },
     checkDiscount: function() {
         var i;
@@ -76,29 +82,35 @@ var FP_LP_DONATIONS_TRUST = {
 
     },
     addModal: function() {
+        $('#CartSubmit').addClass('tempBtn');
+        $(document).on('click', '.tempBtn', function(e) {
+            localStorage.setItem('fpModalShow', 'false')
+            $('button').removeClass('tempBtn');
+            e.preventDefault();
+            $('.fp_modal').css('top', '0');
+            $('.fp_modal').css('z-index', '999999');
+        })
         var closeIcon = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L15 15" stroke="#878787" stroke-width="2" stroke-miterlimit="1.5" stroke-linejoin="round"/><path d="M15 1L1 15" stroke="#878787" stroke-width="2" stroke-miterlimit="1.5" stroke-linejoin="round"/></svg>'
         var header = '<h2 class="fp_modal_title">  Add Another Pair And Get 10% OFF Your Entire Order </h2>'
         var subHeader = '<h4 class="fp_modal_subtitle"> This will be applied with other discounts if available. </h4>'
 
         var html = '<div class="fp_modal">'
         html += '<div class="fp_modal_content">'
-        html += '<span class="fp_close">' + closeIcon + '</span>'
+        html += '<span class="fp_close2">' + closeIcon + '</span>'
         html += header + subHeader
         html += '<span class="fp_continue"> Continue Checkout </span>'
         html += '</div>'
         html += '</div>'
         $('body').append(html)
 
-        $(document).on('click', '.fp_close', function() {
+        $(document).on('click', '.fp_close2', function() {
             $('.fp_modal').fadeOut();
             localStorage.setItem('fpModalShow', 'false')
             $('body > link.amazing').remove()
         })
 
         $(document).on('click', '.fp_continue', function() {
-            $('.fp_modal').fadeOut();
-            localStorage.setItem('fpModalShow', 'false')
-            $('body > link.amazing').remove()
+            $('#CartSubmit').click();
         })
 
     },
@@ -4676,12 +4688,13 @@ var FP_LP_DONATIONS_TRUST = {
             }).then(function(data) {
                 // console.log(data);
                 localStorage.setItem('fpModalShow', 'false');
+                localStorage.setItem('added', 'true')
+                localStorage.setItem('once', true)
+                $('#CartSubmit').click();
+                // var url = new URL(location.href);
+                // url.searchParams.append('discount', 'BUNDLE10');
 
-
-                var url = new URL(location.href);
-                url.searchParams.append('discount', 'BUNDLE10');
-
-                window.location.href = url
+                // window.location.href = url
 
 
 
@@ -4822,9 +4835,22 @@ var FP_LP_DONATIONS_TRUST = {
 
     },
     attachEvents: function() {
-        $('#AddToCart').on('click', function() {
+        $(document).on('click', '.fp_modal .AddToCart', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "addToCart_click"
+            }]);
+        })
+
+        $(document).on('click', '.fp_close2', function() {
+            window._fpEvent.push(["eventConversion", {
+                value: "exit_click"
+            }]);
+        })
+
+
+        $(document).on('click', '.fp_continue', function() {
+            window._fpEvent.push(["eventConversion", {
+                value: "continue_checkout_click"
             }]);
         })
 

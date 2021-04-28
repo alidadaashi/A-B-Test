@@ -18,7 +18,7 @@
         width: 90vw;
         /* height: 76vh; */
         margin: auto;
-        overflow: hidden;
+        /*overflow: hidden;*/
         margin-top: 12vh;
         background-color: #FFF;
         padding: 60px 45px 85px;
@@ -26,7 +26,7 @@
         position: relative;
         max-width: 1020px;
     }
-    .fp_close {
+    .fp_close2 {
         cursor: pointer;
         float: right;
         position: relative;
