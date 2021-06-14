@@ -3,6 +3,13 @@
     color: #FFF;
 }
 
+.cta,
+.elVideoWrapper a,
+.fp_newOne,
+{
+    background-color: #ff1501 !important;
+}
+
 .fp_banner_header {
     padding: 0 16px 14px;
     display: flex;
@@ -396,40 +403,4 @@ a.fp_timer_cta {
     font-weight: 300;
     font-family: 'Fira Sans';
     text-decoration: capitalize;
-}
-
-
-/* CTA CODES */
-
-.fp_new_sticky_cta {
-    position: fixed;
-    width: 100%;
-    height: 50px;
-    background-color: #FF1400;
-    color: #FFF;
-    cursor: pointer;
-    text-decoration: none !important;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    bottom: -100px;
-    z-index: 99999;
-    transition: .3s all ease-in-out;
-    font-weight: 600;
-}
-
-.fp_newOne {
-    width: auto !important;
-    padding: 10px 30px !important;
-}
-
-div.iframeBlocker {
-    z-index: 999 !important;
-}
-
-.fp_quotes_header {
-    font-size: 20px;
-    text-transform: capitalize;
-    font-weight: 500;
 }

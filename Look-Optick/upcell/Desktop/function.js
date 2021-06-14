@@ -106,8 +106,8 @@ var FP_LP_DONATIONS_TRUST = {
         $('body').append(html)
 
         $(document).on('click', '.fp_close2', function() {
+            $('#CartSubmit').click();
             $('.fp_modal').fadeOut();
-            localStorage.setItem('fpModalShow', 'false')
             $('body > link.amazing').remove()
         })
 

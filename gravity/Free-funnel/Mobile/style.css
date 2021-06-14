@@ -1,0 +1,1032 @@
+/* Custom css codes */
+
+iframe.cf-sticky-video-active {
+    position: absolute !important;
+    left: initial !important;
+    top: 0 !important;
+}
+
+.fp_mobile_scetion_container .fp_newOne {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: calc(100% - 40px);
+}
+
+.fp-nocredit {
+    padding: 0 20px;
+    margin: 20px auto;
+}
+
+.fp-nocredit h6 {
+    font-size: 14px;
+    color: #494949;
+    font-weight: 600;
+}
+
+.fp-nocredit span {
+    color: #494949;
+    font-weight: 300;
+    font-family: 'Fira Sans';
+}
+
+.fp_weeks.fp_freeIncluded h3 {
+    font-size: 20px !important;
+    margin-bottom: 23px;
+    color: #1A1027;
+    font-weight: 600;
+    position: relative;
+}
+
+.fp_freeIncluded h3:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 35px;
+    height: 3px;
+    background: #55229a;
+}
+
+.fp_freeIncluded.fp_weeks {
+    background: #FAFAFA;
+}
+
+.fp_weeks_cta,
+.fp_weeks_cta:hover {
+    box-shadow: none;
+    border: none;
+    padding: 9px 20px;
+    margin: 40px auto 0;
+    display: block;
+    width: max-content;
+    width: calc(100% - 40px);
+    color: rgb(255, 255, 255);
+    font-family: 'LATO';
+    font-weight: 600;
+    font-size: 16px !important;
+    background-color: rgb(255, 20, 0);
+}
+
+.fp_weeks_cta span {
+    color: white !important;
+}
+
+.fp_youngMan {
+    background: linear-gradient(180deg, rgba(26, 16, 39, 0.26) 0%, rgba(26, 16, 39, 0.822945) 76.56%, #1A1027 100%), url(https://gravitychallenges.com/hosted/images/de/23186097ef11e8ba63dbbed2bf6fec/MAL_1641.jpg);
+    padding: 190px 16px 30px;
+    background-size: cover;
+    color: #FFF;
+}
+
+.fp_youngMan h3 {
+    font-weight: 600;
+    font-family: 'Fira Sans';
+    font-size: 18px;
+    margin-bottom: 15px;
+    line-height: 21.5px;
+}
+
+.fp_youngMan p {
+    font-family: 'Fira Sans';
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 19px;
+    margin-bottom: 15px;
+}
+
+.fp_youngMan>span {
+    text-align: right;
+    width: 100%;
+    display: block;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.fp_youngMan>span strong {
+    font-weight: 600;
+    font-style: initial;
+}
+
+div.fp_modal.containerModal.midContainer {
+    border: none !important;
+    border-radius: 0;
+    width: calc(100% - 20px) !important;
+    margin-left: 10px !important;
+    padding: 24px 16px 16px !important;
+}
+
+.closeLPModal svg {
+    top: 32px;
+    position: relative;
+    right: 16px;
+}
+
+.fp_modal-header>h3 {
+    font-family: 'Lato';
+    font-weight: 700;
+    color: #5D24A6;
+    text-align: center;
+}
+
+.fp_modal-header>h3:after {
+    content: '';
+    display: block;
+    height: 3px;
+    background-color: #5D24A6;
+    width: 35px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.fp_modal-header>p {
+    color: #494949;
+    font-size: 12px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 18px;
+}
+
+label.fp_modal-label {
+    font-weight: 400;
+    text-align: left;
+    width: 100%;
+    font-family: 'Fira Sans';
+}
+
+.fp_modal input::-webkit-input-placeholder {
+    /* Edge */
+    font-family: Fira Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(51, 51, 51, 0.3);
+}
+
+.fp_modal input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-family: Fira Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(51, 51, 51, 0.3);
+}
+
+.fp_modal input::placeholder {
+    font-family: Fira Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(51, 51, 51, 0.3);
+}
+
+a.fp_modal-btn {
+    background-color: #6724BF !important;
+    border: none;
+    height: 39px;
+    font-size: 16px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fp_modal-slogan:before {
+    display: none;
+}
+
+.fp_modal-slogan {
+    font-family: Fira Sans;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #494949;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+.containerWrapper {
+    background-color: #FFF;
+}
+
+.fp_logo {
+    background-color: #FFF;
+    padding: 11px 14px;
+}
+
+.fp_logo img {
+    width: 80px;
+}
+
+.fp_hero {
+    background-image: url(https://variations-cdn.figpii.com/variations/gravitychallenges/optin-lp/hero-v2-minified.png);
+    padding: 30px 15px 30px 15px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-transform: capitalize;
+    max-height: 270px;
+    background-position: 0 -10px;
+    margin-bottom: 90px;
+}
+
+.fp_hero p {
+    font-weight: 700;
+    font-family: Lato;
+    color: #FFF;
+    font-size: 24px;
+    line-height: 38px;
+}
+
+.fp_hero p span {
+    border-bottom: 2px solid #FFF;
+    padding-bottom: 7px;
+}
+
+.fp_hero .title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 26.4px;
+    color: #FFF;
+    font-family: 'Lato';
+    margin-top: 36px;
+}
+
+.fp_hero .subtitle {
+    color: #FFF;
+    font-family: 'Lato';
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 21px;
+    text-transform: none;
+    margin-top: -10px !important;
+    margin-bottom: 20px;
+}
+
+.fp_freeplan_container {
+    padding: 17px 15px;
+    /*background-color: #FFF;*/
+}
+
+.fp_accessBtn {
+    width: 300px;
+    display: block;
+    margin: auto;
+    text-align: center;
+    color: #FFF;
+    height: 40px;
+    border-radius: 3px;
+    background-color: #5820A0;
+    font-weight: 400;
+    font-size: 18px;
+    border: none;
+    text-transform: capitalize;
+}
+
+.fp_watch {
+    font-weight: 300;
+    color: #1A1027;
+    font-size: 14px;
+    line-height: 19px;
+    display: block;
+    margin: 8px auto;
+    border-bottom: 1px solid #99979e;
+    text-align: center;
+    width: max-content;
+    font-family: 'Lato';
+    cursor: pointer;
+}
+
+.fp_freeplan {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    padding: 18px 14px;
+}
+
+.fp_freeplan .title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21.6px;
+    color: #000;
+    font-family: 'Lato';
+}
+
+.fp_freeplan .subtitle {
+    font-weight: 300;
+    font-size: 14px;
+    font-family: 'Lato';
+    line-height: 20px;
+}
+
+.fp_freeplan_item {
+    border-bottom: 1px solid #F4F4F4;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+}
+
+.fp_freeplan_item:last-child {
+    border-bottom: none;
+}
+
+.fp_freeplan_item .label {
+    color: #000;
+    font-size: 16px;
+    font-family: 'Lato';
+    font-weight: 300;
+}
+
+.fp_freeplan_item .label img {
+    margin-right: 5px;
+}
+
+
+/*.fp_mobile_scetion_container,*/
+
+
+/*.fp_freeplan{*/
+
+
+/*	display: none;*/
+
+
+/*}*/
+
+.fp_mobile_scetion_container .elButton,
+.fp_video_container .elButton {
+    box-shadow: none;
+    border: none;
+    padding: 10px 50px;
+    margin: auto;
+    display: block;
+    width: max-content;
+}
+
+.fp_mobile_scetion_container span.elButtonMain,
+.fp_video_container span.elButtonMain {
+    font-weight: 700;
+    font-size: 16px;
+    font-family: 'Lato';
+}
+
+.fp_mobile_scetion_container span.elButtonSub,
+.fp_mobile_scetion_container span.elButtonMain i,
+.fp_video_container span.elButtonSub,
+.fp_video_container span.elButtonMain i {
+    display: none;
+}
+
+.fp_mobile_scetion {
+    display: flex;
+    align-items: center;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.fp_mobile_scetion img {
+    max-width: 86px;
+}
+
+.fp_mobile_scetion .title {
+    color: #1A1027;
+    font-family: 'Lato';
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0 0px 0 10px;
+    line-height: 26px;
+    text-transform: capitalize;
+}
+
+.fp_mobile_scetion_container .content {
+    font-weight: 300;
+    font-family: 'Lato';
+    line-height: 28px;
+    font-size: 16px;
+    color: #1A1027;
+    text-transform: capitalize;
+    padding: 0 60px 0 20px;
+}
+
+.fp_newHeadline_container {
+    background-color: #FAFAFA;
+    padding: 21px 13px 15px;
+}
+
+.fp_newHeadline {
+    color: #494949;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 31px;
+    text-transform: uppercase;
+    font-family: 'Lato';
+}
+
+.fp_newDescription {
+    font-family: 'Lato';
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 23px;
+    padding-right: 35px;
+}
+
+.fp_video {
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin-top: 0 !important;
+}
+
+.fp_video .elButton {
+    margin-top: 20px;
+}
+
+.fp_video_container {
+    padding: 0 !important;
+    filter: drop-shadow(0px 2px 15px rgba(0, 0, 0, 0.15));
+}
+
+.fp_video_container .bgCover {
+    padding: 0 !important;
+}
+
+.fp_progressbar {
+    width: 98.5%;
+    height: 10px;
+    position: relative;
+}
+
+.fp_progressbar .overlay {
+    background-image: url('https://variations-cdn.figpii.com/variations/gravitychallenges/optin-lp/bg.png');
+    width: 98.5%;
+    height: 10px;
+    position: relative;
+    background-size: contain;
+    background-repeat-y: no-repeat;
+    background-position: 4px;
+    position: absolute;
+    z-index: 2;
+}
+
+.fp_progressbar>.carbohydrate {
+    position: absolute;
+    width: 34%;
+    height: 10px;
+    top: 0;
+    background-color: #5820A0;
+}
+
+.fp_progressbar>.protein {
+    position: absolute;
+    width: 48%;
+    height: 10px;
+    top: 0;
+    background-color: #BDA2DF;
+    left: 34%;
+}
+
+.fp_progressbar>.fat {
+    position: absolute;
+    width: 18%;
+    height: 10px;
+    top: 0;
+    background-color: #C4C4C4;
+    left: 82%;
+}
+
+.fp_progressbar_container {
+    position: relative;
+}
+
+.fp_progressbar_labels {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.fp_progressbar_labels>div {
+    display: flex;
+    align-items: center;
+    white-space: pre;
+}
+
+.fp_progressbar_labels>div>img {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.fp_progressbar_labels>div>img {
+    margin-right: 5px;
+}
+
+.fp_progressbar_labels .carbohydrate {
+    width: 34%;
+    color: #5820A0;
+}
+
+.fp_progressbar_labels .protein {
+    width: 48%;
+    color: #BDA2DF;
+}
+
+.fp_progressbar_labels .fat {
+    width: 12%;
+    color: #C4C4C4;
+}
+
+.fp_join {
+    font-family: Lato;
+    font-weight: 300;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 21px;
+    text-align: center;
+    color: #000;
+    margin-top: 7px;
+}
+
+.video-sound-overlay .unmute-button {
+    background-image: url('https://variations-cdn.figpii.com/variations/gravitychallenges/optin-lp/volume.svg');
+    width: 40px;
+    height: 40px;
+    left: 10px;
+    top: 10px;
+    position: relative;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.video-sound-overlay img {
+    display: none;
+}
+
+.activityProgressbar {
+    width: 56px;
+    height: 9px;
+    border: 1px solid #e9e9e9;
+    border-radius: 4px;
+    position: relative;
+}
+
+.activityProgressbar:after {
+    content: '';
+    display: block;
+    width: 25%;
+    position: absolute;
+    height: 9px;
+    background: #1A1027;
+    top: -1px;
+    border-radius: 4px;
+}
+
+.activityProgressbar.Sedentary:after {
+    width: 10%;
+}
+
+.activityProgressbar.Light:after {
+    width: 30%;
+}
+
+.activityProgressbar.Moderate:after {
+    width: 50%;
+}
+
+.activityProgressbar.Heavy:after {
+    width: 70%;
+}
+
+.activityProgressbar.Athlete:after {
+    width: 90%;
+}
+
+.fp_watch:hover,
+.fp_watch:focus {
+    text-decoration: none;
+}
+
+.iframeBlocker,
+.iframeUnmute {
+    z-index: 999999999 !important;
+}
+
+
+/* Rearranging section codes */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500;700&display=swap');
+.fp_banner {
+    color: #FFF;
+}
+
+.cta,
+.elVideoWrapper a,
+.fp_newOne {
+    background-color: #ff1501 !important;
+}
+
+.fp_banner_header {
+    padding: 0 16px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    z-index: 2;
+    position: relative;
+}
+
+.fp_banner_icon {
+    width: 93px;
+    height: 93px;
+    background-color: #FFF;
+    border-radius: 50%;
+    padding: 12px;
+    margin-right: 22px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fp_banner_header img {}
+
+.fp_banner_title span {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 30px;
+    color: #5820A0;
+}
+
+.fp_banner_title strong {
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 500;
+}
+
+.fp_banner_title {
+    font-weight: 300;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.fp_banner_description {
+    padding: 80px 16px 14px;
+    background: linear-gradient(90deg, #7932D5 0%, #401675 100%);
+    top: -80px;
+    position: relative;
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: -60px;
+}
+
+.fp_quotes {
+    padding: 0 15px;
+    margin: 30px auto 20px;
+}
+
+.fp_quotes_header {
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #1A1027;
+    margin-bottom: 20px;
+    line-height: 24px;
+}
+
+.fp_quotes .swiper-container {
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    padding: 13px 13px 17px;
+}
+
+.fp_quotes .header {
+    display: flex;
+    align-items: center;
+}
+
+.fp_quotes .header img {
+    width: 43px;
+    height: 43px;
+    object-fit: contain;
+    border: 3px solid #999;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.fp_quotes .rate {
+    text-align: center;
+}
+
+.fp_quotes .name {
+    margin-bottom: 2px;
+    margin-top: 0;
+}
+
+.fp_quotes .description {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 21px;
+    margin-top: 7px;
+    /*max-height: 50px;*/
+}
+
+.fp_quotes .swiper-pagination.swiper-pagination-bullets,
+.fp_sixWeek .swiper-pagination2.swiper-pagination-bullets {
+    width: calc(100% - 30px);
+    margin-top: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.fp_quotes span.swiper-pagination-bullet,
+.fp_sixWeek span.swiper-pagination-bullet {
+    margin-right: 4px;
+}
+
+.fp_quotes .swiper-pagination-bullet,
+.fp_sixWeek .swiper-pagination-bullet {
+    width: 6px !important;
+    height: 6px !important;
+}
+
+.fp_quotes .swiper-pagination-bullet-active,
+.fp_sixWeek .swiper-pagination-bullet-active {
+    background: #401675 !important;
+    width: 10px !important;
+    height: 10px !important;
+}
+
+.fp_online-course {
+    padding: 20px 24px 20px;
+    margin: 50px 0 0px!important;
+    background-color: #FAFAFA;
+}
+
+.fp_online-course .header {
+    color: #1A1027;
+    padding-bottom: 7px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.fp_online-course .header:after {
+    content: '';
+    width: 33px;
+    height: 3px;
+    background-color: #7932D4;
+    display: block;
+    top: 3px;
+    position: relative;
+}
+
+.fp_online-course img {
+    max-width: 100%;
+    margin: 20px 0 20px;
+}
+
+.fp_online-course span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #494949;
+    text-transform: capitalize;
+    font-family: 'Open Sans';
+}
+
+.fp_weeks {
+    background: #FFFFFF;
+    padding: 20px 16px 0px;
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 15%);
+    margin-bottom: -10px;
+}
+
+.fp_weeks ul {
+    margin-bottom: 20px;
+}
+
+.fp_weeks .fp_header {
+    display: flex;
+    align-items: center;
+}
+
+.fp_weeks .icon {
+    background: linear-gradient(90deg, #7932D5 0%, #401675 100%);
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 15%);
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.fp_weeks h3 {
+    font-size: 18px !important;
+    margin-bottom: 0;
+    color: #1A1027;
+}
+
+.fp_weeks span {
+    font-weight: 400;
+    font-size: 16px;
+    color: #494949;
+}
+
+.fp_weeks ul {
+    padding-left: 0px;
+    margin-top: 16px;
+    padding-bottom: 20px;
+    list-style-type: none;
+}
+
+.fp_weeks ul li {
+    color: #494949;
+    font-size: 14px;
+    font-family: 'open sans';
+    text-transform: capitalize;
+    font-weight: 400;
+    background-image: url('https://variations-cdn.figpii.com/variations/gravitychallenges/rearrange/check.svg');
+    background-repeat: no-repeat;
+    padding-left: 26px;
+    line-height: 2.25;
+    background-position: 0 center;
+    background-size: 18px;
+}
+
+.fp_registeration-text {
+    color: #494949;
+    font-weight: 400;
+    font-size: 18px;
+    font-family: 'Fira Sans';
+    text-shadow: none;
+    text-transform: uppercase;
+}
+
+.fp_timer .cdBlue.cdStyleFlat .countdown-amount {
+    background-color: transparent !important;
+    border: none !important;
+    color: #BDA2DF !important;
+    font-family: 'Fira Sans' !important;
+    font-size: 40px !important;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.fp_timer .wideCountdownSize2 .countdown-period {
+    font-size: 12px;
+    font-family: 'Fira Sans';
+    font-weight: 400;
+    color: #494949;
+    margin-top: -5px;
+}
+
+.fp_timer span.countdown-amount:after {
+    content: ':';
+    display: block;
+    right: -14px;
+    position: absolute;
+    top: 7px;
+}
+
+.fp_timer .countdown-section:last-child span.countdown-amount:after {
+    display: none;
+}
+
+.fp_price>span {
+    color: #494949;
+    font-size: 18px;
+    text-shadow: none;
+    text-decoration: line-through;
+    font-weight: 400;
+    font-family: 'Fira Sans';
+}
+
+.fp_price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.fp_price>p {
+    font-size: 18px;
+    font-weight: 600;
+    text-shadow: none;
+    font-family: 'Open Sans';
+    margin-bottom: 0;
+    margin-left: 20px;
+    color: #FF1400;
+}
+
+a.fp_timer_cta {
+    width: 230px;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    margin: auto;
+    background-color: #FF1400;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    border-radius: 3px;
+    font-family: 'Lato';
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.swiper-container-sixWeek .swiper-slide {
+    width: 80%;
+    padding: 0;
+    opacity: .5;
+}
+
+.swiper-container-sixWeek .swiper-slide.swiper-slide-active {
+    opacity: 1;
+}
+
+.swiper-container-sixWeek .swiper-slide img {
+    max-width: 100%;
+}
+
+.fp_sixWeek .swiper-pagination2 {
+    position: initial !important;
+    width: initial !important;
+}
+
+.fp_sixWeek {
+    width: calc(100% + 30px);
+    margin-left: -15px;
+    background-color: #FFF;
+    padding: 20px 0px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.fp_sixWeek .header {
+    font-family: 'Fira Sans';
+    padding: 0 20px !important;
+    font-weight: 600;
+    font-size: 16px;
+    color: #1A1027;
+    margin-bottom: 10px;
+    width: 80%;
+    margin-left: 16px;
+}
+
+.subheader {
+    font-family: 'Fira Sans';
+    font-weight: 300;
+    padding: 0 16px;
+    line-height: 24px;
+    /*font-style: italic;*/
+    width: 80%;
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #494949;
+    margin-left: 19px;
+}
+
+.fp_purpleBanner {
+    width: calc(100% + 30px);
+    margin-left: -15px;
+    background: linear-gradient( 90deg, #7932D5 0%, #401675 100%);
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 15%);
+    display: flex;
+    color: #FFF;
+    padding: 20px 50px;
+    margin-bottom: 57px;
+    margin-right: -15px;
+    justify-content: space-around;
+    margin-top: 3px;
+}
+
+.fp_purpleBanner .column {
+    text-align: center;
+}
+
+.fp_purpleBanner .column>span {
+    font-family: 'Fira Sans';
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.fp_purpleBanner .column p {
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 300;
+    font-family: 'Fira Sans';
+    text-decoration: capitalize;
+}

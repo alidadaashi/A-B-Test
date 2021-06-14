@@ -263,7 +263,8 @@ var FP_LP_DONATIONS_TRUST = {
         $('div.ne:contains("Only Join if You\'re Ready to Get in The")').closest('.row').hide()
         $('div.ne:contains("Only Join if You\'re Ready to Get in The")').closest('.row').nextAll('.row').hide();
         $('div:contains("Disclaimer: Results may vary depending on starting point, goals")').closest('.container').css('margin-top', '-55px');
-        $('.fp_timer').closest('.row').children('div').children('div').children('div').children('a:contains("Yes")').hide()
+        $('.fp_timer').closest('.row').children('div').children('div').children('div').children('a:contains("Yes")').hide();
+        $('b:contains("FREE!")').closest('.de').hide();
     },
     addCTA: function() {
         var sticky = '<div class="fp_new_sticky_container">'
@@ -4772,6 +4773,10 @@ var FP_LP_DONATIONS_TRUST = {
                 // slidesPerGroup: 3,
                 spaceBetween: 28,
                 autoHeight: true,
+                autoplay: {
+                    delay: 6500,
+                    disableOnInteraction: false,
+                },
                 pagination: {
                     el: '.swiper-pagination',
                 },
@@ -4802,6 +4807,10 @@ var FP_LP_DONATIONS_TRUST = {
         var swiper2 = new Swiper('.swiper-container-sixWeek', {
             slidesPerView: 2,
             spaceBetween: 0,
+            autoplay: {
+                delay: 6500,
+                disableOnInteraction: false,
+            },
             scrollbar: {
                 el: '.swiper-scrollbar',
                 hide: true,

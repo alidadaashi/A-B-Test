@@ -45,7 +45,7 @@ var FP_LP_DONATIONS_TRUST = {
                 $('.fp_new_sticky_btn').attr('href', $('a.elButton:contains("Yes! I’m Ready To Take Control")').eq(2).closest('a').attr('href'))
 
             } else {
-                $('.fp_new_sticky_btn').attr('href', $('.elButton span:contains("RESERVE YOUR SPOT")').eq(2).closest('a').attr('href'))
+                $('.fp_new_sticky_btn').attr('href', $('a.elButton:contains("Yes! I’m Ready To Take Control")').eq(2).closest('a').attr('href'))
 
             }
 
@@ -108,6 +108,14 @@ var FP_LP_DONATIONS_TRUST = {
         })
 
         $('.elButton span:contains("EVERYTHING FOR JUST $100")').closest('a').on('click', function() {
+            window._fpEvent.push(["eventConversion", {
+                value: "allCTAsClick"
+            }]);
+        })
+
+
+        // missed one. told by isabella
+        $(document).on('click', '.fp__new__cta', function() {
             window._fpEvent.push(["eventConversion", {
                 value: "allCTAsClick"
             }]);

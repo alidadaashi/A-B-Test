@@ -49,6 +49,7 @@
         width: 80%;
         margin: 0 auto 40px;
         text-transform: capitalize;
+        font-weight: 400;
     }
     .fp_slide_image {
         width: 220px;

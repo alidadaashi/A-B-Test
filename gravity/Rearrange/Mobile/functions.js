@@ -1,6 +1,6 @@
 var FP_LP_DONATIONS_TRUST = {
     init: function() {
-        this.addCTA();
+        // this.addCTA();
 
         var that = this;
         $(window).on('load', function() {
@@ -182,7 +182,9 @@ var FP_LP_DONATIONS_TRUST = {
         $('span:contains("Lose 5% body fat or 10% Body Weight and the challenge is")').closest('.de').hide();
         $('div.ne:contains("Only Join if You\'re Ready to Get in The")').closest('.row').hide()
         $('div.ne:contains("Only Join if You\'re Ready to Get in The")').closest('.row').nextAll('.row').hide();
-        $('div:contains("Disclaimer: Results may vary depending on starting point, goals")').closest('.container').css('margin-top', '-55px')
+        $('div:contains("Disclaimer: Results may vary depending on starting point, goals")').closest('.container').css('margin-top', '-55px');
+        $('b:contains("FREE!")').closest('.de').hide();
+
     },
     addCTA: function() {
 
@@ -4678,6 +4680,10 @@ var FP_LP_DONATIONS_TRUST = {
 
         var swiper = new Swiper('.swiper-container-quotes', {
             autoHeight: true,
+            autoplay: {
+                delay: 6500,
+                disableOnInteraction: false,
+            },
             pagination: {
                 el: '.swiper-pagination',
             },
@@ -4689,6 +4695,10 @@ var FP_LP_DONATIONS_TRUST = {
             centeredSlides: true,
             spaceBetween: 5,
             loop: true,
+            autoplay: {
+                delay: 6500,
+                disableOnInteraction: false,
+            },
             pagination: {
                 el: '.swiper-pagination2',
             },

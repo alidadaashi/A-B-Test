@@ -44,6 +44,7 @@ font-face {
         color: #101010;
         width: 80%;
         margin: auto;
+        font-weight: 300;
     }
     .fp_slide_image {
         width: 220px;
